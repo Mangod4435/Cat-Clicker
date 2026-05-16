@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class NumFormatr : MonoBehaviour
+public class NumFormatr
 {
     static readonly string[] names =
     {
@@ -108,7 +108,7 @@ public class NumFormatr : MonoBehaviour
         " novemnonagintillion",
     };
 
-    static string frmtDob(double n)
+    public static string frmtDob(double n)
     {
         if (n > 9.99e+302)
             return "Infinity";
@@ -125,12 +125,5 @@ public class NumFormatr : MonoBehaviour
         }
 
         return n.ToString("0.##") + names[tier];
-    }
-
-    private void Start()
-    {
-        double cats = 1e+200;
-        string formattedCats = frmtDob(cats);
-        Debug.Log(formattedCats);
     }
 }
