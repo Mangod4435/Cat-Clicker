@@ -3,8 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ButtonRef", menuName = "Scriptable Objects/ButtonRef")]
 public class ButtonRef : ScriptableObject
 {
+    [SerializeField]
+    PlayerStats stat;
+
     public void NikoClicked()
     {
-        Debug.Log("+1$");
+        stat.cats += 1;
     }
 }
