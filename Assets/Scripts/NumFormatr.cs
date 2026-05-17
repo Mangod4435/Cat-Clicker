@@ -1,6 +1,3 @@
-using System;
-using UnityEngine;
-
 public class NumFormatr
 {
     static readonly string[] names =
