@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0370419375dd943f7b9f763949f6b556, type: 3}
   m_Name: ButtonRef
   m_EditorClassIdentifier: Assembly-CSharp::ButtonRef
+  stat: {fileID: 11400000, guid: 11765f056dfa54cb3a9b73abaa82bd8d, type: 2}

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2807e5d258df046d388655f8a452ae56, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: Assembly-CSharp::Stats
+  cats: 0
