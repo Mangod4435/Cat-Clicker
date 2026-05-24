@@ -1,4 +1,3 @@
 ﻿<Solution>
-  <Project Path="MyScriptableObject.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
 </Solution>

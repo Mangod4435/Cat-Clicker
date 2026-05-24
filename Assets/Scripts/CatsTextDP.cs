@@ -3,26 +3,29 @@ using UnityEngine;
 
 public class CatsTextDP : MonoBehaviour
 {
-    [SerializeField]
-    PlayerStats stat;
+    GameManager manager => GameManager.instance;
 
     TextMeshProUGUI t;
-    double lastCats;
+    double lastCats = 0;
 
-    void Awake() => t = GetComponent<TextMeshProUGUI>();
+    void Awake()
+    {
+        t = GetComponent<TextMeshProUGUI>();
+        if (t == null)
+            Debug.LogError("No TMP component found on " + gameObject.name);
+    }
 
     void Start()
     {
-        t.text = $"{NumFormatr.frmtDob(stat.cats)} cats";
-        lastCats = stat.cats;
+        t.text = $"{NumFormatr.frmtDob(manager.Cats)} cats";
     }
 
     void Update()
     {
-        if (stat.cats != lastCats)
+        if (manager.Cats != lastCats)
         {
-            t.text = $"{NumFormatr.frmtDob(stat.cats)} cats";
-            lastCats = stat.cats;
+            t.text = $"{NumFormatr.frmtDob(manager.Cats)} cats";
+            lastCats = manager.Cats;
         }
     }
 }
