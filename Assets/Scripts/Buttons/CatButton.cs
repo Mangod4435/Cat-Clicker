@@ -21,6 +21,5 @@ public class CatButton : MonoBehaviour
     public void OnButtonClicked()
     {
         manager.AddCats(1);
-        transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
     }
 }

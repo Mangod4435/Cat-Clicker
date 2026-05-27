@@ -17,14 +17,14 @@ public class CatsTextDP : MonoBehaviour
 
     void Start()
     {
-        t.text = $"{NumFormatr.frmtDob(manager.Cats)} cats";
+        t.text = $"{NumberFormatter.formatDouble(manager.Cats)} cats";
     }
 
     void Update()
     {
         if (manager.Cats != lastCats)
         {
-            t.text = $"{NumFormatr.frmtDob(manager.Cats)} cats";
+            t.text = $"{NumberFormatter.formatDouble(manager.Cats)} cats";
             lastCats = manager.Cats;
         }
     }

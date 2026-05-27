@@ -1,4 +1,4 @@
-public class NumFormatr
+public class NumberFormatter
 {
     static readonly string[] names =
     {
@@ -105,7 +105,7 @@ public class NumFormatr
         " novemnonagintillion",
     };
 
-    public static string frmtDob(double n)
+    public static string formatDouble(double n)
     {
         if (n > 9.99e+302)
             return "Infinity";
