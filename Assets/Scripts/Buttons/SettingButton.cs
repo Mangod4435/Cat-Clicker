@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SettingButton : MonoBehaviour
 {
-    bool isSettingOpen = false;
+    public static bool isSettingOpen = false;
     GameObject SettingUI;
 
     void Awake()
