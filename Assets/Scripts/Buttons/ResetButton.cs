@@ -4,6 +4,7 @@ public class ResetButton : MonoBehaviour
 {
     GameManager manager => GameManager.instance;
     GameObject cat;
+    SettingButton settingButton => SettingButton.instance;
 
     void Awake()
     {
@@ -13,8 +14,8 @@ public class ResetButton : MonoBehaviour
     public void OnClicked()
     {
         manager.ResetGame();
-        Debug.Log($"[ResetButton.cs] isSettingOpen = {SettingButton.isSettingOpen}");
         cat.transform.rotation = Quaternion.Euler(0, 0, 0);
-        SettingButton.isSettingOpen = false;
+        settingButton.isSettingOpen = false;
+        settingButton.UpdateSetting();
     }
 }
