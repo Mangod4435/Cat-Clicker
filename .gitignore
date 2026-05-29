@@ -112,3 +112,6 @@ InitTestScene*.unity*
 .DS_Store
 .AppleDouble
 .LSOverride
+
+#Private note
+Cat-ClickerNote/
