@@ -20,9 +20,9 @@ public class CatButton : MonoBehaviour
     void Update()
     {
         transform.localScale = e.holding ? Vector3.one * 0.8f : Vector3.one;
-        if (SoundBtn.isOn == true)
+        if (SoundBtn.isOn == false)
             meow.volume = 0;
-        else if (SoundBtn.isOn == false)
+        else if (SoundBtn.isOn == true)
             meow.volume = 1;
     }
 
