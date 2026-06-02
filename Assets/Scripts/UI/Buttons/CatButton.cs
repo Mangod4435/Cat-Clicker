@@ -6,6 +6,7 @@ public class CatButton : MonoBehaviour
     GameManager manager => GameManager.instance;
     PressedEvent e;
     AudioSource meow;
+
     [SerializeField]
     Toggle SoundBtn;
 

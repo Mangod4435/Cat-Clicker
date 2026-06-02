@@ -3,6 +3,7 @@ using UnityEngine;
 public class ResetButton : MonoBehaviour
 {
     GameManager manager => GameManager.instance;
+
     [SerializeField]
     GameObject cat;
     SettingButton settingButton => SettingButton.instance;
