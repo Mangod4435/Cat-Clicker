@@ -3,13 +3,9 @@ using UnityEngine;
 public class ResetButton : MonoBehaviour
 {
     GameManager manager => GameManager.instance;
+    [SerializeField]
     GameObject cat;
     SettingButton settingButton => SettingButton.instance;
-
-    void Awake()
-    {
-        cat = transform.parent.parent.Find("Cat").gameObject;
-    }
 
     public void OnClicked()
     {

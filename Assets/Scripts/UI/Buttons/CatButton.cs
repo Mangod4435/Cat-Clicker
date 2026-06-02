@@ -6,13 +6,13 @@ public class CatButton : MonoBehaviour
     GameManager manager => GameManager.instance;
     PressedEvent e;
     AudioSource meow;
+    [SerializeField]
     Toggle SoundBtn;
 
     void Awake()
     {
         e = GetComponent<PressedEvent>();
         meow = GetComponent<AudioSource>();
-        SoundBtn = transform.parent.Find("SettingUI").Find("Sound").GetComponent<Toggle>();
     }
 
     void FixedUpdate() => transform.Rotate(0, 0, -22.5f * Time.fixedDeltaTime);
