@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class SaveSystem
@@ -18,7 +19,11 @@ public static class SaveSystem
         if (!HasSave())
         {
             Debug.Log("[SaveSystem.cs] No save found");
-            return new SaveData { cats = 0 };
+            return new SaveData
+            {
+                cats = 0,
+                upgrades = new Dictionary<string, int> { ["Cat Food"] = 0 },
+            };
         }
 
         string json = PlayerPrefs.GetString(KEY);

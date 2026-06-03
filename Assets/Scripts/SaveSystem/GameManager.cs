@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -5,6 +6,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; private set; }
 
     public double Cats { get; private set; }
+
+    public int CatFood { get; private set; }
 
     private float _autoSaveTimer;
     private bool _saveLoaded = false;
@@ -60,11 +63,28 @@ public class GameManager : MonoBehaviour
 
     public void AddCat() => Cats++;
 
+    public void AddUpgrade(string name, int amount)
+    {
+        switch (name)
+        {
+            case "Cat Food":
+                CatFood += amount;
+                break;
+            default:
+                Debug.LogError($"That upgrade not found ({name})");
+                break;
+        }
+    }
+
     // ━━ Save / Load ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
     public void SaveGame()
     {
-        var data = new SaveData { cats = Cats };
+        var data = new SaveData
+        {
+            cats = Cats,
+            upgrades = new Dictionary<string, int> { ["Cat Food"] = CatFood },
+        };
         SaveSystem.Save(data);
     }
 
@@ -72,11 +92,14 @@ public class GameManager : MonoBehaviour
     {
         SaveData data = SaveSystem.Load();
         Cats = data.cats;
+        CatFood = data.upgrades["Cat Food"];
     }
 
     public void ResetGame()
     {
         SaveSystem.DESTROYtheSave();
         Cats = 0;
+        CatFood = 0;
+        SaveGame();
     }
 }
