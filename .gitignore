@@ -118,9 +118,9 @@ Cat-ClickerNote/
 
 # Builds
 /Build/*DoNotShip
-"/Build/The Cat Clicker*"
-!"/Build/The Cat Clciker"
-!"/Build/The Cat Clciker(v0.0.2)"
-!"/Build/The Cat Clciker(v0.0.2p1)"
-!"/Build/The Cat Clciker(v0.0.2-p2)"
+/Build/The Cat Clicker*/
+!/Build/The Cat Clciker
+!/Build/The Cat Clciker(v0.0.2)
+!/Build/The Cat Clciker(v0.0.2p1)
+!/Build/The Cat Clciker(v0.0.2-p2)
 

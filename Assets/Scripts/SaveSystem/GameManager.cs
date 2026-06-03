@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     // ━━ Public API ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-    public void AddCats(double amount) => Cats += amount;
+    public void AddCat(double amount) => Cats += amount;
 
     public void AddCat() => Cats++;
 

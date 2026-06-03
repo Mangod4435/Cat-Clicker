@@ -29,7 +29,7 @@ public class CatButton : MonoBehaviour
 
     public void OnClicked()
     {
-        manager.AddCats(1);
+        manager.AddCat(1);
         meow.Play();
     }
 }
