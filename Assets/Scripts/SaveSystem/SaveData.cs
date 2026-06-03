@@ -2,8 +2,14 @@ using System;
 using System.Collections.Generic;
 
 [Serializable]
+public class UpgradesData
+{
+    public int catFood;
+}
+
+[Serializable]
 public class SaveData
 {
     public double cats;
-    public Dictionary<string, int> upgrades;
+    public UpgradesData upgrades;
 }

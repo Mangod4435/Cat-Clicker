@@ -22,7 +22,7 @@ public static class SaveSystem
             return new SaveData
             {
                 cats = 0,
-                upgrades = new Dictionary<string, int> { ["Cat Food"] = 0 },
+                upgrades = new UpgradesData { catFood = 0 },
             };
         }
 

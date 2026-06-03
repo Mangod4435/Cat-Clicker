@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         var data = new SaveData
         {
             cats = Cats,
-            upgrades = new Dictionary<string, int> { ["Cat Food"] = CatFood },
+            upgrades = new UpgradesData { catFood = CatFood },
         };
         SaveSystem.Save(data);
     }
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
     {
         SaveData data = SaveSystem.Load();
         Cats = data.cats;
-        CatFood = data.upgrades["Cat Food"];
+        CatFood = data.upgrades != null ? data.upgrades.catFood : 0;
     }
 
     public void ResetGame()
