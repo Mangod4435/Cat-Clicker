@@ -8,20 +8,5 @@ public class UpgradeButtons : MonoBehaviour
     string UpgradeName;
     GameManager instance => GameManager.instance;
 
-    public void OnClicked()
-    {
-        instance.AddCat(CompareUpgradeName());
-    }
-
-    int CompareUpgradeName()
-    {
-        switch (UpgradeName)
-        {
-            case "Cat Food":
-                return 1;
-            default:
-                break;
-        }
-        return 0;
-    }
+    public void OnClicked() => instance.AddUpgrade(UpgradeName, 1);
 }

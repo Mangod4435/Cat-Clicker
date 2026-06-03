@@ -52,11 +52,6 @@ public class GameManager : MonoBehaviour
             SaveGame();
     }
 
-    void OnApplicationQuit()
-    {
-        SaveGame();
-    }
-
     // ━━ Public API ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
     public void AddCat(double amount) => Cats += amount;
@@ -100,6 +95,5 @@ public class GameManager : MonoBehaviour
         SaveSystem.DESTROYtheSave();
         Cats = 0;
         CatFood = 0;
-        SaveGame();
     }
 }
