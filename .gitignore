@@ -17,6 +17,7 @@
 /Data/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+/[Bb]uild/
 *.log
 
 # By default unity supports Blender asset imports, *.blend1 blender files do not need to be committed to version control.
