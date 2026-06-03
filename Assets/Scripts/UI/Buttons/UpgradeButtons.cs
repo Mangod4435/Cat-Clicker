@@ -10,10 +10,10 @@ public class UpgradeButtons : MonoBehaviour
 
     public void OnClicked()
     {
-        instance.AddCat(เทียบUpgradeName());
+        instance.AddCat(CompareUpgradeName());
     }
 
-    int เทียบUpgradeName()
+    int CompareUpgradeName()
     {
         switch (UpgradeName)
         {
