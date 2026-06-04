@@ -6,7 +6,7 @@ public class CatsTextDP : MonoBehaviour
     GameManager manager => GameManager.instance;
 
     TextMeshProUGUI t;
-    double lastCats = 0;
+    double lastCats = -1;
 
     void Awake()
     {

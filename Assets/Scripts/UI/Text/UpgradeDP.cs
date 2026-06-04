@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class UpgradeDP : MonoBehaviour
@@ -7,9 +8,19 @@ public class UpgradeDP : MonoBehaviour
 
     int lastAmount;
     GameManager instance => GameManager.instance;
+    TextMeshProUGUI text;
+
+    void Awake()
+    {
+        text = GetComponent<TextMeshProUGUI>();
+    }
 
     void Update()
     {
-        // This will be added later
+        if (upgradeName == "Cat Food" && instance.CatFood != lastAmount)
+        {
+            text.text = instance.CatFood.ToString();
+            lastAmount = instance.CatFood;
+        }
     }
 }
