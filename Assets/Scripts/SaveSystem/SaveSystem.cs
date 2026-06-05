@@ -1,9 +1,10 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public static class SaveSystem
 {
     private const string KEY = "CatClickerSave";
+    public static event Action OnNoSave;
 
     public static void Save(SaveData data)
     {
@@ -19,6 +20,7 @@ public static class SaveSystem
         if (!HasSave())
         {
             Debug.Log("[SaveSystem.cs] No save found");
+            OnNoSave?.Invoke();
             return new SaveData
             {
                 cats = 0,

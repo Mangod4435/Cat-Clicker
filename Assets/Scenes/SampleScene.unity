@@ -1872,7 +1872,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 710363129}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 704a717376cb8431084ae86f91a7caf8, type: 3}
+  m_Script: {fileID: 11500000, guid: b0164b07cb0e34a4098307c240c218e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CatsTextDP
 --- !u!1 &757907169
@@ -3080,9 +3080,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1690916682}
   - {fileID: 1779613043}
   - {fileID: 883895999}
-  - {fileID: 1690916682}
   m_Father: {fileID: 288795000}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}

@@ -6,9 +6,19 @@ public class UpgradeDP : MonoBehaviour
     [SerializeField]
     string upgradeName;
 
-    int lastAmount;
+    int lastAmount = -1;
     GameManager instance => GameManager.instance;
     TextMeshProUGUI text;
+
+    void DPUpgrade()
+    {
+        if (upgradeName == "Cat Food")
+            text.text = instance.CatFood.ToString();
+    }
+
+    void OnEnable() => SaveSystem.OnNoSave += DPUpgrade;
+
+    void OnDisable() => SaveSystem.OnNoSave -= DPUpgrade;
 
     void Awake()
     {
@@ -19,7 +29,7 @@ public class UpgradeDP : MonoBehaviour
     {
         if (upgradeName == "Cat Food" && instance.CatFood != lastAmount)
         {
-            text.text = instance.CatFood.ToString();
+            DPUpgrade();
             lastAmount = instance.CatFood;
         }
     }
