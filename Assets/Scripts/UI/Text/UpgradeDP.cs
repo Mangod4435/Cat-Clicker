@@ -7,7 +7,7 @@ public class UpgradeDP : MonoBehaviour
     string upgradeName;
 
     int lastAmount = -1;
-    GameManager instance => GameManager.instance;
+    GameManager instance => GameManager.Instance;
     TextMeshProUGUI text;
 
     void DPUpgrade()

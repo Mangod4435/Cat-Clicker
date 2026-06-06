@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance { get; private set; }
+    public static GameManager Instance { get; private set; }
+
+    public UpgradesData Upgrades { get; private set; }
 
     public double Cats { get; private set; }
 
@@ -10,16 +12,17 @@ public class GameManager : MonoBehaviour
 
     private float _autoSaveTimer;
     private bool _saveLoaded = false;
-    private const float AUTO_SAVE_INTERVAL = 30f;
+    private const float AutoSaveInterval = 30f;
 
+    #region unity lifetime
     void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
         }
-        instance = this;
+        Instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -32,11 +35,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         _autoSaveTimer += Time.deltaTime;
-        if (_autoSaveTimer >= AUTO_SAVE_INTERVAL)
+        if (_autoSaveTimer >= AutoSaveInterval)
         {
             SaveGame();
             _autoSaveTimer = 0f;
         }
+        Upgrades.catFood = this.CatFood;
     }
 
     void OnApplicationFocus(bool focus)
@@ -50,8 +54,9 @@ public class GameManager : MonoBehaviour
         if (!pauseStatus && _saveLoaded)
             SaveGame();
     }
-
+    #endregion
     // ━━ Public API ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    #region API
 
     public void AddCat(double amount) => Cats += amount;
 
@@ -69,9 +74,9 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-
+    #endregion
     // ━━ Save / Load ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+    #region Save - Load
     public void SaveGame()
     {
         var data = new SaveData
@@ -87,6 +92,7 @@ public class GameManager : MonoBehaviour
         SaveData data = SaveSystem.Load();
         Cats = data.cats;
         CatFood = data.upgrades?.catFood ?? 0;
+        Upgrades = data.upgrades;
     }
 
     public void ResetGame()
@@ -95,4 +101,5 @@ public class GameManager : MonoBehaviour
         Cats = 0;
         CatFood = 0;
     }
+    #endregion
 }

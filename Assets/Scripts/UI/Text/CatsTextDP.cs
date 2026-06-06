@@ -4,34 +4,39 @@ using UnityEngine;
 
 public class CatsTextDP : MonoBehaviour
 {
-    GameManager manager => GameManager.instance;
+    private GameManager manager => GameManager.Instance;
 
-    TextMeshProUGUI t;
-    double lastCats = -1;
+    private TextMeshProUGUI t;
+    private double lastCats = -1;
 
-    void DPCat()
+    private void DPCat()
     {
         Debug.Log($"[CatsTextDP.cs] called, manager.Cats = {manager.Cats}");
         t.text = $"{NumberFormatter.FormatDouble(manager.Cats)} cats";
     }
 
-    void OnEnable() => SaveSystem.OnNoSave += DPCat;
-
-    void OnDisable() => SaveSystem.OnNoSave -= DPCat;
-
-    void Awake()
+    private void OnEnable()
     {
-        t = GetComponent<TextMeshProUGUI>();
-        if (t == null)
-        {
-            Debug.LogError("No TMP component found on " + gameObject.name);
-            return;
-        }
+        SaveSystem.OnNoSave += DPCat;
     }
 
-    void Start() => lastCats = -1;
+    private void OnDisable()
+    {
+        SaveSystem.OnNoSave -= DPCat;
+    }
 
-    void Update()
+    private void Awake()
+    {
+        t = GetComponent<TextMeshProUGUI>();
+        if (t == null) Debug.LogError("No TMP component found on " + gameObject.name);
+    }
+
+    private void Start()
+    {
+        lastCats = -1;
+    }
+
+    private void Update()
     {
         if (manager.Cats != lastCats)
         {

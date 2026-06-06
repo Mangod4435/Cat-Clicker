@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class CatButton : MonoBehaviour
 {
-    GameManager manager => GameManager.instance;
+    GameManager manager => GameManager.Instance;
     PressedEvent e;
     AudioSource meow;
 

@@ -9,7 +9,7 @@ namespace UI.Buttons
         [SerializeField]
         string upgradeName;
 
-        private GameManager Instance => GameManager.instance;
+        private GameManager Instance => GameManager.Instance;
 
         private bool IsAffordable(string localUpgradeName)
         {
@@ -31,11 +31,10 @@ namespace UI.Buttons
 
         public void OnClicked()
         {
-            if (IsAffordable(upgradeName))
-            {
-                Instance.AddUpgrade(upgradeName, 1);
-                Instance.AddCat(-10);
-            }
+            if (!IsAffordable(upgradeName))
+                return;
+            Instance.AddUpgrade(upgradeName, 1);
+            Instance.AddCat(-10);
         }
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ResetButton : MonoBehaviour
 {
-    GameManager manager => GameManager.instance;
+    GameManager manager => GameManager.Instance;
 
     [SerializeField]
     GameObject cat;
