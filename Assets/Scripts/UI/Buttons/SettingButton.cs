@@ -3,13 +3,14 @@ using UnityEngine;
 public class SettingButton : MonoBehaviour
 {
     public bool isSettingOpen;
+
+    [SerializeField]
     GameObject SettingUI;
     public static SettingButton instance;
 
     void Awake()
     {
         instance = this;
-        SettingUI = transform.parent.Find("SettingUI").gameObject;
         //Setup first call
         isSettingOpen = false;
         SettingUI.SetActive(false);
