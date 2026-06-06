@@ -1,3 +1,4 @@
+using API;
 using TMPro;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ public class CatsTextDP : MonoBehaviour
     void DPCat()
     {
         Debug.Log($"[CatsTextDP.cs] called, manager.Cats = {manager.Cats}");
-        t.text = $"{NumberFormatter.formatDouble(manager.Cats)} cats";
+        t.text = $"{NumberFormatter.FormatDouble(manager.Cats)} cats";
     }
 
     void OnEnable() => SaveSystem.OnNoSave += DPCat;

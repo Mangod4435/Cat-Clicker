@@ -82,11 +82,11 @@ public class GameManager : MonoBehaviour
         SaveSystem.Save(data);
     }
 
-    public void LoadGame()
+    private void LoadGame()
     {
         SaveData data = SaveSystem.Load();
         Cats = data.cats;
-        CatFood = data.upgrades != null ? data.upgrades.catFood : 0;
+        CatFood = data.upgrades?.catFood ?? 0;
     }
 
     public void ResetGame()
