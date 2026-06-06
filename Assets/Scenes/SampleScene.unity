@@ -2449,7 +2449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e3d0430ff224ca693d08b786551da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeButtons
-  UpgradeName: Cat Food
+  upgradeName: Cat Food
 --- !u!114 &959223752
 MonoBehaviour:
   m_ObjectHideFlags: 0
