@@ -10,7 +10,7 @@ public class CatsTextDP : MonoBehaviour
 
     void DPCat()
     {
-        Debug.Log($"[DPCat] called, manager.Cats = {manager.Cats}, t = {t}");
+        Debug.Log($"[CatsTextDP.cs] called, manager.Cats = {manager.Cats}");
         t.text = $"{NumberFormatter.formatDouble(manager.Cats)} cats";
     }
 
@@ -28,18 +28,13 @@ public class CatsTextDP : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        lastCats = -1;
-    }
+    void Start() => lastCats = -1;
 
     void Update()
     {
-        Debug.Log($"[CatsTextDP.cs]: cats = {manager.Cats} and lastCats = {lastCats}");
         if (manager.Cats != lastCats)
         {
             DPCat();
-            Debug.Log($"[CatsTextDP.cs]: change cat from {t.text} -> {manager.Cats}");
             lastCats = manager.Cats;
         }
     }

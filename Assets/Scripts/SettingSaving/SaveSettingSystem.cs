@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public static class SaveSettingSystem
@@ -19,7 +18,9 @@ public static class SaveSettingSystem
         if (!HasSave())
         {
             Debug.Log("[SaveSettingSystem.cs] No preference found");
-            return new SettingData { isSoundOpen = false };
+            SettingData data1 = new SettingData { isSoundOpen = false };
+            Save(data1);
+            return data1;
         }
 
         string json = PlayerPrefs.GetString(KEY);
