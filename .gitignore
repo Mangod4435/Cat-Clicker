@@ -121,3 +121,4 @@ InitTestScene*.unity*
 Cat-ClickerNote/
 
 *.zip
+dotnet-tools.json
