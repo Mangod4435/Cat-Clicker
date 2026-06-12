@@ -5,11 +5,15 @@ namespace API
 {
     public class MangodHasher
     {
+        private const uint SEED_A = 0xDA8452FF;
+        private const uint SEED_B = 0x32856F74;
+        private const int OUTPUT_BITS = 64;
+
         public static string Hash(string input)
         {
             byte[] data = Encoding.UTF8.GetBytes(input);
-            ulong h0 = 0x6a09e667b3c4f912UL;
-            ulong h1 = 0xbb67ae8584caa73bUL;
+            ulong h0 = SEED_A ^ 0x6a09e667b3c4f912UL;
+            ulong h1 = SEED_B ^ 0xbb67ae8584caa73bUL;
 
             // padding
             int padded = ((data.Length + 8) / 16 + 1) * 16;
@@ -32,7 +36,8 @@ namespace API
             h0 = FinalMix(h0);
             h1 = FinalMix(h1 ^ h0);
 
-            return $"{h0:x16}{h1:x16}"; // 128-bit output
+            int chars = OUTPUT_BITS / 4;
+            return $"{h0:x16}{h1:x16}"[..chars]; // 128-bit output
         }
 
         static ulong RotateLeft(ulong val, int bits) => (val << bits) | (val >> (64 - bits));
