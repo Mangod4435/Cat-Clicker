@@ -15,7 +15,6 @@ public class UpgradeCore : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(t);
         if (t < 1)
         {
             t += Time.fixedDeltaTime;

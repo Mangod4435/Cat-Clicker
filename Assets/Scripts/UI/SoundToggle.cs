@@ -5,7 +5,7 @@ public class SoundToggle : MonoBehaviour
 {
     SettingManager manager => SettingManager.instance;
 
-    void Awake()
+    void Start()
     {
         gameObject.GetComponent<Toggle>().isOn = manager.Sound;
     }

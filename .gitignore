@@ -120,5 +120,8 @@ InitTestScene*.unity*
 #Private note
 Cat-ClickerNote/
 
+#personal stuff
 *.zip
 dotnet-tools.json
+Assets/PlayerPrefsEditor/*
+Assets/PlayerPrefsEditor.meta

@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private float _autoSaveTimer;
+    private bool _saveLoaded = false;
+    private const float AutoSaveInterval = 30f;
+
+    #region public field
     public static GameManager Instance { get; private set; }
 
     public UpgradesData Upgrades { get; private set; }
@@ -9,10 +14,7 @@ public class GameManager : MonoBehaviour
     public double Cats { get; private set; }
 
     public int CatFood { get; private set; }
-
-    private float _autoSaveTimer;
-    private bool _saveLoaded = false;
-    private const float AutoSaveInterval = 30f;
+    #endregion
 
     #region unity lifetime
     void Awake()
@@ -55,7 +57,6 @@ public class GameManager : MonoBehaviour
             SaveGame();
     }
     #endregion
-    // ━━ Public API ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     #region API
 
     public void AddCat(double amount) => Cats += amount;
@@ -75,7 +76,6 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-    // ━━ Save / Load ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     #region Save - Load
     public void SaveGame()
     {
