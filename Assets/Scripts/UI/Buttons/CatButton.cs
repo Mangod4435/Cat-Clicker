@@ -4,11 +4,9 @@ using UnityEngine.UI;
 public class CatButton : MonoBehaviour
 {
     GameManager manager => GameManager.Instance;
+    SettingManager setting => SettingManager.instance;
     PressedEvent e;
     AudioSource meow;
-
-    [SerializeField]
-    Toggle SoundBtn;
 
     void Awake()
     {
@@ -21,9 +19,9 @@ public class CatButton : MonoBehaviour
     void Update()
     {
         transform.localScale = e.holding ? Vector3.one * 0.8f : Vector3.one;
-        if (SoundBtn.isOn == false)
+        if (setting.Sound == false)
             meow.volume = 0;
-        else if (SoundBtn.isOn == true)
+        else if (setting.Sound == true)
             meow.volume = 1;
     }
 

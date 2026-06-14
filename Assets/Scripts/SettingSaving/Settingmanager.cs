@@ -21,7 +21,7 @@ public class SettingManager : MonoBehaviour
     public void Load()
     {
         SettingData data = SaveSettingSystem.Load();
-        this.Sound = data.isSoundOpen;
+        Sound = data.isSoundOpen;
     }
 
     // API
