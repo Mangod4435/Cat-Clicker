@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.sabresaurus.playerprefseditor": {
-      "version": "file:/home/mangodog/Downloads/PlayerPrefsEditor-main",
+      "version": "file:/home/mangodog/Documents/UnityPackages/PlayerPrefsEditor-main",
       "depth": 0,
       "source": "local",
       "dependencies": {}
