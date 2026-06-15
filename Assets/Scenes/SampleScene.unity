@@ -2339,7 +2339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7ac46dd415b846b2882c0f591ba15de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NikoAnimation
-  SoundBtn: {fileID: 979777874}
 --- !u!82 &949768695
 AudioSource:
   m_ObjectHideFlags: 0
