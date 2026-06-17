@@ -1,10 +1,12 @@
 using UnityEngine;
+using UpgradeSystem;
 
 public class GameManager : MonoBehaviour
 {
     private float _autoSaveTimer;
     private bool _saveLoaded = false;
     private const float AutoSaveInterval = 30f;
+    private UpgradeCore _upgradeCore;
 
     #region public field
     public static GameManager Instance { get; private set; }
@@ -25,6 +27,10 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        _upgradeCore = GetComponent<UpgradeCore>();
+        if (_upgradeCore == null)
+            _upgradeCore = gameObject.AddComponent<UpgradeCore>();
     }
 
     void Start()
@@ -41,7 +47,6 @@ public class GameManager : MonoBehaviour
             SaveGame();
             _autoSaveTimer = 0f;
         }
-        Upgrades.SharpClaw = this.SharpClaw;
     }
 
     void OnApplicationFocus(bool focus)
@@ -56,8 +61,8 @@ public class GameManager : MonoBehaviour
             SaveGame();
     }
     #endregion
-    #region API
 
+    #region API
     public void AddCat(double amount) => Cats += amount;
 
     public void AddCat() => Cats++;
@@ -71,10 +76,13 @@ public class GameManager : MonoBehaviour
                 break;
             default:
                 Debug.LogError($"That upgrade not found ({name})");
-                break;
+                return;
         }
+        SyncUpgradesData();
+        RecalculateCpc();
     }
     #endregion
+
     #region Save - Load
     public void SaveGame()
     {
@@ -90,10 +98,11 @@ public class GameManager : MonoBehaviour
     private void LoadGame()
     {
         SaveData data = SaveSystem.Load();
-        cpc = data.cpc;
         Cats = data.cats;
         SharpClaw = data.upgrades?.SharpClaw ?? 0;
-        Upgrades = data.upgrades;
+        Upgrades = data.upgrades ?? new UpgradesData();
+        // Always recalculate cpc from upgrades — never trust saved cpc value
+        RecalculateCpc();
     }
 
     public void ResetGame()
@@ -101,6 +110,21 @@ public class GameManager : MonoBehaviour
         SaveSystem.DESTROYtheSave();
         Cats = 0;
         SharpClaw = 0;
+        Upgrades = new UpgradesData();
+        RecalculateCpc();
+    }
+    #endregion
+
+    #region Private helpers
+    private void SyncUpgradesData()
+    {
+        if (Upgrades == null) Upgrades = new UpgradesData();
+        Upgrades.SharpClaw = SharpClaw;
+    }
+
+    private void RecalculateCpc()
+    {
+        cpc = _upgradeCore.CalculateCpc(Upgrades);
     }
     #endregion
 }

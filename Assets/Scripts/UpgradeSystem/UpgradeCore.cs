@@ -5,13 +5,14 @@ namespace UpgradeSystem
     public class UpgradeCore : MonoBehaviour
     {
         private GameManager _manager => GameManager.Instance;
-        private float t = 0;
 
-        internal int CalculateCps(UpgradesData data)
+        // Renamed from CalculateCps → CalculateCpc (clicks per click, not cats per second)
+        internal int CalculateCpc(UpgradesData data)
         {
-            var sharpClaw = data.SharpClaw;
-            var cpc = 1;
-            cpc += sharpClaw * 1;
+            if (data == null) return 1;
+
+            int cpc = 1; // baseline: always at least 1
+            cpc += data.SharpClaw * 1;
             return cpc;
         }
     }
