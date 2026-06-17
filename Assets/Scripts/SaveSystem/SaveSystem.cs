@@ -30,8 +30,9 @@ public static class SaveSystem
             OnNoSave?.Invoke();
             return new SaveData
             {
+                cpc = 1,
                 cats = 0,
-                upgrades = new UpgradesData { catFood = 0 },
+                upgrades = new UpgradesData { SharpClaw = 0 },
             };
         }
 
@@ -42,8 +43,9 @@ public static class SaveSystem
         {
             return new SaveData
             {
+                cpc = 1,
                 cats = 0,
-                upgrades = new UpgradesData { catFood = 0 },
+                upgrades = new UpgradesData { SharpClaw = 0 },
             };
         }
 

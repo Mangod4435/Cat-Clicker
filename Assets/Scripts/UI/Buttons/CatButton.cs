@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CatButton : MonoBehaviour
 {
@@ -27,7 +26,7 @@ public class CatButton : MonoBehaviour
 
     public void OnClicked()
     {
-        manager.AddCat(1);
+        manager.AddCat(1 * manager.cpc);
         meow.Play();
     }
 }

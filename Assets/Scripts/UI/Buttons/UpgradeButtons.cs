@@ -1,7 +1,5 @@
 using UnityEngine;
 
-// This is for debugging only for phone I'll do the full one later.
-
 namespace UI.Buttons
 {
     public class UpgradeButtons : MonoBehaviour
@@ -11,19 +9,13 @@ namespace UI.Buttons
 
         private GameManager Instance => GameManager.Instance;
 
-        private bool IsAffordable(string localUpgradeName)
+        private bool IsAffordable(string upgradeName)
         {
-            switch (localUpgradeName)
+            switch (upgradeName)
             {
-                case "Cat Food":
-                    switch (Instance.Cats)
-                    {
-                        case < 10:
-                            break;
-                        case >= 10:
-                            return true;
-                    }
-
+                case "Sharp Claw":
+                    if (Instance.Cats >= 10)
+                        return true;
                     break;
             }
             return false;
@@ -34,7 +26,14 @@ namespace UI.Buttons
             if (!IsAffordable(upgradeName))
                 return;
             Instance.AddUpgrade(upgradeName, 1);
-            Instance.AddCat(-10);
+            switch (upgradeName)
+            {
+                case "Sharp Claw":
+                    Instance.AddCat(-10);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

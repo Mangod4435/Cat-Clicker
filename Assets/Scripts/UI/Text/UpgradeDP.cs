@@ -12,8 +12,8 @@ public class UpgradeDP : MonoBehaviour
 
     void DPUpgrade()
     {
-        if (upgradeName == "Cat Food")
-            text.text = instance.CatFood.ToString();
+        if (upgradeName == "Sharp Claw")
+            text.text = instance.SharpClaw.ToString();
     }
 
     void OnEnable() => SaveSystem.OnNoSave += DPUpgrade;
@@ -25,12 +25,13 @@ public class UpgradeDP : MonoBehaviour
         text = GetComponent<TextMeshProUGUI>();
     }
 
+    //eduwfoifh
     void Update()
     {
-        if (upgradeName == "Cat Food" && instance.CatFood != lastAmount)
+        if (upgradeName == "Sharp Claw" && instance.SharpClaw != lastAmount)
         {
             DPUpgrade();
-            lastAmount = instance.CatFood;
+            lastAmount = instance.SharpClaw;
         }
     }
 }

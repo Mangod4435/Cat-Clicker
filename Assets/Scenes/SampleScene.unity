@@ -725,7 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0794bd745fa8d49ac9bee125aa6fa9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeDP
-  upgradeName: Cat Food
+  upgradeName: Sharp Claw
 --- !u!1 &231030972
 GameObject:
   m_ObjectHideFlags: 0
@@ -2541,7 +2541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e3d0430ff224ca693d08b786551da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeButtons
-  upgradeName: Cat Food
+  upgradeName: Sharp Claw
 --- !u!114 &959223752
 MonoBehaviour:
   m_ObjectHideFlags: 0

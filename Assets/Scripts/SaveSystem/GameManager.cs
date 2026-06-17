@@ -10,10 +10,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public UpgradesData Upgrades { get; private set; }
-
+    public double cpc { get; private set; }
     public double Cats { get; private set; }
-
-    public int CatFood { get; private set; }
+    public int SharpClaw { get; private set; }
     #endregion
 
     #region unity lifetime
@@ -42,7 +41,7 @@ public class GameManager : MonoBehaviour
             SaveGame();
             _autoSaveTimer = 0f;
         }
-        Upgrades.catFood = this.CatFood;
+        Upgrades.SharpClaw = this.SharpClaw;
     }
 
     void OnApplicationFocus(bool focus)
@@ -67,8 +66,8 @@ public class GameManager : MonoBehaviour
     {
         switch (name)
         {
-            case "Cat Food":
-                CatFood += amount;
+            case "Sharp Claw":
+                SharpClaw += amount;
                 break;
             default:
                 Debug.LogError($"That upgrade not found ({name})");
@@ -81,8 +80,9 @@ public class GameManager : MonoBehaviour
     {
         var data = new SaveData
         {
+            cpc = cpc,
             cats = Cats,
-            upgrades = new UpgradesData { catFood = CatFood },
+            upgrades = new UpgradesData { SharpClaw = SharpClaw },
         };
         SaveSystem.Save(data);
     }
@@ -90,8 +90,9 @@ public class GameManager : MonoBehaviour
     private void LoadGame()
     {
         SaveData data = SaveSystem.Load();
+        cpc = data.cpc;
         Cats = data.cats;
-        CatFood = data.upgrades?.catFood ?? 0;
+        SharpClaw = data.upgrades?.SharpClaw ?? 0;
         Upgrades = data.upgrades;
     }
 
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour
     {
         SaveSystem.DESTROYtheSave();
         Cats = 0;
-        CatFood = 0;
+        SharpClaw = 0;
     }
     #endregion
 }
