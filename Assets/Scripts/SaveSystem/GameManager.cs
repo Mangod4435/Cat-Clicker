@@ -1,12 +1,10 @@
 using UnityEngine;
-using UpgradeSystem;
 
 public class GameManager : MonoBehaviour
 {
     private float _autoSaveTimer;
     private bool _saveLoaded = false;
     private const float AutoSaveInterval = 30f;
-    private UpgradeCore _upgradeCore;
 
     #region public field
     public static GameManager Instance { get; private set; }
@@ -27,10 +25,6 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        _upgradeCore = GetComponent<UpgradeCore>();
-        if (_upgradeCore == null)
-            _upgradeCore = gameObject.AddComponent<UpgradeCore>();
     }
 
     void Start()
@@ -101,7 +95,6 @@ public class GameManager : MonoBehaviour
         Cats = data.cats;
         SharpClaw = data.upgrades?.SharpClaw ?? 0;
         Upgrades = data.upgrades ?? new UpgradesData();
-        // Always recalculate cpc from upgrades — never trust saved cpc value
         RecalculateCpc();
     }
 
@@ -122,9 +115,13 @@ public class GameManager : MonoBehaviour
         Upgrades.SharpClaw = SharpClaw;
     }
 
+    // Cpc logic lives here to avoid cross-assembly reference (SaveSystem -> Assembly-CSharp)
+    // UpgradeCore.cs can stay as the source of truth for formula documentation
     private void RecalculateCpc()
     {
-        cpc = _upgradeCore.CalculateCpc(Upgrades);
+        int cpc = 1; // baseline
+        cpc += SharpClaw * 1;
+        this.cpc = cpc;
     }
     #endregion
 }
