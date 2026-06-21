@@ -1000,6 +1000,7 @@ GameObject:
   - component: {fileID: 287595017}
   - component: {fileID: 287595019}
   - component: {fileID: 287595018}
+  - component: {fileID: 287595020}
   m_Layer: 5
   m_Name: Cost
   m_TagString: Untagged
@@ -1046,7 +1047,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '10 Cats
+  m_text: 'n Cats
 
 '
   m_isRightToLeft: 0
@@ -1128,6 +1129,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287595016}
   m_CullTransparentMesh: 1
+--- !u!114 &287595020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287595016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ecbd1f4e79d42bee832360a0714b64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CostDP
+  UpgradeName: Sharp Claw
 --- !u!1 &288794996
 GameObject:
   m_ObjectHideFlags: 0

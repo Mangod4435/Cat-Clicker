@@ -6,7 +6,7 @@ namespace UpgradeSystem
     // because GameManager lives in SaveSystem assembly and cannot reference Assembly-CSharp
     public class UpgradeCore
     {
-        internal int CalculateCpc(UpgradesData data)
+        public static int CalculateCpc(UpgradesData data)
         {
             if (data == null)
                 return 1;
@@ -15,7 +15,7 @@ namespace UpgradeSystem
             return cpc;
         }
 
-        internal double PriceCalculator(double baseCost, double amount)
+        public static double PriceCalculator(double baseCost, double amount)
         {
             return Math.Round(baseCost * Math.Pow(1.25, amount));
         }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UpgradeSystem;
 
 namespace UI.Buttons
 {
@@ -14,7 +15,7 @@ namespace UI.Buttons
             switch (upgradeName)
             {
                 case "Sharp Claw":
-                    if (Instance.Cats >= 10)
+                    if (Instance.Cats >= UpgradeCore.PriceCalculator(10, Instance.SharpClaw))
                         return true;
                     break;
             }
@@ -29,7 +30,7 @@ namespace UI.Buttons
             switch (upgradeName)
             {
                 case "Sharp Claw":
-                    Instance.AddCat(-10);
+                    Instance.AddCat(-UpgradeCore.PriceCalculator(10, Instance.SharpClaw));
                     break;
                 default:
                     break;

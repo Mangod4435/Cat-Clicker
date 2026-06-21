@@ -7,31 +7,26 @@ public class UpgradeDP : MonoBehaviour
     string upgradeName;
 
     int lastAmount = -1;
-    GameManager instance => GameManager.Instance;
+    GameManager manager => GameManager.Instance;
     TextMeshProUGUI text;
 
     void DPUpgrade()
     {
         if (upgradeName == "Sharp Claw")
-            text.text = instance.SharpClaw.ToString();
+            text.text = manager.SharpClaw.ToString();
     }
-
-    void OnEnable() => SaveSystem.OnNoSave += DPUpgrade;
-
-    void OnDisable() => SaveSystem.OnNoSave -= DPUpgrade;
 
     void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();
     }
 
-    //eduwfoifh
     void Update()
     {
-        if (upgradeName == "Sharp Claw" && instance.SharpClaw != lastAmount)
+        if (upgradeName == "Sharp Claw" && manager.SharpClaw != lastAmount)
         {
             DPUpgrade();
-            lastAmount = instance.SharpClaw;
+            lastAmount = manager.SharpClaw;
         }
     }
 }
