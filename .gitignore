@@ -125,3 +125,7 @@ Cat-ClickerNote/
 dotnet-tools.json
 Assets/PlayerPrefsEditor/*
 Assets/PlayerPrefsEditor.meta
+
+# unused scene
+Assets/_Recovery/*
+Assets/_Recovery.meta
