@@ -26,15 +26,15 @@ namespace UI.Buttons
         {
             if (!IsAffordable(upgradeName))
                 return;
-            Instance.AddUpgrade(upgradeName, 1);
             switch (upgradeName)
             {
                 case "Sharp Claw":
-                    Instance.AddCat(-UpgradeCore.PriceCalculator(10, Instance.SharpClaw));
+                    Instance.AddCat(UpgradeCore.PriceCalculator(10, Instance.SharpClaw) * -1);
                     break;
                 default:
                     break;
             }
+            Instance.AddUpgrade(upgradeName, 1);
         }
     }
 }

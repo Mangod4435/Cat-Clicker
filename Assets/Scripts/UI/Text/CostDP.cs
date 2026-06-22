@@ -8,7 +8,7 @@ public class CostDP : MonoBehaviour
     [SerializeField]
     string UpgradeName;
 
-    GameManager manager = GameManager.Instance;
+    GameManager manager => GameManager.Instance;
     TextMeshProUGUI text;
 
     void DPCost()
