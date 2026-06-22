@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 
 namespace UpgradeSystem
 {
@@ -17,7 +18,7 @@ namespace UpgradeSystem
 
         public static double PriceCalculator(double baseCost, double amount)
         {
-            return Math.Round(baseCost * Math.Pow(1.25, amount));
+            return Math.Round(math.pow(amount, math.E) * 10) + baseCost;
         }
     }
 }
