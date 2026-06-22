@@ -12,12 +12,12 @@ public class UpgradeMenu : MonoBehaviour
     {
         if (menu.activeInHierarchy)
         {
-            gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-950, -150);
-            Cat.GetComponent<RectTransform>().anchoredPosition = new Vector3(-350, 0);
+            gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-1010, -50);
+            Cat.GetComponent<RectTransform>().anchoredPosition = new Vector3(-410, 0);
         }
         else
         {
-            gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-150, -150);
+            gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-50, -50);
             Cat.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0);
         }
     }
