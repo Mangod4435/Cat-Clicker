@@ -3459,7 +3459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ecbd1f4e79d42bee832360a0714b64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CostDP
-  UpgradeName: Sharp Claw
+  UpgradeName: Cozy Spot
 --- !u!114 &1604608397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4047,9 +4047,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -150, y: -150}
+  m_AnchoredPosition: {x: -50, y: -50}
   m_SizeDelta: {x: 200, y: 200}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1897885960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4362,7 +4362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0794bd745fa8d49ac9bee125aa6fa9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeDP
-  upgradeName: Sharp Claw
+  upgradeName: Cozy Spot
 --- !u!114 &1946857361
 MonoBehaviour:
   m_ObjectHideFlags: 0
