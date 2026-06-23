@@ -14,6 +14,8 @@ public class UpgradeDP : MonoBehaviour
     {
         if (upgradeName == "Sharp Claw")
             text.text = manager.SharpClaw.ToString();
+        if (upgradeName == "Cozy Spot")
+            text.text = manager.CozySpot.ToString();
     }
 
     void Awake()

@@ -32,7 +32,7 @@ public static class SaveSystem
             {
                 cpc = 1,
                 cats = 0,
-                upgrades = new UpgradesData { SharpClaw = 0 },
+                upgrades = new UpgradesData { SharpClaw = 0, CozySpot = 0 },
             };
         }
 
@@ -45,7 +45,7 @@ public static class SaveSystem
             {
                 cpc = 1,
                 cats = 0,
-                upgrades = new UpgradesData { SharpClaw = 0 },
+                upgrades = new UpgradesData { SharpClaw = 0, CozySpot = 0 },
             };
         }
 

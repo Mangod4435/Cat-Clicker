@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public double cpc { get; private set; }
     public double Cats { get; private set; }
     public int SharpClaw { get; private set; }
+    public int CozySpot { get; private set; }
     #endregion
 
     #region unity lifetime
@@ -84,7 +85,7 @@ public class GameManager : MonoBehaviour
         {
             cpc = cpc,
             cats = Cats,
-            upgrades = new UpgradesData { SharpClaw = SharpClaw },
+            upgrades = new UpgradesData { SharpClaw = SharpClaw, CozySpot = CozySpot },
         };
         SaveSystem.Save(data);
     }
@@ -94,6 +95,7 @@ public class GameManager : MonoBehaviour
         SaveData data = SaveSystem.Load();
         Cats = data.cats;
         SharpClaw = data.upgrades?.SharpClaw ?? 0;
+        CozySpot = data.upgrades?.CozySpot ?? 0;
         Upgrades = data.upgrades ?? new UpgradesData();
         RecalculateCpc();
     }
@@ -111,8 +113,10 @@ public class GameManager : MonoBehaviour
     #region Private helpers
     private void SyncUpgradesData()
     {
-        if (Upgrades == null) Upgrades = new UpgradesData();
+        if (Upgrades == null)
+            Upgrades = new UpgradesData();
         Upgrades.SharpClaw = SharpClaw;
+        Upgrades.CozySpot = CozySpot;
     }
 
     // Cpc logic lives here to avoid cross-assembly reference (SaveSystem -> Assembly-CSharp)

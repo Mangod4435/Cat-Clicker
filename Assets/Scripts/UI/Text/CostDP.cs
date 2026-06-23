@@ -18,7 +18,12 @@ public class CostDP : MonoBehaviour
             case "Sharp Claw":
                 text.text =
                     NumberFormatter.FormatDouble(UpgradeCore.PriceCalculator(10, manager.SharpClaw))
-                    + "Cats";
+                    + " Cats";
+                break;
+            case "Cozy Spot":
+                text.text =
+                    NumberFormatter.FormatDouble(UpgradeCore.PriceCalculator(10, manager.CozySpot))
+                    + " Cats";
                 break;
             default:
                 Debug.LogError($"There's no such upgrade named \"{UpgradeName}\"");
@@ -28,9 +33,5 @@ public class CostDP : MonoBehaviour
 
     void Awake() => text = GetComponent<TextMeshProUGUI>();
 
-    void Update()
-    {
-        Debug.Log(UpgradeCore.PriceCalculator(10, manager.SharpClaw));
-        DPCost();
-    }
+    void Update() => DPCost();
 }

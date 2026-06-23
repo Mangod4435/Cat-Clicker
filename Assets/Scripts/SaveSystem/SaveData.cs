@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class UpgradesData
 {
     public int SharpClaw;
+    public int CozySpot;
 }
 
 [Serializable]
