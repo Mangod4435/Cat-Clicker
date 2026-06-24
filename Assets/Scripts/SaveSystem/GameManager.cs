@@ -62,6 +62,10 @@ public class GameManager : MonoBehaviour
 
     public void AddCat() => Cats++;
 
+    public void SetCat(double amount) => Cats = amount;
+
+    public void SetCat() => Cats = 0;
+
     public void AddUpgrade(string name, int amount)
     {
         switch (name)
