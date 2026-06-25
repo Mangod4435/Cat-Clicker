@@ -117,8 +117,9 @@ InitTestScene*.unity*
 .AppleDouble
 .LSOverride
 
-#Private note
+#Private Stuff
 Cat-ClickerNote/
+StartUnity.sh
 
 #personal stuff
 *.zip

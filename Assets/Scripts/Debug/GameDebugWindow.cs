@@ -1,4 +1,5 @@
 #if UNITY_EDITOR
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,6 +7,9 @@ public class GameManagerDebugWindow : EditorWindow
 {
     private GameManager manager => GameManager.Instance;
     private Vector2 scrollPosition;
+    double Cats = 0;
+    string Upgrades = "";
+    int amount = 0;
 
     [MenuItem("Window/Cat Clicker/Game Manager Debug")]
     public static void ShowWindow()
@@ -26,37 +30,24 @@ public class GameManagerDebugWindow : EditorWindow
 
         scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
 
-        // Currency Section
         EditorGUILayout.LabelField("Currency", EditorStyles.boldLabel);
-        if (GUILayout.Button("Add 1000 Cats", GUILayout.Height(30)))
-        {
-            manager.AddCat(1000);
-        }
-        if (GUILayout.Button("Add 10000 Cats", GUILayout.Height(30)))
-        {
-            manager.AddCat(10000);
-        }
-        if (GUILayout.Button("Multiply Cats by 10", GUILayout.Height(30)))
-        {
-            manager.SetCat(manager.Cats * 10);
-        }
-        if (GUILayout.Button("Set Cats to 1 Million", GUILayout.Height(30)))
-        {
-            manager.SetCat(1_000_000);
-        }
+        // Currency Section
+
+        Cats = EditorGUILayout.DoubleField("Cats", Cats);
+        if (GUILayout.Button("Add cat", GUILayout.Height(30)))
+            manager.AddCat(Cats);
+        if (GUILayout.Button("Set cat", GUILayout.Height(30)))
+            manager.SetCat(Cats);
 
         EditorGUILayout.Space();
 
         // Upgrades Section
         EditorGUILayout.LabelField("Upgrades", EditorStyles.boldLabel);
-        if (GUILayout.Button("Buy 10 Sharp Claws", GUILayout.Height(30)))
-        {
-            manager.AddUpgrade("Sharp Claw", 10);
-        }
-        if (GUILayout.Button("Buy 100 Sharp Claws", GUILayout.Height(30)))
-        {
-            manager.AddUpgrade("Sharp Claw", 100);
-        }
+        Upgrades = EditorGUILayout.TextField(label: "Upgrade", text: Upgrades);
+        amount = EditorGUILayout.IntField(label: "Amount", value: amount);
+
+        if (GUILayout.Button("Add Upgrades", GUILayout.Height(30)))
+            manager.AddUpgrade(Upgrades, amount);
 
         EditorGUILayout.Space();
 
