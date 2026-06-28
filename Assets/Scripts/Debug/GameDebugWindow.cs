@@ -58,7 +58,7 @@ public class GameManagerDebugWindow : EditorWindow
             Debug.Log(
                 $"=== GAME STATE ===\n"
                     + $"Cats: {manager.Cats}\n"
-                    + $"CPC: {manager.cpc}\n"
+                    + $"CPC: {manager.CPC}\n"
                     + $"Sharp Claw: {manager.SharpClaw}\n"
                     + $"Cozy Spot: {manager.CozySpot}"
             );
@@ -78,7 +78,7 @@ public class GameManagerDebugWindow : EditorWindow
         // Current Stats Display
         EditorGUILayout.LabelField("Current Stats", EditorStyles.boldLabel);
         EditorGUILayout.LabelField($"Cats: {manager.Cats}");
-        EditorGUILayout.LabelField($"CPC: {manager.cpc}");
+        EditorGUILayout.LabelField($"CPC: {manager.CPC}");
         EditorGUILayout.LabelField($"Sharp Claw: {manager.SharpClaw}");
         EditorGUILayout.LabelField($"Cozy Spot: {manager.CozySpot}");
 

@@ -1,17 +1,26 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    #region Lazy-upgrades Timer
+    float NextAddTimer;
+    #endregion
+
+    #region Save - Load Timer
     private float _autoSaveTimer;
     private bool _saveLoaded = false;
     private const float AutoSaveInterval = 30f;
+    #endregion
 
     #region public field
     public static GameManager Instance { get; private set; }
-
     public UpgradesData Upgrades { get; private set; }
-    public double cpc { get; private set; }
+
     public double Cats { get; private set; }
+    public double CPC { get; private set; }
+    public double CPS { get; private set; }
+
     public int SharpClaw { get; private set; }
     public int CozySpot { get; private set; }
     #endregion
@@ -44,6 +53,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        NextAddTimer += Time.fixedDeltaTime;
+        if (NextAddTimer >= 1)
+        {
+            AddCat(CPS);
+            NextAddTimer = 0;
+        }
+    }
+
     void OnApplicationFocus(bool focus)
     {
         if (!focus && _saveLoaded)
@@ -73,12 +92,16 @@ public class GameManager : MonoBehaviour
             case "Sharp Claw":
                 SharpClaw += amount;
                 break;
+            case "Cozy Spot":
+                CozySpot += amount;
+                break;
             default:
                 Debug.LogError($"That upgrade not found ({name})");
                 return;
         }
         SyncUpgradesData();
         RecalculateCpc();
+        RecalCulateCps();
     }
     #endregion
 
@@ -87,8 +110,8 @@ public class GameManager : MonoBehaviour
     {
         var data = new SaveData
         {
-            cpc = cpc,
-            cats = Cats,
+            cpc = CPC,
+            cats = Math.Round(Cats, 5),
             upgrades = new UpgradesData { SharpClaw = SharpClaw, CozySpot = CozySpot },
         };
         SaveSystem.Save(data);
@@ -97,11 +120,12 @@ public class GameManager : MonoBehaviour
     private void LoadGame()
     {
         SaveData data = SaveSystem.Load();
-        Cats = data.cats;
+        Cats = Math.Round(data.cats, 5);
         SharpClaw = data.upgrades?.SharpClaw ?? 0;
         CozySpot = data.upgrades?.CozySpot ?? 0;
         Upgrades = data.upgrades ?? new UpgradesData();
         RecalculateCpc();
+        RecalCulateCps();
     }
 
     public void ResetGame()
@@ -109,8 +133,10 @@ public class GameManager : MonoBehaviour
         SaveSystem.DESTROYtheSave();
         Cats = 0;
         SharpClaw = 0;
+        CozySpot = 0;
         Upgrades = new UpgradesData();
         RecalculateCpc();
+        RecalCulateCps();
     }
     #endregion
 
@@ -129,7 +155,14 @@ public class GameManager : MonoBehaviour
     {
         int cpc = 1; // baseline
         cpc += SharpClaw * 1;
-        this.cpc = cpc;
+        CPC = cpc;
+    }
+
+    private void RecalCulateCps()
+    {
+        double cps = 0;
+        cps += CozySpot * 0.1;
+        CPS = cps;
     }
     #endregion
 }

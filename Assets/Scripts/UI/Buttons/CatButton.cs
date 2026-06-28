@@ -26,7 +26,7 @@ public class CatButton : MonoBehaviour
 
     public void OnClicked()
     {
-        manager.AddCat(1 * manager.cpc);
+        manager.AddCat(1 * manager.CPC);
         meow.Play();
     }
 }

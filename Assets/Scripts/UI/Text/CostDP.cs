@@ -1,7 +1,6 @@
 using API;
 using TMPro;
 using UnityEngine;
-using UpgradeSystem;
 
 public class CostDP : MonoBehaviour
 {
@@ -17,12 +16,12 @@ public class CostDP : MonoBehaviour
         {
             case "Sharp Claw":
                 text.text =
-                    NumberFormatter.FormatDouble(UpgradeCore.PriceCalculator(10, manager.SharpClaw))
+                    NumberFormatter.FormatDouble(UpgradeAPI.PriceCalculator(100, manager.SharpClaw))
                     + " Cats";
                 break;
             case "Cozy Spot":
                 text.text =
-                    NumberFormatter.FormatDouble(UpgradeCore.PriceCalculator(10, manager.CozySpot))
+                    NumberFormatter.FormatDouble(UpgradeAPI.PriceCalculator(20, manager.CozySpot))
                     + " Cats";
                 break;
             default:

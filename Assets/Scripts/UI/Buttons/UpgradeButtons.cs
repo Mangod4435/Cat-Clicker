@@ -1,5 +1,5 @@
+using API;
 using UnityEngine;
-using UpgradeSystem;
 
 namespace UI.Buttons
 {
@@ -15,11 +15,11 @@ namespace UI.Buttons
             switch (upgradeName)
             {
                 case "Sharp Claw":
-                    if (Instance.Cats >= UpgradeCore.PriceCalculator(100, Instance.SharpClaw))
+                    if (Instance.Cats >= UpgradeAPI.PriceCalculator(100, Instance.SharpClaw))
                         return true;
                     break;
                 case "Cozy Spot":
-                    if (Instance.Cats >= UpgradeCore.PriceCalculator(20, Instance.CozySpot))
+                    if (Instance.Cats >= UpgradeAPI.PriceCalculator(20, Instance.CozySpot))
                         return true;
                     break;
             }
@@ -33,10 +33,10 @@ namespace UI.Buttons
             switch (upgradeName)
             {
                 case "Sharp Claw":
-                    Instance.AddCat(-UpgradeCore.PriceCalculator(100, Instance.SharpClaw));
+                    Instance.AddCat(-UpgradeAPI.PriceCalculator(100, Instance.SharpClaw));
                     break;
                 case "Cozy Spot":
-                    Instance.AddCat(-UpgradeCore.PriceCalculator(20, Instance.CozySpot));
+                    Instance.AddCat(-UpgradeAPI.PriceCalculator(20, Instance.CozySpot));
                     break;
                 default:
                     break;

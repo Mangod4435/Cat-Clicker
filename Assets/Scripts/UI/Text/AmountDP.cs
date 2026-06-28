@@ -30,5 +30,10 @@ public class UpgradeDP : MonoBehaviour
             DPUpgrade();
             lastAmount = manager.SharpClaw;
         }
+        if (upgradeName == "Cozy Spot" && manager.CozySpot != lastAmount)
+        {
+            DPUpgrade();
+            lastAmount = manager.CozySpot;
+        }
     }
 }
