@@ -3,14 +3,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    #region Lazy-upgrades Timer
-    float NextAddTimer;
-    #endregion
-
-    #region Save - Load Timer
-    private float _autoSaveTimer;
-    private bool _saveLoaded = false;
-    private const float AutoSaveInterval = 30f;
+    #region Timer
+    float CPSTimer;
+    float _autoSaveTimer;
+    bool _saveLoaded = false;
+    const float AutoSaveInterval = 30f;
     #endregion
 
     #region public field
@@ -21,8 +18,16 @@ public class GameManager : MonoBehaviour
     public double CPC { get; private set; }
     public double CPS { get; private set; }
 
+    // Click upgrades
     public int SharpClaw { get; private set; }
+
+    // Lazy upgrades
     public int CozySpot { get; private set; }
+    public int FishBowl { get; private set; }
+    public int TV { get; private set; }
+    public int Laser { get; private set; }
+    public int Factory { get; private set; }
+    public int Satellite { get; private set; }
     #endregion
 
     #region unity lifetime
@@ -55,11 +60,11 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        NextAddTimer += Time.fixedDeltaTime;
-        if (NextAddTimer >= 1)
+        CPSTimer += Time.fixedDeltaTime;
+        if (CPSTimer >= 1)
         {
             AddCat(CPS);
-            NextAddTimer = 0;
+            CPSTimer = 0;
         }
     }
 
@@ -95,6 +100,21 @@ public class GameManager : MonoBehaviour
             case "Cozy Spot":
                 CozySpot += amount;
                 break;
+            case "Fish Bowl":
+                FishBowl += amount;
+                break;
+            case "TV":
+                TV += amount;
+                break;
+            case "Laser":
+                Laser += amount;
+                break;
+            case "Factory":
+                Factory += amount;
+                break;
+            case "Satellite":
+                Satellite += amount;
+                break;
             default:
                 Debug.LogError($"That upgrade not found ({name})");
                 return;
@@ -108,11 +128,24 @@ public class GameManager : MonoBehaviour
     #region Save - Load
     public void SaveGame()
     {
+        SyncUpgradesData();
+
         var data = new SaveData
         {
             cpc = CPC,
+            cps = CPS,
             cats = Math.Round(Cats, 5),
-            upgrades = new UpgradesData { SharpClaw = SharpClaw, CozySpot = CozySpot },
+
+            upgrades = new UpgradesData
+            {
+                SharpClaw = SharpClaw,
+                CozySpot = CozySpot,
+                FishBowl = FishBowl,
+                TV = TV,
+                Laser = Laser,
+                Factory = Factory,
+                Satellite = Satellite,
+            },
         };
         SaveSystem.Save(data);
     }
@@ -120,10 +153,21 @@ public class GameManager : MonoBehaviour
     private void LoadGame()
     {
         SaveData data = SaveSystem.Load();
-        Cats = Math.Round(data.cats, 5);
-        SharpClaw = data.upgrades?.SharpClaw ?? 0;
-        CozySpot = data.upgrades?.CozySpot ?? 0;
+        if (data == null)
+            data = new SaveData();
+
         Upgrades = data.upgrades ?? new UpgradesData();
+        Cats = Math.Round(data.cats, 5);
+
+        SharpClaw = Upgrades.SharpClaw;
+        CozySpot = Upgrades.CozySpot;
+        FishBowl = Upgrades.FishBowl;
+        TV = Upgrades.TV;
+        Laser = Upgrades.Laser;
+        Factory = Upgrades.Factory;
+        Satellite = Upgrades.Satellite;
+
+        SyncUpgradesData();
         RecalculateCpc();
         RecalCulateCps();
     }
@@ -131,12 +175,7 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         SaveSystem.DESTROYtheSave();
-        Cats = 0;
-        SharpClaw = 0;
-        CozySpot = 0;
-        Upgrades = new UpgradesData();
-        RecalculateCpc();
-        RecalCulateCps();
+        LoadGame();
     }
     #endregion
 
@@ -149,11 +188,9 @@ public class GameManager : MonoBehaviour
         Upgrades.CozySpot = CozySpot;
     }
 
-    // Cpc logic lives here to avoid cross-assembly reference (SaveSystem -> Assembly-CSharp)
-    // UpgradeCore.cs can stay as the source of truth for formula documentation
     private void RecalculateCpc()
     {
-        int cpc = 1; // baseline
+        int cpc = 1;
         cpc += SharpClaw * 1;
         CPC = cpc;
     }
@@ -162,6 +199,11 @@ public class GameManager : MonoBehaviour
     {
         double cps = 0;
         cps += CozySpot * 0.1;
+        cps += FishBowl * 1;
+        cps += TV * 3;
+        cps += Laser * 50;
+        cps += Factory * 200;
+        cps += Satellite * 3000;
         CPS = cps;
     }
     #endregion

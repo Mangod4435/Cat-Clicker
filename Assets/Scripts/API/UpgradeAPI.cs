@@ -6,7 +6,7 @@ namespace API
     {
         public static double PriceCalculator(double baseCost, double amount)
         {
-            return Math.Round(Math.Pow(amount, Math.E) * 10) + baseCost;
+            return baseCost * Math.Pow(1.15, amount);
         }
     }
 }

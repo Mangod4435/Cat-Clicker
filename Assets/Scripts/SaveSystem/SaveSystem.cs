@@ -7,6 +7,26 @@ public static class SaveSystem
     private const string HASH_KEY = "SaveHash";
     public static event Action OnNoSave;
 
+    private static SaveData getDefault()
+    {
+        return new SaveData
+        {
+            cpc = 1,
+            cps = 0,
+            cats = 0,
+            upgrades = new UpgradesData
+            {
+                SharpClaw = 0,
+                CozySpot = 0,
+                Factory = 0,
+                FishBowl = 0,
+                Laser = 0,
+                Satellite = 0,
+                TV = 0,
+            },
+        };
+    }
+
     public static void Save(SaveData data)
     {
         string json = JsonUtility.ToJson(data);
@@ -28,12 +48,7 @@ public static class SaveSystem
         {
             Debug.Log("[SaveSystem.cs] No save found");
             OnNoSave?.Invoke();
-            return new SaveData
-            {
-                cpc = 1,
-                cats = 0,
-                upgrades = new UpgradesData { SharpClaw = 0, CozySpot = 0 },
-            };
+            return getDefault();
         }
 
         string json = PlayerPrefs.GetString(KEY);
@@ -41,15 +56,19 @@ public static class SaveSystem
         //protect the fake injected save
         if (MangodHasher.Hash(json) != PlayerPrefs.GetString(HASH_KEY))
         {
-            return new SaveData
-            {
-                cpc = 1,
-                cats = 0,
-                upgrades = new UpgradesData { SharpClaw = 0, CozySpot = 0 },
-            };
+#if UNITY_EDITOR
+            Debug.LogWarning("[SaveSystem.cs] Save hash mismatch, using defaults");
+#endif
+            return getDefault();
         }
 
         SaveData data = JsonUtility.FromJson<SaveData>(json);
+        if (data == null)
+        {
+            Debug.LogWarning("[SaveSystem.cs] Save data was invalid, using defaults");
+            return getDefault();
+        }
+
         Debug.Log($"[SaveSystem.cs] Loaded: {json}");
         return data;
     }
