@@ -1,6 +1,3 @@
 ﻿<Solution>
   <Project Path="Assembly-CSharp.csproj" />
-  <Project Path="SaveSettingSystem.csproj" />
-  <Project Path="SaveSystem.csproj" />
-  <Project Path="API.csproj" />
 </Solution>

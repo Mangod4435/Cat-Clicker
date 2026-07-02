@@ -8,40 +8,72 @@ namespace UI.Buttons
         [SerializeField]
         string upgradeName;
 
-        private GameManager Instance => GameManager.Instance;
+        public enum ButtonState
+        {
+            Available,
+            Shadow,
+            Unrevealed,
+        }
+
+        ButtonState state = ButtonState.Unrevealed;
+        private GameManager manager => GameManager.Instance;
+
+        void Update()
+        {
+            if (manager.Cats > UpgradeAPI.getPrice(upgradeName))
+            {
+                state = ButtonState.Available;
+                Debug.Log($"State = available on {upgradeName}");
+            }
+            if (manager.Cats < UpgradeAPI.getPrice(upgradeName))
+            {
+                state = ButtonState.Unrevealed;
+                Debug.Log($"State = unrevealed on {upgradeName}");
+            }
+
+            if (state == ButtonState.Available)
+            {
+                gameObject.SetActive(true);
+                Debug.Log($"Set active to true on {upgradeName}");
+            }
+            if (state == ButtonState.Shadow || state == ButtonState.Unrevealed)
+            {
+                gameObject.SetActive(false);
+                Debug.Log($"Set active to false on {upgradeName}");
+            }
+        }
 
         private bool IsAffordable(string upgradeName)
         {
             switch (upgradeName)
             {
                 case "Sharp Claw":
-                    if (Instance.Cats >= UpgradeAPI.PriceCalculator(100, Instance.SharpClaw))
+                    if (manager.Cats >= UpgradeAPI.PriceCalculator(100, manager.SharpClaw))
                         return true;
                     break;
                 case "Cozy Spot":
-                    if (Instance.Cats >= UpgradeAPI.PriceCalculator(20, Instance.CozySpot))
+                    if (manager.Cats >= UpgradeAPI.PriceCalculator(20, manager.CozySpot))
                         return true;
                     break;
                 case "Fish Bowl":
-                    if (Instance.Cats >= UpgradeAPI.PriceCalculator(100, Instance.FishBowl))
+                    if (manager.Cats >= UpgradeAPI.PriceCalculator(100, manager.FishBowl))
                         return true;
                     break;
                 case "TV":
-                    if (Instance.Cats >= UpgradeAPI.PriceCalculator(1_000, Instance.TV))
+                    if (manager.Cats >= UpgradeAPI.PriceCalculator(1_000, manager.TV))
                         return true;
                     break;
                 case "Laser":
-                    if (Instance.Cats >= UpgradeAPI.PriceCalculator(50_000, Instance.Laser))
+                    if (manager.Cats >= UpgradeAPI.PriceCalculator(50_000, manager.Laser))
                         return true;
                     break;
                 case "Factory":
-                    if (Instance.Cats >= UpgradeAPI.PriceCalculator(10_000_000, Instance.Factory))
+                    if (manager.Cats >= UpgradeAPI.PriceCalculator(10_000_000, manager.Factory))
                         return true;
                     break;
                 case "Satellite":
                     if (
-                        Instance.Cats
-                        >= UpgradeAPI.PriceCalculator(5_000_000_000, Instance.Satellite)
+                        manager.Cats >= UpgradeAPI.PriceCalculator(5_000_000_000, manager.Satellite)
                     )
                         return true;
                     break;
@@ -53,34 +85,13 @@ namespace UI.Buttons
         {
             if (!IsAffordable(upgradeName))
                 return;
-            switch (upgradeName)
-            {
-                case "Sharp Claw":
-                    Instance.AddCat(-UpgradeAPI.PriceCalculator(100, Instance.SharpClaw));
-                    break;
-                case "Cozy Spot":
-                    Instance.AddCat(-UpgradeAPI.PriceCalculator(20, Instance.CozySpot));
-                    break;
-                case "Fish Bowl":
-                    Instance.AddCat(-UpgradeAPI.PriceCalculator(100, Instance.FishBowl));
-                    break;
-                case "TV":
-                    Instance.AddCat(-UpgradeAPI.PriceCalculator(1_000, Instance.TV));
-                    break;
-                case "Laser":
-                    Instance.AddCat(-UpgradeAPI.PriceCalculator(50_000, Instance.Laser));
-                    break;
-                case "Factory":
-                    Instance.AddCat(-UpgradeAPI.PriceCalculator(10_000_000, Instance.Factory));
-                    break;
-                case "Satellite":
-                    Instance.AddCat(-UpgradeAPI.PriceCalculator(5_000_000_000, Instance.Satellite));
-                    break;
-
-                default:
-                    break;
-            }
-            Instance.AddUpgrade(upgradeName, 1);
+            manager.AddCat(
+                -UpgradeAPI.PriceCalculator(
+                    UpgradeAPI.getPrice(upgradeName),
+                    UpgradeAPI.getAmount(upgradeName)
+                )
+            );
+            manager.AddUpgrade(upgradeName, 1);
         }
     }
 }
