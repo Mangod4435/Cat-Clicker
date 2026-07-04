@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 28720664}
   - component: {fileID: 28720663}
   - component: {fileID: 28720662}
+  - component: {fileID: 28720666}
   m_Layer: 5
   m_Name: Satellite Dish
   m_TagString: Untagged
@@ -175,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeButtons
   upgradeName: Satellite
+  index: 7
 --- !u!114 &28720663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +271,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28720660}
   m_CullTransparentMesh: 1
+--- !u!225 &28720666
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28720660}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &33758587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,6 +1858,7 @@ RectTransform:
   - {fileID: 1291661878}
   - {fileID: 1690916682}
   - {fileID: 1527008621}
+  - {fileID: 620219730}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1864,6 +1879,7 @@ GameObject:
   - component: {fileID: 289751727}
   - component: {fileID: 289751726}
   - component: {fileID: 289751725}
+  - component: {fileID: 289751729}
   m_Layer: 5
   m_Name: Kitten Factory
   m_TagString: Untagged
@@ -1907,6 +1923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeButtons
   upgradeName: Factory
+  index: 6
 --- !u!114 &289751726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2001,6 +2018,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289751723}
   m_CullTransparentMesh: 1
+--- !u!225 &289751729
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289751723}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &334724302
 GameObject:
   m_ObjectHideFlags: 0
@@ -2872,6 +2901,7 @@ GameObject:
   - component: {fileID: 540716258}
   - component: {fileID: 540716257}
   - component: {fileID: 540716256}
+  - component: {fileID: 540716260}
   m_Layer: 5
   m_Name: Fish Bowl
   m_TagString: Untagged
@@ -2915,6 +2945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeButtons
   upgradeName: Fish Bowl
+  index: 3
 --- !u!114 &540716257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3009,6 +3040,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540716254}
   m_CullTransparentMesh: 1
+--- !u!225 &540716260
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540716254}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &571539266
 GameObject:
   m_ObjectHideFlags: 0
@@ -3310,6 +3353,70 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610060663}
+  m_CullTransparentMesh: 1
+--- !u!1 &620219729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 620219730}
+  - component: {fileID: 620219732}
+  - component: {fileID: 620219731}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &620219730
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620219729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 288795000}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1038, y: -200}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &620219731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620219729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a79cb48962f1d8f92f181ab8f633de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VerticalTabController
+  tabs: []
+  activeColor: {r: 1, g: 1, b: 1, a: 1}
+  inactiveColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
+  activeTextColor: {r: 0, g: 0, b: 0, a: 1}
+  inactiveTextColor: {r: 0.35, g: 0.35, b: 0.35, a: 1}
+  indicator: {fileID: 0}
+  indicatorAnimSpeed: 12
+--- !u!222 &620219732
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620219729}
   m_CullTransparentMesh: 1
 --- !u!1 &710363129
 GameObject:
@@ -4621,6 +4728,7 @@ GameObject:
   - component: {fileID: 959223749}
   - component: {fileID: 959223752}
   - component: {fileID: 959223751}
+  - component: {fileID: 959223753}
   m_Layer: 5
   m_Name: Sharper Claws
   m_TagString: Untagged
@@ -4702,6 +4810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeButtons
   upgradeName: Sharp Claw
+  index: 9
 --- !u!114 &959223752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4758,6 +4867,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &959223753
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959223747}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &979777872
 GameObject:
   m_ObjectHideFlags: 0
@@ -4882,6 +5003,7 @@ GameObject:
   - component: {fileID: 986906268}
   - component: {fileID: 986906267}
   - component: {fileID: 986906266}
+  - component: {fileID: 986906270}
   m_Layer: 5
   m_Name: Cat TV Channel
   m_TagString: Untagged
@@ -4925,6 +5047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeButtons
   upgradeName: TV
+  index: 4
 --- !u!114 &986906267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5019,6 +5142,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986906264}
   m_CullTransparentMesh: 1
+--- !u!225 &986906270
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986906264}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &992029660
 GameObject:
   m_ObjectHideFlags: 0
@@ -7337,6 +7472,7 @@ GameObject:
   - component: {fileID: 1884718527}
   - component: {fileID: 1884718526}
   - component: {fileID: 1884718525}
+  - component: {fileID: 1884718529}
   m_Layer: 5
   m_Name: Cozy Nap Spot
   m_TagString: Untagged
@@ -7380,6 +7516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeButtons
   upgradeName: Cozy Spot
+  index: 2
 --- !u!114 &1884718526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7474,6 +7611,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884718523}
   m_CullTransparentMesh: 1
+--- !u!225 &1884718529
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884718523}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1888591618
 GameObject:
   m_ObjectHideFlags: 0
@@ -7487,6 +7636,7 @@ GameObject:
   - component: {fileID: 1888591622}
   - component: {fileID: 1888591621}
   - component: {fileID: 1888591620}
+  - component: {fileID: 1888591624}
   m_Layer: 5
   m_Name: Automated Laser
   m_TagString: Untagged
@@ -7530,6 +7680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeButtons
   upgradeName: Laser
+  index: 5
 --- !u!114 &1888591621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7624,6 +7775,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888591618}
   m_CullTransparentMesh: 1
+--- !u!225 &1888591624
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888591618}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1897885958
 GameObject:
   m_ObjectHideFlags: 0

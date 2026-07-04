@@ -1,12 +1,19 @@
+using System;
 using API;
 using UnityEngine;
 
 namespace UI.Buttons
 {
+    [RequireComponent(typeof(CanvasGroup))]
     public class UpgradeButtons : MonoBehaviour
     {
         [SerializeField]
         string upgradeName;
+
+        [SerializeField]
+        int index;
+
+        CanvasGroup cg;
 
         public enum ButtonState
         {
@@ -18,9 +25,11 @@ namespace UI.Buttons
         ButtonState state = ButtonState.Unrevealed;
         private GameManager manager => GameManager.Instance;
 
+        void Awake() => cg = gameObject.GetComponent<CanvasGroup>();
+
         void Update()
         {
-            if (manager.Cats > UpgradeAPI.getPrice(upgradeName))
+            if (manager.Cats >= UpgradeAPI.getPrice(upgradeName))
             {
                 state = ButtonState.Available;
                 Debug.Log($"State = available on {upgradeName}");
@@ -31,15 +40,17 @@ namespace UI.Buttons
                 Debug.Log($"State = unrevealed on {upgradeName}");
             }
 
-            if (state == ButtonState.Available)
+            if (state == ButtonState.Unrevealed)
             {
-                gameObject.SetActive(true);
-                Debug.Log($"Set active to true on {upgradeName}");
+                cg.alpha = 0;
+                cg.blocksRaycasts = false;
+                transform.SetSiblingIndex(-1);
             }
-            if (state == ButtonState.Shadow || state == ButtonState.Unrevealed)
+            else if (state == ButtonState.Available)
             {
-                gameObject.SetActive(false);
-                Debug.Log($"Set active to false on {upgradeName}");
+                cg.alpha = 1;
+                cg.blocksRaycasts = true;
+                transform.SetSiblingIndex(index);
             }
         }
 
