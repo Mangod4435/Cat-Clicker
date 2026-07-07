@@ -30,15 +30,9 @@ namespace UI.Buttons
         void Update()
         {
             if (manager.Cats >= UpgradeAPI.getPrice(upgradeName))
-            {
                 state = ButtonState.Available;
-                Debug.Log($"State = available on {upgradeName}");
-            }
             if (manager.Cats < UpgradeAPI.getPrice(upgradeName))
-            {
                 state = ButtonState.Unrevealed;
-                Debug.Log($"State = unrevealed on {upgradeName}");
-            }
 
             if (state == ButtonState.Unrevealed)
             {
@@ -46,7 +40,11 @@ namespace UI.Buttons
                 cg.blocksRaycasts = false;
                 transform.SetSiblingIndex(-1);
             }
-            else if (state == ButtonState.Available)
+        }
+
+        void LateUpdate()
+        {
+            if (state == ButtonState.Available)
             {
                 cg.alpha = 1;
                 cg.blocksRaycasts = true;
