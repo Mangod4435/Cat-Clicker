@@ -130,3 +130,8 @@ Assets/PlayerPrefsEditor.meta
 # unused scene
 Assets/_Recovery/*
 Assets/_Recovery.meta
+
+#backend
+node_modules/
+*.env*
+*.log
