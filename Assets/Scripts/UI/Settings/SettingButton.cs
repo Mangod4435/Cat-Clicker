@@ -26,6 +26,7 @@ public class SettingButton : MonoBehaviour
     public void UpdateSetting()
     {
         SettingUI.SetActive(isSettingOpen);
+        UIState.state = UIState.OpenedInterface.Setting;
         transform.rotation = isSettingOpen
             ? Quaternion.Euler(0, 0, -45)
             : Quaternion.Euler(0, 0, -15);
