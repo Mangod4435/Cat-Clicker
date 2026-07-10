@@ -30,7 +30,7 @@ public static class SaveSystem
     public static void Save(SaveData data)
     {
         string json = JsonUtility.ToJson(data);
-        string hash = MangodHasher.Hash(json);
+        string hash = MyCheckSum.CheckSum(json);
         PlayerPrefs.SetString(HASH_KEY, hash);
         PlayerPrefs.SetString(KEY, json);
         PlayerPrefs.Save();
@@ -54,7 +54,7 @@ public static class SaveSystem
         string json = PlayerPrefs.GetString(KEY);
 
         //protect the fake injected save
-        if (MangodHasher.Hash(json) != PlayerPrefs.GetString(HASH_KEY))
+        if (MyCheckSum.CheckSum(json) != PlayerPrefs.GetString(HASH_KEY))
         {
 #if UNITY_EDITOR
             Debug.LogWarning("[SaveSystem.cs] Save hash mismatch, using defaults");
