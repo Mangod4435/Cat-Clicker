@@ -5,8 +5,5 @@ public class SoundToggle : MonoBehaviour
 {
     SettingManager manager => SettingManager.instance;
 
-    void Start()
-    {
-        gameObject.GetComponent<Toggle>().isOn = manager.Sound;
-    }
+    void Start() => gameObject.GetComponent<Toggle>().isOn = manager.Sound;
 }

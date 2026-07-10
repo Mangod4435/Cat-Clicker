@@ -86,11 +86,9 @@ public class GameManager : MonoBehaviour
 
     public void AddCat() => Cats++;
 
-    public void SetCat(double amount) => Cats = amount;
+    public void SetCat(double amount = 0) => Cats = amount;
 
-    public void SetCat() => Cats = 0;
-
-    public void AddUpgrade(string name, int amount)
+    public void AddUpgrade(string name, int amount = 1)
     {
         switch (name)
         {
@@ -138,7 +136,9 @@ public class GameManager : MonoBehaviour
 
             upgrades = new UpgradesData
             {
+                // click
                 SharpClaw = SharpClaw,
+                // lazy
                 CozySpot = CozySpot,
                 FishBowl = FishBowl,
                 TV = TV,

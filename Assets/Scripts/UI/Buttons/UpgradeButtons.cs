@@ -1,4 +1,3 @@
-using System;
 using API;
 using UnityEngine;
 
@@ -18,6 +17,7 @@ namespace UI.Buttons
         public enum ButtonState
         {
             Available,
+            NotAffordable,
             Shadow,
             Unrevealed,
         }
