@@ -16,9 +16,11 @@ namespace API
         {
             switch (name)
             {
+                //click upgrades
                 case "Sharp Claw":
                     return 100;
 
+                //lazy upgrades
                 case "Cozy Spot":
                     return 20;
                 case "Fish Bowl":
@@ -41,8 +43,11 @@ namespace API
         {
             switch (name)
             {
+                //click upgrades
                 case "Sharp Claw":
                     return manager.SharpClaw;
+
+                //lazy upgrades
                 case "Cozy Spot":
                     return manager.CozySpot;
                 case "Fish Bowl":

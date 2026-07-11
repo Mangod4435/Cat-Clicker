@@ -8,27 +8,13 @@ public class SettingButton : MonoBehaviour
     GameObject SettingUI;
     public static SettingButton instance;
 
-    void Awake()
-    {
-        instance = this;
-        //Setup first call
-        isSettingOpen = false;
-        SettingUI.SetActive(false);
-        transform.rotation = Quaternion.Euler(0, 0, -15);
-    }
+    void Awake() => transform.rotation = Quaternion.Euler(0, 0, -45);
 
     public void OnClicked()
     {
-        isSettingOpen = !isSettingOpen;
-        UpdateSetting();
-    }
-
-    public void UpdateSetting()
-    {
-        SettingUI.SetActive(isSettingOpen);
-        UIState.state = UIState.OpenedInterface.Setting;
-        transform.rotation = isSettingOpen
-            ? Quaternion.Euler(0, 0, -45)
-            : Quaternion.Euler(0, 0, -15);
+        UIState.state =
+            UIState.state == UIState.OpenedInterface.Setting
+                ? UIState.OpenedInterface.None
+                : UIState.OpenedInterface.Setting;
     }
 }

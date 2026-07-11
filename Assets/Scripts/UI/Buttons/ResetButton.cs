@@ -12,7 +12,6 @@ public class ResetButton : MonoBehaviour
     {
         manager.ResetGame();
         cat.transform.rotation = Quaternion.Euler(0, 0, 0);
-        settingButton.isSettingOpen = false;
-        settingButton.UpdateSetting();
+        UIState.state = UIState.OpenedInterface.None;
     }
 }
