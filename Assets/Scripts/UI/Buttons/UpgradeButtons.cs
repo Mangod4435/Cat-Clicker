@@ -31,7 +31,7 @@ namespace UI.Buttons
         {
             if (manager.Cats >= UpgradeAPI.getPrice(upgradeName))
                 state = ButtonState.Available;
-            if (manager.Cats < UpgradeAPI.getPrice(upgradeName))
+            else if (manager.Cats < UpgradeAPI.getPrice(upgradeName))
                 state = ButtonState.Unrevealed;
 
             if (state == ButtonState.Unrevealed)

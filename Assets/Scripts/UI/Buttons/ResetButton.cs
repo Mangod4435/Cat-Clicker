@@ -6,7 +6,6 @@ public class ResetButton : MonoBehaviour
 
     [SerializeField]
     GameObject cat;
-    SettingButton settingButton => SettingButton.instance;
 
     public void OnClicked()
     {

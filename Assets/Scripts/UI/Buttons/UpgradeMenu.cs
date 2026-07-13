@@ -8,17 +8,22 @@ public class UpgradeMenu : MonoBehaviour
     [SerializeField]
     GameObject Cat;
 
-    public void เมื่อคลิก()
+    void Update()
     {
-        if (menu.activeInHierarchy)
-        {
-            gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-1010, -50);
-            Cat.GetComponent<RectTransform>().anchoredPosition = new Vector3(-410, 0);
-        }
-        else
-        {
-            gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-50, -50);
-            Cat.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0);
-        }
+        bool isOpen = UIState.state == UIState.OpenedInterface.Upgrade;
+        gameObject.GetComponent<RectTransform>().anchoredPosition = isOpen
+            ? new Vector3(-1010, -50)
+            : new Vector3(-50, -50);
+        Cat.GetComponent<RectTransform>().anchoredPosition = isOpen
+            ? new Vector3(-410, 0)
+            : new Vector3(0, 0);
+    }
+
+    public void OnClicked()
+    {
+        UIState.state =
+            UIState.state == UIState.OpenedInterface.Upgrade
+                ? UIState.OpenedInterface.None
+                : UIState.OpenedInterface.Upgrade;
     }
 }
