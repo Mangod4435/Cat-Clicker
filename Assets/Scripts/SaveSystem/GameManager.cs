@@ -28,6 +28,14 @@ public class GameManager : MonoBehaviour
     public int Laser { get; private set; }
     public int Factory { get; private set; }
     public int Satellite { get; private set; }
+
+    public bool IsSharpClawRevealed { get; private set; }
+    public bool IsCozySpotRevealed { get; private set; }
+    public bool IsFishBowlRevealed { get; private set; }
+    public bool IsTVRevealed { get; private set; }
+    public bool IsLaserRevealed { get; private set; }
+    public bool IsFactoryRevealed { get; private set; }
+    public bool IsSatelliteRevealed { get; private set; }
     #endregion
 
     #region unity lifetime
@@ -121,6 +129,62 @@ public class GameManager : MonoBehaviour
         RecalculateCpc();
         RecalCulateCps();
     }
+
+    public void setRevealed(string name, bool value)
+    {
+        switch (name)
+        {
+            case "Sharp Claw":
+                IsSharpClawRevealed = value;
+                break;
+            case "Cozy Spot":
+                IsCozySpotRevealed = value;
+                break;
+            case "Fish Bowl":
+                IsFishBowlRevealed = value;
+                break;
+            case "TV":
+                IsTVRevealed = value;
+                break;
+            case "Laser":
+                IsLaserRevealed = value;
+                break;
+            case "Factory":
+                IsFactoryRevealed = value;
+                break;
+            case "Satellite":
+                IsSatelliteRevealed = value;
+                break;
+            default:
+                Debug.LogError($"That upgrade not found ({name})");
+                return;
+        }
+        SyncUpgradesData();
+    }
+
+    public bool getRevealed(string name)
+    {
+        switch (name)
+        {
+            case "Sharp Claw":
+                return IsSharpClawRevealed;
+            case "Cozy Spot":
+                return IsCozySpotRevealed;
+            case "Fish Bowl":
+                return IsFishBowlRevealed;
+            case "TV":
+                return IsTVRevealed;
+            case "Laser":
+                return IsLaserRevealed;
+            case "Factory":
+                return IsFactoryRevealed;
+            case "Satellite":
+                return IsSatelliteRevealed;
+            default:
+                Debug.LogError($"That upgrade not found ({name})");
+                return false;
+        }
+    }
     #endregion
 
     #region Save - Load
@@ -145,6 +209,13 @@ public class GameManager : MonoBehaviour
                 Laser = Laser,
                 Factory = Factory,
                 Satellite = Satellite,
+                IsSharpClawReveal = IsSharpClawRevealed,
+                IsCozySpotReveal = IsCozySpotRevealed,
+                IsFishBowlReveal = IsFishBowlRevealed,
+                IsTVReveal = IsTVRevealed,
+                IsLaserReveal = IsLaserRevealed,
+                IsFactoryReveal = IsFactoryRevealed,
+                IsSatelliteReveal = IsSatelliteRevealed,
             },
         };
         SaveSystem.Save(data);
@@ -166,6 +237,13 @@ public class GameManager : MonoBehaviour
         Laser = Upgrades.Laser;
         Factory = Upgrades.Factory;
         Satellite = Upgrades.Satellite;
+        IsSharpClawRevealed = Upgrades.IsSharpClawReveal;
+        IsCozySpotRevealed = Upgrades.IsCozySpotReveal;
+        IsFishBowlRevealed = Upgrades.IsFishBowlReveal;
+        IsTVRevealed = Upgrades.IsTVReveal;
+        IsLaserRevealed = Upgrades.IsLaserReveal;
+        IsFactoryRevealed = Upgrades.IsFactoryReveal;
+        IsSatelliteRevealed = Upgrades.IsSatelliteReveal;
 
         SyncUpgradesData();
         RecalculateCpc();
@@ -186,6 +264,18 @@ public class GameManager : MonoBehaviour
             Upgrades = new UpgradesData();
         Upgrades.SharpClaw = SharpClaw;
         Upgrades.CozySpot = CozySpot;
+        Upgrades.FishBowl = FishBowl;
+        Upgrades.TV = TV;
+        Upgrades.Laser = Laser;
+        Upgrades.Factory = Factory;
+        Upgrades.Satellite = Satellite;
+        Upgrades.IsSharpClawReveal = IsSharpClawRevealed;
+        Upgrades.IsCozySpotReveal = IsCozySpotRevealed;
+        Upgrades.IsFishBowlReveal = IsFishBowlRevealed;
+        Upgrades.IsTVReveal = IsTVRevealed;
+        Upgrades.IsLaserReveal = IsLaserRevealed;
+        Upgrades.IsFactoryReveal = IsFactoryRevealed;
+        Upgrades.IsSatelliteReveal = IsSatelliteRevealed;
     }
 
     private void RecalculateCpc()

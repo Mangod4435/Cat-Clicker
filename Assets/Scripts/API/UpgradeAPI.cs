@@ -65,5 +65,10 @@ namespace API
                     return 0;
             }
         }
+
+        public static double getCalculatedPrice(string name)
+        {
+            return PriceCalculator(getPrice(name), getAmount(name));
+        }
     }
 }

@@ -11,6 +11,13 @@ public class UpgradesData
     public int Laser;
     public int Factory;
     public int Satellite;
+    public bool IsSharpClawReveal;
+    public bool IsCozySpotReveal;
+    public bool IsFishBowlReveal;
+    public bool IsTVReveal;
+    public bool IsLaserReveal;
+    public bool IsFactoryReveal;
+    public bool IsSatelliteReveal;
     #endregion
 
     #region UpgradesData constructor
@@ -21,7 +28,14 @@ public class UpgradesData
         int tv = 0,
         int l = 0,
         int f = 0,
-        int s = 0
+        int s = 0,
+        bool isScReveal = false,
+        bool isCsReveal = false,
+        bool isFbReveal = false,
+        bool isTvReveal = false,
+        bool isLReveal = false,
+        bool isFReveal = false,
+        bool isSReveal = false
     )
     {
         SharpClaw = sc;
@@ -31,6 +45,13 @@ public class UpgradesData
         Laser = l;
         Factory = f;
         Satellite = s;
+        IsSharpClawReveal = isScReveal;
+        IsCozySpotReveal = isCsReveal;
+        IsFishBowlReveal = isFbReveal;
+        IsTVReveal = isTvReveal;
+        IsLaserReveal = isLReveal;
+        IsFactoryReveal = isFReveal;
+        IsSatelliteReveal = isSReveal;
     }
     #endregion
 }
