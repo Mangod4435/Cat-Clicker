@@ -23,6 +23,13 @@ public static class SaveSystem
                 Laser = 0,
                 Satellite = 0,
                 TV = 0,
+                IsSharpClawReveal = false,
+                IsCozySpotReveal = false,
+                IsFactoryReveal = false,
+                IsFishBowlReveal = false,
+                IsLaserReveal = false,
+                IsTVReveal = false,
+                IsSatelliteReveal = false,
             },
         };
     }
