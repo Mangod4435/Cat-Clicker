@@ -18,7 +18,7 @@ public static class SaveSettingSystem
         if (!HasSave())
         {
             Debug.Log("[SaveSettingSystem.cs] No preference found");
-            SettingData data1 = new SettingData { isSoundOpen = false };
+            SettingData data1 = new SettingData();
             Save(data1);
             return data1;
         }

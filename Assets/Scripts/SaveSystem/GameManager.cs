@@ -188,11 +188,11 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Save - Load
-    public void SaveGame()
+    public SaveData CreateSaveData()
     {
         SyncUpgradesData();
 
-        var data = new SaveData
+        return new SaveData
         {
             cpc = CPC,
             cps = CPS,
@@ -218,12 +218,10 @@ public class GameManager : MonoBehaviour
                 IsSatelliteReveal = IsSatelliteRevealed,
             },
         };
-        SaveSystem.Save(data);
     }
 
-    private void LoadGame()
+    public void ApplySaveData(SaveData data)
     {
-        SaveData data = SaveSystem.Load();
         if (data == null)
             data = new SaveData();
 
@@ -248,6 +246,18 @@ public class GameManager : MonoBehaviour
         SyncUpgradesData();
         RecalculateCpc();
         RecalCulateCps();
+    }
+
+    public void SaveGame()
+    {
+        var data = CreateSaveData();
+        SaveSystem.Save(data);
+    }
+
+    private void LoadGame()
+    {
+        SaveData data = SaveSystem.Load();
+        ApplySaveData(data);
     }
 
     public void ResetGame()

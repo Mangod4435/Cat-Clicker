@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -16,9 +15,8 @@ public class FirebaseManager : MonoBehaviour
         + PROJECT_ID
         + "/databases/(default)/documents";
 
-    // ── Save Timer ────────────────────────────────────────
-    private const float SAVE_INTERVAL = 300f; // 5 นาที
-    private float saveTimer = 0f;
+    private const float CLOUD_SAVE_INTERVAL = 300f;
+    private float cloudSaveTimer = 0f;
 
     // ── Unity Lifecycle ───────────────────────────────────
     void Awake()
@@ -34,40 +32,47 @@ public class FirebaseManager : MonoBehaviour
 
     void Start()
     {
-        LoadScore();
+        LoadCloudSave();
     }
 
     void Update()
     {
-        saveTimer += Time.deltaTime;
-        if (saveTimer >= SAVE_INTERVAL)
+        cloudSaveTimer += Time.deltaTime;
+        if (cloudSaveTimer >= CLOUD_SAVE_INTERVAL)
         {
-            saveTimer = 0f;
-            SaveScore();
+            cloudSaveTimer = 0f;
+            SaveCloudSave();
         }
     }
 
-    // ── Save Score ────────────────────────────────────────
-    public void SaveScore()
+    public void SaveCloudSave()
     {
-        StartCoroutine(SaveScoreRoutine());
+        StartCoroutine(SaveCloudSaveRoutine());
     }
 
-    IEnumerator SaveScoreRoutine()
+    public void LoadCloudSave()
     {
-        string userId = GetUserId();
-        string weekKey = GetWeekKey();
-        string username = PlayerPrefs.GetString("username", "Player");
-        double score = GameManager.Instance.Cats;
+        StartCoroutine(LoadCloudSaveRoutine());
+    }
 
-        string url = $"{BASE_URL}/leaderboard/{weekKey}_{userId}?key={API_KEY}";
+    IEnumerator SaveCloudSaveRoutine()
+    {
+        if (GameManager.Instance == null)
+            yield break;
+
+        string userId = GetUserId();
+        string username = PlayerPrefs.GetString("username", "Player");
+        string passHash = PlayerPrefs.GetString("passHash", string.Empty);
+        string saveJson = JsonUtility.ToJson(GameManager.Instance.CreateSaveData());
+
+        string url = $"{BASE_URL}/SAVE/{userId}?key={API_KEY}";
         string body =
             $@"{{
             ""fields"": {{
-                ""userId"":   {{""stringValue"": ""{userId}""}},
-                ""username"": {{""stringValue"": ""{username}""}},
-                ""score"":    {{""doubleValue"": {score}}},
-                ""weekKey"":  {{""stringValue"": ""{weekKey}""}}
+                ""userID"":   {{""stringValue"": ""{EscapeJson(userId)}""}},
+                ""username"": {{""stringValue"": ""{EscapeJson(username)}""}},
+                ""passHash"": {{""stringValue"": ""{EscapeJson(passHash)}""}},
+                ""savedata"": {{""stringValue"": ""{EscapeJson(saveJson)}""}}
             }}
         }}";
 
@@ -78,105 +83,43 @@ public class FirebaseManager : MonoBehaviour
         yield return req.SendWebRequest();
 
         if (req.result == UnityWebRequest.Result.Success)
-            Debug.Log("[Firebase] Score saved ✅");
+            Debug.Log("[Firebase] SAVE document saved");
         else
-            Debug.LogError($"[Firebase] Save failed: {req.error}");
+            Debug.LogError($"[Firebase] SAVE failed: {req.error}");
     }
 
-    // ── Load Score ────────────────────────────────────────
-    public void LoadScore()
+    IEnumerator LoadCloudSaveRoutine()
     {
-        StartCoroutine(LoadScoreRoutine());
-    }
+        if (GameManager.Instance == null)
+            yield break;
 
-    IEnumerator LoadScoreRoutine()
-    {
         string userId = GetUserId();
-        // โหลดจาก savedata collection แยกต่างหาก
-        string url = $"{BASE_URL}/savedata/{userId}?key={API_KEY}";
+        string url = $"{BASE_URL}/SAVE/{userId}?key={API_KEY}";
 
         using var req = UnityWebRequest.Get(url);
         yield return req.SendWebRequest();
 
         if (req.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log("[Firebase] No save data found — fresh start");
+            Debug.Log("[Firebase] No SAVE document found");
             yield break;
         }
 
         var json = SimpleJSON.JSON.Parse(req.downloadHandler.text);
-        double score = json["fields"]["score"]["doubleValue"].AsDouble;
-        GameManager.Instance.SetCat(score);
-        Debug.Log($"[Firebase] Loaded score: {score} ✅");
-    }
+        string username = json["fields"]["username"]["stringValue"];
+        string passHash = json["fields"]["passHash"]["stringValue"];
+        string saveJson = json["fields"]["savedata"]["stringValue"];
 
-    // ── Fetch Leaderboard ─────────────────────────────────
-    public void FetchLeaderboard(Action<List<LeaderboardEntry>> onComplete)
-    {
-        StartCoroutine(FetchLeaderboardRoutine(onComplete));
-    }
+        if (!string.IsNullOrEmpty(username))
+            PlayerPrefs.SetString("username", username);
+        if (!string.IsNullOrEmpty(passHash))
+            PlayerPrefs.SetString("passHash", passHash);
 
-    IEnumerator FetchLeaderboardRoutine(Action<List<LeaderboardEntry>> onComplete)
-    {
-        string weekKey = GetWeekKey();
+        SaveData saveData = JsonUtility.FromJson<SaveData>(saveJson);
+        GameManager.Instance.ApplySaveData(saveData);
+        GameManager.Instance.SaveGame();
 
-        // Firestore REST query
-        string url =
-            $"https://firestore.googleapis.com/v1/projects/{PROJECT_ID}/databases/(default)/documents:runQuery?key={API_KEY}";
-        string body =
-            $@"{{
-            ""structuredQuery"": {{
-                ""from"": [{{""collectionId"": ""leaderboard""}}],
-                ""where"": {{
-                    ""fieldFilter"": {{
-                        ""field"": {{""fieldPath"": ""weekKey""}},
-                        ""op"": ""EQUAL"",
-                        ""value"": {{""stringValue"": ""{weekKey}""}}
-                    }}
-                }},
-                ""orderBy"": [{{
-                    ""field"": {{""fieldPath"": ""score""}},
-                    ""direction"": ""DESCENDING""
-                }}],
-                ""limit"": 50
-            }}
-        }}";
-
-        using var req = new UnityWebRequest(url, "POST");
-        req.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
-        req.downloadHandler = new DownloadHandlerBuffer();
-        req.SetRequestHeader("Content-Type", "application/json");
-        yield return req.SendWebRequest();
-
-        if (req.result != UnityWebRequest.Result.Success)
-        {
-            Debug.LogError($"[Firebase] Fetch failed: {req.error}");
-            onComplete?.Invoke(null);
-            yield break;
-        }
-
-        var entries = new List<LeaderboardEntry>();
-        var json = SimpleJSON.JSON.Parse(req.downloadHandler.text);
-        int rank = 1;
-
-        foreach (var item in json.AsArray)
-        {
-            var fields = item.Value["document"]["fields"];
-            if (fields == null)
-                continue;
-
-            entries.Add(
-                new LeaderboardEntry
-                {
-                    rank = rank++,
-                    userId = fields["userId"]["stringValue"],
-                    username = fields["username"]["stringValue"],
-                    score = (long)fields["score"]["doubleValue"].AsDouble,
-                }
-            );
-        }
-
-        onComplete?.Invoke(entries);
+        Debug.Log("[Firebase] SAVE document loaded");
     }
 
     // ── Helpers ───────────────────────────────────────────
@@ -187,19 +130,13 @@ public class FirebaseManager : MonoBehaviour
         return PlayerPrefs.GetString("userId");
     }
 
-    public static string GetWeekKey()
+    private static string EscapeJson(string value)
     {
-        DateTime now = DateTime.UtcNow;
-        int week = System.Globalization.ISOWeek.GetWeekOfYear(now);
-        return $"{now.Year}-W{week:D2}";
+        return value
+            .Replace("\\", "\\\\")
+            .Replace("\"", "\\\"")
+            .Replace("\n", "\\n")
+            .Replace("\r", "\\r")
+            .Replace("\t", "\\t");
     }
-}
-
-[Serializable]
-public class LeaderboardEntry
-{
-    public int rank;
-    public string userId;
-    public string username;
-    public long score;
 }
