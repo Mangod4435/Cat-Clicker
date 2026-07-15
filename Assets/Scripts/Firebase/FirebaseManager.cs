@@ -2,46 +2,37 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Firebase;
-using Firebase.Firestore;
-using Firebase.Extensions;
+using UnityEngine.Networking;
 
 public class FirebaseManager : MonoBehaviour
 {
     public static FirebaseManager Instance { get; private set; }
 
-    private FirebaseFirestore db;
-    private bool isInitialized = false;
+    // ── Firebase Config ───────────────────────────────────
+    private const string PROJECT_ID = "cat-clicker-base-by-mangod";
+    private const string API_KEY    = "AIzaSyAoj8kSPAL72okjUbSWYZxjuucQFaXftBk";
+    private const string BASE_URL   = "https://firestore.googleapis.com/v1/projects/"
+                                    + PROJECT_ID + "/databases/(default)/documents";
 
-    // Save interval = 5 minutes
-    private const float SAVE_INTERVAL = 300f;
+    // ── Save Timer ────────────────────────────────────────
+    private const float SAVE_INTERVAL = 300f; // 5 นาที
     private float saveTimer = 0f;
 
-    public bool IsInitialized => isInitialized;
-
-    // ── Events ──────────────────────────────────────────
-    public event Action OnFirebaseReady;
-
+    // ── Unity Lifecycle ───────────────────────────────────
     void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
     void Start()
     {
-        InitFirebase();
+        LoadScore();
     }
 
     void Update()
     {
-        if (!isInitialized) return;
-
         saveTimer += Time.deltaTime;
         if (saveTimer >= SAVE_INTERVAL)
         {
@@ -50,135 +41,133 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    // ── Init ─────────────────────────────────────────────
-    void InitFirebase()
-    {
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
-        {
-            if (task.Result == DependencyStatus.Available)
-            {
-                db = FirebaseFirestore.DefaultInstance;
-                isInitialized = true;
-                Debug.Log("[Firebase] Ready");
-
-                LoadScore();
-                OnFirebaseReady?.Invoke();
-            }
-            else
-            {
-                Debug.LogError($"[Firebase] Failed: {task.Result}");
-            }
-        });
-    }
-
-    // ── Save ─────────────────────────────────────────────
+    // ── Save Score ────────────────────────────────────────
     public void SaveScore()
     {
-        if (!isInitialized) return;
-
-        string userId = GetUserId();
-        string weekKey = GetWeekKey();
-
-        var data = new Dictionary<string, object>
-        {
-            { "userId",    userId },
-            { "username",  PlayerPrefs.GetString("username", "Player") },
-            { "score",     GameManager.Instance.Cats },
-            { "weekKey",   weekKey },
-            { "updatedAt", FieldValue.ServerTimestamp }
-        };
-
-        db.Collection("leaderboard")
-          .Document($"{weekKey}_{userId}")
-          .SetAsync(data)
-          .ContinueWithOnMainThread(task =>
-          {
-              if (task.IsCompleted && !task.IsFaulted)
-                  Debug.Log("[Firebase] Score saved");
-              else
-                  Debug.LogError($"[Firebase] Save failed: {task.Exception}");
-          });
+        StartCoroutine(SaveScoreRoutine());
     }
 
-    // ── Load ─────────────────────────────────────────────
+    IEnumerator SaveScoreRoutine()
+    {
+        string userId  = GetUserId();
+        string weekKey = GetWeekKey();
+        string username = PlayerPrefs.GetString("username", "Player");
+        double score   = GameManager.Instance.Cats;
+
+        string url  = $"{BASE_URL}/leaderboard/{weekKey}_{userId}?key={API_KEY}";
+        string body = $@"{{
+            ""fields"": {{
+                ""userId"":   {{""stringValue"": ""{userId}""}},
+                ""username"": {{""stringValue"": ""{username}""}},
+                ""score"":    {{""doubleValue"": {score}}},
+                ""weekKey"":  {{""stringValue"": ""{weekKey}""}}
+            }}
+        }}";
+
+        using var req = new UnityWebRequest(url, "PATCH");
+        req.uploadHandler   = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
+        req.downloadHandler = new DownloadHandlerBuffer();
+        req.SetRequestHeader("Content-Type", "application/json");
+        yield return req.SendWebRequest();
+
+        if (req.result == UnityWebRequest.Result.Success)
+            Debug.Log("[Firebase] Score saved ✅");
+        else
+            Debug.LogError($"[Firebase] Save failed: {req.error}");
+    }
+
+    // ── Load Score ────────────────────────────────────────
     public void LoadScore()
     {
-        if (!isInitialized) return;
-
-        string userId = GetUserId();
-
-        db.Collection("savedata")
-          .Document(userId)
-          .GetSnapshotAsync()
-          .ContinueWithOnMainThread(task =>
-          {
-              if (task.IsFaulted)
-              {
-                  Debug.LogError($"[Firebase] Load failed: {task.Exception}");
-                  return;
-              }
-
-              DocumentSnapshot snap = task.Result;
-              if (snap.Exists)
-              {
-                  var data = snap.ToDictionary();
-                  long score = (long)data["score"];
-                  GameManager.Instance.Cats = score; // TODO: call UpdateUI() if needed;
-                  Debug.Log($"[Firebase] Loaded score: {score}");
-              }
-              else
-              {
-                  Debug.Log("[Firebase] No save data found — fresh start");
-              }
-          });
+        StartCoroutine(LoadScoreRoutine());
     }
 
-    // ── Leaderboard Fetch ─────────────────────────────────
-    public void FetchLeaderboard(Action<List<LeaderboardEntry>> onComplete)
+    IEnumerator LoadScoreRoutine()
     {
-        if (!isInitialized)
+        string userId = GetUserId();
+        // โหลดจาก savedata collection แยกต่างหาก
+        string url = $"{BASE_URL}/savedata/{userId}?key={API_KEY}";
+
+        using var req = UnityWebRequest.Get(url);
+        yield return req.SendWebRequest();
+
+        if (req.result != UnityWebRequest.Result.Success)
         {
-            onComplete?.Invoke(null);
-            return;
+            Debug.Log("[Firebase] No save data found — fresh start");
+            yield break;
         }
 
+        var json = SimpleJSON.JSON.Parse(req.downloadHandler.text);
+        double score = json["fields"]["score"]["doubleValue"].AsDouble;
+        GameManager.Instance.Cats = score;
+        Debug.Log($"[Firebase] Loaded score: {score} ✅");
+    }
+
+    // ── Fetch Leaderboard ─────────────────────────────────
+    public void FetchLeaderboard(Action<List<LeaderboardEntry>> onComplete)
+    {
+        StartCoroutine(FetchLeaderboardRoutine(onComplete));
+    }
+
+    IEnumerator FetchLeaderboardRoutine(Action<List<LeaderboardEntry>> onComplete)
+    {
         string weekKey = GetWeekKey();
 
-        db.Collection("leaderboard")
-          .WhereEqualTo("weekKey", weekKey)
-          .OrderByDescending("score")
-          .Limit(50)
-          .GetSnapshotAsync()
-          .ContinueWithOnMainThread(task =>
-          {
-              if (task.IsFaulted)
-              {
-                  Debug.LogError($"[Firebase] Leaderboard fetch failed: {task.Exception}");
-                  onComplete?.Invoke(null);
-                  return;
-              }
+        // Firestore REST query
+        string url  = $"https://firestore.googleapis.com/v1/projects/{PROJECT_ID}/databases/(default)/documents:runQuery?key={API_KEY}";
+        string body = $@"{{
+            ""structuredQuery"": {{
+                ""from"": [{{""collectionId"": ""leaderboard""}}],
+                ""where"": {{
+                    ""fieldFilter"": {{
+                        ""field"": {{""fieldPath"": ""weekKey""}},
+                        ""op"": ""EQUAL"",
+                        ""value"": {{""stringValue"": ""{weekKey}""}}
+                    }}
+                }},
+                ""orderBy"": [{{
+                    ""field"": {{""fieldPath"": ""score""}},
+                    ""direction"": ""DESCENDING""
+                }}],
+                ""limit"": 50
+            }}
+        }}";
 
-              var entries = new List<LeaderboardEntry>();
-              int rank = 1;
-              foreach (var doc in task.Result.Documents)
-              {
-                  var data = doc.ToDictionary();
-                  entries.Add(new LeaderboardEntry
-                  {
-                      rank     = rank++,
-                      userId   = data["userId"].ToString(),
-                      username = data["username"].ToString(),
-                      score    = (long)data["score"]
-                  });
-              }
+        using var req = new UnityWebRequest(url, "POST");
+        req.uploadHandler   = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
+        req.downloadHandler = new DownloadHandlerBuffer();
+        req.SetRequestHeader("Content-Type", "application/json");
+        yield return req.SendWebRequest();
 
-              onComplete?.Invoke(entries);
-          });
+        if (req.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError($"[Firebase] Fetch failed: {req.error}");
+            onComplete?.Invoke(null);
+            yield break;
+        }
+
+        var entries = new List<LeaderboardEntry>();
+        var json    = SimpleJSON.JSON.Parse(req.downloadHandler.text);
+        int rank    = 1;
+
+        foreach (var item in json.AsArray)
+        {
+            var fields = item.Value["document"]["fields"];
+            if (fields == null) continue;
+
+            entries.Add(new LeaderboardEntry
+            {
+                rank     = rank++,
+                userId   = fields["userId"]["stringValue"],
+                username = fields["username"]["stringValue"],
+                score    = (long)fields["score"]["doubleValue"].AsDouble
+            });
+        }
+
+        onComplete?.Invoke(entries);
     }
 
     // ── Helpers ───────────────────────────────────────────
-
-    /// <summary>Returns a persistent unique ID for this player.</summary>
     public string GetUserId()
     {
         if (!PlayerPrefs.HasKey("userId"))
@@ -186,16 +175,14 @@ public class FirebaseManager : MonoBehaviour
         return PlayerPrefs.GetString("userId");
     }
 
-    /// <summary>Returns "2025-W03" style key so leaderboard resets weekly.</summary>
     public static string GetWeekKey()
     {
-        DateTime now = DateTime.UtcNow;
-        int week = System.Globalization.ISOWeek.GetWeekOfYear(now);
+        DateTime now  = DateTime.UtcNow;
+        int week      = System.Globalization.ISOWeek.GetWeekOfYear(now);
         return $"{now.Year}-W{week:D2}";
     }
 }
 
-// ── Data Model ────────────────────────────────────────────
 [Serializable]
 public class LeaderboardEntry
 {
