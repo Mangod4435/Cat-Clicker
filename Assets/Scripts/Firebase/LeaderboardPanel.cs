@@ -1,16 +1,25 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class LeaderboardPanel : MonoBehaviour
 {
     [Header("UI References")]
-    [SerializeField] private Transform entryContainer;   // ScrollView Content
-    [SerializeField] private GameObject entryPrefab;     // prefab สำหรับแต่ละแถว
-    [SerializeField] private TextMeshProUGUI weekLabel;  // "Week 3 · 2025"
-    [SerializeField] private TextMeshProUGUI statusText; // "Updating..." / "Updated X min ago"
-    [SerializeField] private Button refreshButton;
+    [SerializeField]
+    private Transform entryContainer; // ScrollView Content
+
+    [SerializeField]
+    private GameObject entryPrefab; // prefab สำหรับแต่ละแถว
+
+    [SerializeField]
+    private TextMeshProUGUI weekLabel; // "Week 3 · 2025"
+
+    [SerializeField]
+    private TextMeshProUGUI statusText; // "Updating..." / "Updated X min ago"
+
+    [SerializeField]
+    private Button refreshButton;
 
     // ── Cache ─────────────────────────────────────────────
     private List<LeaderboardEntry> cachedEntries;
@@ -33,7 +42,7 @@ public class LeaderboardPanel : MonoBehaviour
     // ── Fetch Logic ───────────────────────────────────────
     void TryFetch()
     {
-        bool hasCache   = cachedEntries != null;
+        bool hasCache = cachedEntries != null;
         bool cacheValid = Time.time - lastFetchTime < CACHE_DURATION;
 
         if (hasCache && cacheValid)

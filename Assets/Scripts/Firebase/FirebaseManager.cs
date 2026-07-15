@@ -10,9 +10,11 @@ public class FirebaseManager : MonoBehaviour
 
     // ── Firebase Config ───────────────────────────────────
     private const string PROJECT_ID = "cat-clicker-base-by-mangod";
-    private const string API_KEY    = "AIzaSyAoj8kSPAL72okjUbSWYZxjuucQFaXftBk";
-    private const string BASE_URL   = "https://firestore.googleapis.com/v1/projects/"
-                                    + PROJECT_ID + "/databases/(default)/documents";
+    private const string API_KEY = "AIzaSyAoj8kSPAL72okjUbSWYZxjuucQFaXftBk";
+    private const string BASE_URL =
+        "https://firestore.googleapis.com/v1/projects/"
+        + PROJECT_ID
+        + "/databases/(default)/documents";
 
     // ── Save Timer ────────────────────────────────────────
     private const float SAVE_INTERVAL = 300f; // 5 นาที
@@ -21,7 +23,11 @@ public class FirebaseManager : MonoBehaviour
     // ── Unity Lifecycle ───────────────────────────────────
     void Awake()
     {
-        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
@@ -49,13 +55,14 @@ public class FirebaseManager : MonoBehaviour
 
     IEnumerator SaveScoreRoutine()
     {
-        string userId  = GetUserId();
+        string userId = GetUserId();
         string weekKey = GetWeekKey();
         string username = PlayerPrefs.GetString("username", "Player");
-        double score   = GameManager.Instance.Cats;
+        double score = GameManager.Instance.Cats;
 
-        string url  = $"{BASE_URL}/leaderboard/{weekKey}_{userId}?key={API_KEY}";
-        string body = $@"{{
+        string url = $"{BASE_URL}/leaderboard/{weekKey}_{userId}?key={API_KEY}";
+        string body =
+            $@"{{
             ""fields"": {{
                 ""userId"":   {{""stringValue"": ""{userId}""}},
                 ""username"": {{""stringValue"": ""{username}""}},
@@ -65,7 +72,7 @@ public class FirebaseManager : MonoBehaviour
         }}";
 
         using var req = new UnityWebRequest(url, "PATCH");
-        req.uploadHandler   = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
+        req.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
         req.downloadHandler = new DownloadHandlerBuffer();
         req.SetRequestHeader("Content-Type", "application/json");
         yield return req.SendWebRequest();
@@ -99,7 +106,7 @@ public class FirebaseManager : MonoBehaviour
 
         var json = SimpleJSON.JSON.Parse(req.downloadHandler.text);
         double score = json["fields"]["score"]["doubleValue"].AsDouble;
-        GameManager.Instance.Cats = score;
+        GameManager.Instance.SetCat(score);
         Debug.Log($"[Firebase] Loaded score: {score} ✅");
     }
 
@@ -114,8 +121,10 @@ public class FirebaseManager : MonoBehaviour
         string weekKey = GetWeekKey();
 
         // Firestore REST query
-        string url  = $"https://firestore.googleapis.com/v1/projects/{PROJECT_ID}/databases/(default)/documents:runQuery?key={API_KEY}";
-        string body = $@"{{
+        string url =
+            $"https://firestore.googleapis.com/v1/projects/{PROJECT_ID}/databases/(default)/documents:runQuery?key={API_KEY}";
+        string body =
+            $@"{{
             ""structuredQuery"": {{
                 ""from"": [{{""collectionId"": ""leaderboard""}}],
                 ""where"": {{
@@ -134,7 +143,7 @@ public class FirebaseManager : MonoBehaviour
         }}";
 
         using var req = new UnityWebRequest(url, "POST");
-        req.uploadHandler   = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
+        req.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
         req.downloadHandler = new DownloadHandlerBuffer();
         req.SetRequestHeader("Content-Type", "application/json");
         yield return req.SendWebRequest();
@@ -147,21 +156,24 @@ public class FirebaseManager : MonoBehaviour
         }
 
         var entries = new List<LeaderboardEntry>();
-        var json    = SimpleJSON.JSON.Parse(req.downloadHandler.text);
-        int rank    = 1;
+        var json = SimpleJSON.JSON.Parse(req.downloadHandler.text);
+        int rank = 1;
 
         foreach (var item in json.AsArray)
         {
             var fields = item.Value["document"]["fields"];
-            if (fields == null) continue;
+            if (fields == null)
+                continue;
 
-            entries.Add(new LeaderboardEntry
-            {
-                rank     = rank++,
-                userId   = fields["userId"]["stringValue"],
-                username = fields["username"]["stringValue"],
-                score    = (long)fields["score"]["doubleValue"].AsDouble
-            });
+            entries.Add(
+                new LeaderboardEntry
+                {
+                    rank = rank++,
+                    userId = fields["userId"]["stringValue"],
+                    username = fields["username"]["stringValue"],
+                    score = (long)fields["score"]["doubleValue"].AsDouble,
+                }
+            );
         }
 
         onComplete?.Invoke(entries);
@@ -177,8 +189,8 @@ public class FirebaseManager : MonoBehaviour
 
     public static string GetWeekKey()
     {
-        DateTime now  = DateTime.UtcNow;
-        int week      = System.Globalization.ISOWeek.GetWeekOfYear(now);
+        DateTime now = DateTime.UtcNow;
+        int week = System.Globalization.ISOWeek.GetWeekOfYear(now);
         return $"{now.Year}-W{week:D2}";
     }
 }
@@ -186,8 +198,8 @@ public class FirebaseManager : MonoBehaviour
 [Serializable]
 public class LeaderboardEntry
 {
-    public int    rank;
+    public int rank;
     public string userId;
     public string username;
-    public long   score;
+    public long score;
 }
