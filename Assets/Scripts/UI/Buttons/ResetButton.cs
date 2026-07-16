@@ -10,7 +10,8 @@ public class ResetButton : MonoBehaviour
     public void OnClicked()
     {
         manager.ResetGame();
-        cat.transform.rotation = Quaternion.Euler(0, 0, 0);
+        if (!gameObject.CompareTag("MainMenu"))
+            cat.transform.rotation = Quaternion.Euler(0, 0, 0);
         UIState.state = UIState.OpenedInterface.None;
     }
 }

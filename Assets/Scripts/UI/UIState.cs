@@ -7,5 +7,5 @@ public static class UIState
         Upgrade,
     }
 
-    public static OpenedInterface state = OpenedInterface.None;
+    public static OpenedInterface state = OpenedInterface.Upgrade;
 }
