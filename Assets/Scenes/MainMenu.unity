@@ -830,7 +830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c904ef75626594e33a48eccde6ae6d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResetButton
-  cat: {fileID: 0}
+  cat: {fileID: 523524328}
 --- !u!114 &523524331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2073,7 +2073,7 @@ GameObject:
   - component: {fileID: 1551019284}
   - component: {fileID: 1551019283}
   m_Layer: 0
-  m_Name: Settingmanager
+  m_Name: SettingManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2090,7 +2090,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0cf05cf26b3b44ccabcf51c03d6c106, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Settingmanager
+  m_EditorClassIdentifier: Assembly-CSharp::SettingManager
 --- !u!4 &1551019284
 Transform:
   m_ObjectHideFlags: 0
@@ -2190,7 +2190,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Settingmanager, Assembly-CSharp
+        m_TargetAssemblyTypeName: SettingManager, Assembly-CSharp
         m_MethodName: Save
         m_Mode: 1
         m_Arguments:
@@ -2608,7 +2608,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Settingmanager, Assembly-CSharp
+        m_TargetAssemblyTypeName: SettingManager, Assembly-CSharp
         m_MethodName: SetSound
         m_Mode: 0
         m_Arguments:
@@ -3134,7 +3134,7 @@ GameObject:
   - component: {fileID: 2144612642}
   m_Layer: 5
   m_Name: SettingUI
-  m_TagString: Untagged
+  m_TagString: MainMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
