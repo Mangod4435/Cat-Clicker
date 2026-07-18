@@ -4,7 +4,7 @@ public class SettingManager : MonoBehaviour
 {
     public static SettingManager instance;
     public bool Sound { get; private set; }
-    public bool scientificNotation { get; private set; }
+    public bool Notation { get; private set; }
 
     void Awake()
     {
@@ -23,11 +23,11 @@ public class SettingManager : MonoBehaviour
     {
         SettingData data = SaveSettingSystem.Load();
         Sound = data.isSoundOpen;
-        scientificNotation = data.scientificNotation;
+        Notation = data.scientificNotation;
     }
 
     // API
     public void SetSound(bool b) => Sound = b;
 
-    public void SetNotation(bool b) => scientificNotation = b;
+    public void SetNotation(bool b) => Notation = b;
 }
