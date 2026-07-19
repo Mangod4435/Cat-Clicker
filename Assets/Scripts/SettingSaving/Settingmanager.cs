@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class SettingManager : MonoBehaviour
 {
-    public static SettingManager instance;
+    public static SettingManager Instance;
     public bool Sound { get; private set; }
     public bool Notation { get; private set; }
 
     void Awake()
     {
-        instance = this;
+        Instance = this;
         Load();
     }
 
     // save - load
     public void Save()
     {
-        var data = new SettingData { isSoundOpen = Sound };
+        var data = new SettingData { isSoundOpen = Sound, scientificNotation = Notation };
         SaveSettingSystem.Save(data);
     }
 

@@ -13,6 +13,7 @@ public class MainControl : MonoBehaviour
 
     void Start()
     {
+        UIState.state = UIState.OpenedInterface.Upgrade;
         upgradesMenu.SetActive(false);
         settingsMenu.SetActive(false);
     }
