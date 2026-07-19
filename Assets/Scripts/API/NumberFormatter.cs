@@ -2,6 +2,7 @@ namespace API
 {
     public static class NumberFormatter
     {
+        static SettingManager setting = SettingManager.Instance;
         static readonly string[] Names =
         {
             "",
@@ -114,6 +115,9 @@ namespace API
 
             if (n < 1000)
                 return n.ToString("0");
+
+            if (setting.Notation)
+                return n.ToString("0.00e0");
 
             int tier = 0;
 
