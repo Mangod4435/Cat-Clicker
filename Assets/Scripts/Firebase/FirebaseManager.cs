@@ -61,20 +61,45 @@ public class FirebaseManager : MonoBehaviour
             yield break;
 
         string userId = GetUserId();
-        string username = PlayerPrefs.GetString("username", "Player");
+        if (string.IsNullOrEmpty(userId))
+        {
+            Debug.LogWarning("[Firebase] No userId available; skipping cloud save.");
+            yield break;
+        }
+
+        string username = PlayerPrefs.GetString("username", string.Empty);
         string passHash = PlayerPrefs.GetString("passHash", string.Empty);
         string saveJson = JsonUtility.ToJson(GameManager.Instance.CreateSaveData());
 
+        var bodyBuilder = new System.Text.StringBuilder();
+        bodyBuilder.AppendLine("{");
+        bodyBuilder.AppendLine("  \"fields\": {");
+        bodyBuilder.Append("    \"userID\": {\"stringValue\": \"");
+        bodyBuilder.Append(EscapeJson(userId));
+        bodyBuilder.AppendLine("\"},");
+
+        if (!string.IsNullOrEmpty(username))
+        {
+            bodyBuilder.Append("    \"username\": {\"stringValue\": \"");
+            bodyBuilder.Append(EscapeJson(username));
+            bodyBuilder.AppendLine("\"},");
+        }
+
+        if (!string.IsNullOrEmpty(passHash))
+        {
+            bodyBuilder.Append("    \"passHash\": {\"stringValue\": \"");
+            bodyBuilder.Append(EscapeJson(passHash));
+            bodyBuilder.AppendLine("\"},");
+        }
+
+        bodyBuilder.Append("    \"savedata\": {\"stringValue\": \"");
+        bodyBuilder.Append(EscapeJson(saveJson));
+        bodyBuilder.AppendLine("\"");
+        bodyBuilder.AppendLine("  }");
+        bodyBuilder.Append("}");
+
+        string body = bodyBuilder.ToString();
         string url = $"{BASE_URL}/SAVE/{userId}?key={API_KEY}";
-        string body =
-            $@"{{
-            ""fields"": {{
-                ""userID"":   {{""stringValue"": ""{EscapeJson(userId)}""}},
-                ""username"": {{""stringValue"": ""{EscapeJson(username)}""}},
-                ""passHash"": {{""stringValue"": ""{EscapeJson(passHash)}""}},
-                ""savedata"": {{""stringValue"": ""{EscapeJson(saveJson)}""}}
-            }}
-        }}";
 
         using var req = new UnityWebRequest(url, "PATCH");
         req.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
@@ -94,6 +119,12 @@ public class FirebaseManager : MonoBehaviour
             yield break;
 
         string userId = GetUserId();
+        if (string.IsNullOrEmpty(userId))
+        {
+            Debug.LogWarning("[Firebase] No userId available; skipping cloud load.");
+            yield break;
+        }
+
         string url = $"{BASE_URL}/SAVE/{userId}?key={API_KEY}";
 
         using var req = UnityWebRequest.Get(url);
@@ -106,8 +137,8 @@ public class FirebaseManager : MonoBehaviour
         }
 
         var json = SimpleJSON.JSON.Parse(req.downloadHandler.text);
-        string username = json["fields"]["username"]["stringValue"];
-        string passHash = json["fields"]["passHash"]["stringValue"];
+        string username = json["fields"]["username"]?["stringValue"];
+        string passHash = json["fields"]["passHash"]?["stringValue"];
         string saveJson = json["fields"]["savedata"]["stringValue"];
 
         if (!string.IsNullOrEmpty(username))
@@ -125,9 +156,7 @@ public class FirebaseManager : MonoBehaviour
     // ── Helpers ───────────────────────────────────────────
     public string GetUserId()
     {
-        if (!PlayerPrefs.HasKey("userId"))
-            PlayerPrefs.SetString("userId", Guid.NewGuid().ToString());
-        return PlayerPrefs.GetString("userId");
+        return PlayerPrefs.GetString("userId", string.Empty);
     }
 
     private static string EscapeJson(string value)
