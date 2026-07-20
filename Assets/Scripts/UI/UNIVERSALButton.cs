@@ -201,7 +201,7 @@ public class UNIVERSALButton : MonoBehaviour
     {
         double cats = gameManager.Cats;
         double calcPrice = UpgradeAPI.getCalculatedPrice(upgradeName);
-        double shadowThreshold = UpgradeAPI.getPrice(upgradeName) * 0.9;
+        double shadowThreshold = UpgradeAPI.getPrice(upgradeName) * 0.5;
         bool revealed = gameManager.getRevealed(upgradeName);
 
         if (cats >= calcPrice)
