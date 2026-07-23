@@ -1,6 +1,3 @@
 ﻿<Solution>
-  <Project Path="Unity.PlayerPrefsEditor.Editor.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
-  <Project Path="Unity.PlayerPrefsEditor.EditorResources.csproj" />
-  <Project Path="Unity.PlayerPrefsEditor.Samples.SampleScene.csproj" />
 </Solution>
