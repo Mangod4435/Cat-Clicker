@@ -12,12 +12,14 @@ public class RoundedUISync : MonoBehaviour
     private Image img;
     private Material instanceMat;
     private Vector2 lastSize;
+    private Vector2 lastPivot;
 
     private static readonly int SizeProp = Shader.PropertyToID("_Size");
+    private static readonly int OffsetProp = Shader.PropertyToID("_Offset");
 
     void OnEnable()
     {
-        rt = (RectTransform)transform;
+        rt = GetComponent<RectTransform>();
         img = GetComponent<Image>();
         EnsureInstanceMaterial();
         SyncSize(force: true);
@@ -25,7 +27,8 @@ public class RoundedUISync : MonoBehaviour
 
     void EnsureInstanceMaterial()
     {
-        if (img.material == null) return;
+        if (img.material == null)
+            return;
 
         // Avoid re-instancing an already-instanced material (name ends with "(Instance)")
         if (!img.material.name.EndsWith("(Instance)"))
@@ -48,19 +51,32 @@ public class RoundedUISync : MonoBehaviour
     // Also catches resizes from layout groups / anchors without waiting a frame
     void OnRectTransformDimensionsChange()
     {
-        if (rt == null) rt = (RectTransform)transform;
+        if (rt == null)
+            rt = (RectTransform)transform;
         SyncSize(force: true);
     }
 
     void SyncSize(bool force)
     {
-        if (rt == null || img == null || img.material == null) return;
+        if (rt == null || img == null || img.material == null)
+            return;
 
         Vector2 size = rt.rect.size;
-        if (!force && size == lastSize) return;
+        Vector2 pivot = rt.pivot;
+        if (!force && size == lastSize && pivot == lastPivot)
+            return;
 
         lastSize = size;
+        lastPivot = pivot;
+
         img.material.SetVector(SizeProp, new Vector4(size.x, size.y, 0f, 0f));
+
+        // Unity's mesh vertices are generated relative to the pivot, so a
+        // pivot away from (0.5, 0.5) shifts the visual center away from
+        // local (0,0). This offset corrects the shader's SDF center to match.
+        float offsetX = (0.5f - pivot.x) * size.x;
+        float offsetY = (0.5f - pivot.y) * size.y;
+        img.material.SetVector(OffsetProp, new Vector4(offsetX, offsetY, 0f, 0f));
     }
 
     void OnDestroy()

@@ -6,6 +6,7 @@ Shader "UI/RoundedRect"
         _Color ("Tint", Color) = (1,1,1,1)
         _Radius ("Corner Radius (px)", Range(0, 100)) = 20
         _Size ("Rect Size (px, set to match RectTransform)", Vector) = (200, 80, 0, 0)
+        _Offset ("Pivot Offset (px, auto-synced)", Vector) = (0, 0, 0, 0)
 
         _StencilComp ("Stencil Comparison", Float) = 8
         _Stencil ("Stencil ID", Float) = 0
@@ -69,6 +70,7 @@ Shader "UI/RoundedRect"
             fixed4 _Color;
             float _Radius;
             float4 _Size;
+            float4 _Offset;
 
             v2f vert(appdata_t v)
             {
@@ -94,7 +96,10 @@ Shader "UI/RoundedRect"
 
                 float2 halfSize = _Size.xy * 0.5;
                 float r = clamp(_Radius, 0.0, min(halfSize.x, halfSize.y));
-                float dist = sdRoundBox(IN.localPos, halfSize, r);
+                // shift by pivot offset so the SDF box is centered on the
+                // actual visual center of the rect, regardless of pivot
+                float2 p = IN.localPos - _Offset.xy;
+                float dist = sdRoundBox(p, halfSize, r);
 
                 // antialiased edge
                 float aa = fwidth(dist);
