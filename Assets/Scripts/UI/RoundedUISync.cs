@@ -14,6 +14,7 @@ public class RoundedUISync : MonoBehaviour
     private Material instanceMat;
     private Vector2 lastSize;
     private Vector2 lastPivot;
+    private RectTransform canvasRect;
 
     private static readonly int SizeProp = Shader.PropertyToID("_Size");
     private static readonly int OffsetProp = Shader.PropertyToID("_Offset");
@@ -23,6 +24,8 @@ public class RoundedUISync : MonoBehaviour
     {
         rt = GetComponent<RectTransform>();
         img = GetComponent<Image>();
+        var canvas = GetComponentInParent<Canvas>();
+        canvasRect = canvas != null ? canvas.rootCanvas.transform as RectTransform : null;
         EnsureInstanceMaterial();
         SyncSize(force: true);
         img.material.SetFloat(CornerProp, cornerRadius);
@@ -64,16 +67,33 @@ public class RoundedUISync : MonoBehaviour
             return;
 
         Vector2 size = rt.rect.size;
-        Vector2 pivot = rt.localPosition;
 
-        if (!force && size == lastSize && pivot == lastPivot)
+        // UGUI batches same-material Graphics into one draw call, which means
+        // the vertex positions the shader receives are pre-baked into CANVAS
+        // space, not this object's own local mesh space. So _Offset has to be
+        // this rect's visual center expressed in canvas-local coordinates,
+        // walking the FULL hierarchy up to the Canvas -- not just rect.center
+        // (pivot-only, ignores position) and not just localPosition
+        // (only accounts for the immediate parent, not grandparents).
+        Vector2 offset;
+        if (canvasRect != null)
+        {
+            Vector3 worldOrigin = rt.TransformPoint(rt.rect.center);
+            offset = canvasRect.InverseTransformPoint(worldOrigin);
+        }
+        else
+        {
+            offset = rt.rect.center;
+        }
+
+        if (!force && size == lastSize && offset == lastPivot)
             return;
 
         lastSize = size;
-        lastPivot = pivot;
+        lastPivot = offset;
 
         img.material.SetVector(SizeProp, new Vector4(size.x, size.y, 0f, 0f));
-        img.material.SetVector(OffsetProp, (Vector4)pivot);
+        img.material.SetVector(OffsetProp, (Vector4)offset);
     }
 
     void OnDestroy()
