@@ -4,10 +4,11 @@ using UnityEngine.UI;
 // Attach this to the same GameObject as the Image using the UI/RoundedRect material.
 // It creates a per-instance material (so multiple buttons don't share the same
 // _Size value) and keeps _Size synced to the RectTransform's actual width/height.
-[RequireComponent(typeof(RectTransform), typeof(Image))]
-[ExecuteAlways]
+[RequireComponent(typeof(RectTransform), typeof(Image)), ExecuteAlways]
 public class RoundedUISync : MonoBehaviour
 {
+    [SerializeField, Range(0, 100)]
+    float cornerRadius;
     private RectTransform rt;
     private Image img;
     private Material instanceMat;
@@ -16,6 +17,7 @@ public class RoundedUISync : MonoBehaviour
 
     private static readonly int SizeProp = Shader.PropertyToID("_Size");
     private static readonly int OffsetProp = Shader.PropertyToID("_Offset");
+    private static readonly int CornerProp = Shader.PropertyToID("_Radius");
 
     void OnEnable()
     {
@@ -23,29 +25,29 @@ public class RoundedUISync : MonoBehaviour
         img = GetComponent<Image>();
         EnsureInstanceMaterial();
         SyncSize(force: true);
+        img.material.SetFloat(CornerProp, cornerRadius);
     }
 
     void EnsureInstanceMaterial()
     {
-        if (img.material == null)
-            return;
-
         // Avoid re-instancing an already-instanced material (name ends with "(Instance)")
         if (!img.material.name.EndsWith("(Instance)"))
         {
-            instanceMat = new Material(img.material);
-            instanceMat.name = img.material.name + " (Instance)";
+            instanceMat = new Material(img.material)
+            {
+                name = img.material.name + " (Instance)",
+                shader = Shader.Find("UI/RoundedRect"),
+            };
             img.material = instanceMat;
         }
         else
-        {
             instanceMat = img.material;
-        }
     }
 
     void Update()
     {
         SyncSize(force: false);
+        img.material.SetFloat(CornerProp, cornerRadius);
     }
 
     // Also catches resizes from layout groups / anchors without waiting a frame
@@ -62,7 +64,8 @@ public class RoundedUISync : MonoBehaviour
             return;
 
         Vector2 size = rt.rect.size;
-        Vector2 pivot = rt.pivot;
+        Vector2 pivot = rt.localPosition;
+
         if (!force && size == lastSize && pivot == lastPivot)
             return;
 
@@ -70,13 +73,7 @@ public class RoundedUISync : MonoBehaviour
         lastPivot = pivot;
 
         img.material.SetVector(SizeProp, new Vector4(size.x, size.y, 0f, 0f));
-
-        // Unity's mesh vertices are generated relative to the pivot, so a
-        // pivot away from (0.5, 0.5) shifts the visual center away from
-        // local (0,0). This offset corrects the shader's SDF center to match.
-        float offsetX = (0.5f - pivot.x) * size.x;
-        float offsetY = (0.5f - pivot.y) * size.y;
-        img.material.SetVector(OffsetProp, new Vector4(offsetX, offsetY, 0f, 0f));
+        img.material.SetVector(OffsetProp, (Vector4)pivot);
     }
 
     void OnDestroy()

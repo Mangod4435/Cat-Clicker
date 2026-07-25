@@ -5,8 +5,8 @@ Shader "UI/RoundedRect"
         [PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
         _Color ("Tint", Color) = (1,1,1,1)
         _Radius ("Corner Radius (px)", Range(0, 100)) = 20
-        _Size ("Rect Size (px, set to match RectTransform)", Vector) = (200, 80, 0, 0)
-        _Offset ("Pivot Offset (px, auto-synced)", Vector) = (0, 0, 0, 0)
+        _Size ("Rect Size", Vector) = (200, 80, 0, 0)
+        _Offset ("Pivot Offset", Vector) = (0, 0, 0, 0)
 
         _StencilComp ("Stencil Comparison", Float) = 8
         _Stencil ("Stencil ID", Float) = 0
