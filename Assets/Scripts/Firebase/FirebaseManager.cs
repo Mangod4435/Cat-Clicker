@@ -71,6 +71,7 @@ public class FirebaseManager : MonoBehaviour
         string passHash = PlayerPrefs.GetString("passHash", string.Empty);
         string saveJson = JsonUtility.ToJson(GameManager.Instance.CreateSaveData());
 
+        #region Requset Body Builder
         var bodyBuilder = new System.Text.StringBuilder();
         bodyBuilder.AppendLine("{");
         bodyBuilder.AppendLine("  \"fields\": {");
@@ -100,6 +101,7 @@ public class FirebaseManager : MonoBehaviour
 
         string body = bodyBuilder.ToString();
         string url = $"{BASE_URL}/SAVE/{userId}?key={API_KEY}";
+        #endregion
 
         using var req = new UnityWebRequest(url, "PATCH");
         req.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
@@ -150,7 +152,7 @@ public class FirebaseManager : MonoBehaviour
         GameManager.Instance.ApplySaveData(saveData);
         GameManager.Instance.SaveGame();
 
-        Debug.Log("[Firebase] SAVE document loaded");
+        Debug.Log("[Firebase] SAVE document loaded ✧✦✧");
     }
 
     // ── Helpers ───────────────────────────────────────────
