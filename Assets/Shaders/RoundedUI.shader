@@ -6,7 +6,11 @@ Shader "UI/RoundedRect"
         _Color ("Tint", Color) = (1,1,1,1)
         _Radius ("Corner Radius (px)", Range(0, 100)) = 20
         _Size ("Rect Size", Vector) = (200, 80, 0, 0)
-        _Offset ("Pivot Offset", Vector) = (0, 0, 0, 0)
+        // Local-space offset between this RectTransform's pivot (local origin)
+        // and its visual center, i.e. rect.center. ONLY needed for non-centered
+        // pivots. NOT a world/canvas/parent position -- has nothing to do with
+        // where this object sits in the hierarchy.
+        _PivotOffset ("Pivot-to-Center Offset (local units)", Vector) = (0, 0, 0, 0)
 
         _StencilComp ("Stencil Comparison", Float) = 8
         _Stencil ("Stencil ID", Float) = 0
@@ -70,7 +74,7 @@ Shader "UI/RoundedRect"
             fixed4 _Color;
             float _Radius;
             float4 _Size;
-            float4 _Offset;
+            float4 _PivotOffset;
 
             v2f vert(appdata_t v)
             {
@@ -96,9 +100,13 @@ Shader "UI/RoundedRect"
 
                 float2 halfSize = _Size.xy * 0.5;
                 float r = clamp(_Radius, 0.0, min(halfSize.x, halfSize.y));
-                // shift by pivot offset so the SDF box is centered on the
-                // actual visual center of the rect, regardless of pivot
-                float2 p = IN.localPos - _Offset.xy;
+                // v.vertex.xy (via IN.localPos) is this object's OWN local mesh
+                // space -- each rounded-rect element has its own material
+                // instance, so UGUI never batches these together, and nothing
+                // here is in canvas or parent space. Shift by the pivot's
+                // offset from the visual center so the SDF box lines up
+                // regardless of pivot placement.
+                float2 p = IN.localPos - _PivotOffset.xy;
                 float dist = sdRoundBox(p, halfSize, r);
 
                 // antialiased edge
