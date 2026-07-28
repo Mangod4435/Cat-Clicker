@@ -8384,14 +8384,6 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1657682658}
-    - target: {fileID: 2283372083662841221, guid: 6db93157ffadf47909d4618a84a971c3, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2283372083662841221, guid: 6db93157ffadf47909d4618a84a971c3, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 2633909246364898747, guid: 6db93157ffadf47909d4618a84a971c3, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
