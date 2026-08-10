@@ -82,8 +82,8 @@ public class UNIVERSALButton : MonoBehaviour
             case "upgradeMenu":
                 bool isOpen = UIState.state == UIState.OpenedInterface.Upgrade;
                 gameObject.GetComponent<RectTransform>().anchoredPosition = isOpen
-                    ? new Vector3(-1010, -50)
-                    : new Vector3(-50, -50);
+                    ? new Vector3(-960, 0)
+                    : Vector3.zero;
                 cat.GetComponent<RectTransform>().anchoredPosition = isOpen
                     ? new Vector3(-410, 0)
                     : new Vector3(0, 0);

@@ -2,7 +2,7 @@ namespace API
 {
     public static class NumberFormatter
     {
-        static SettingManager setting = SettingManager.Instance;
+        static SettingManager setting => SettingManager.Instance;
         static readonly string[] Names =
         {
             "",

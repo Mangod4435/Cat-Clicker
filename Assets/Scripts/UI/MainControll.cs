@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MainControl : MonoBehaviour
@@ -14,13 +13,17 @@ public class MainControl : MonoBehaviour
     void Start()
     {
         UIState.state = UIState.OpenedInterface.Upgrade;
-        upgradesMenu.SetActive(false);
-        settingsMenu.SetActive(false);
+        if (upgradesMenu != null)
+            upgradesMenu?.SetActive(false);
+        if (settingsMenu != null)
+            settingsMenu?.SetActive(false);
     }
 
     void Update()
     {
-        settingsMenu.SetActive(state == UIState.OpenedInterface.Setting);
-        upgradesMenu.SetActive(state == UIState.OpenedInterface.Upgrade);
+        if (settingsMenu != null)
+            settingsMenu.SetActive(state == UIState.OpenedInterface.Setting);
+        if (upgradesMenu != null)
+            upgradesMenu.SetActive(state == UIState.OpenedInterface.Upgrade);
     }
 }

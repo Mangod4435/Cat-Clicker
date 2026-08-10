@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fd3f6d501a68946c6932917d7c8a793c
+guid: 00a4b58c7e86a4403ae0ad3b96e1b71e
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -19,8 +19,8 @@ ScriptedImporter:
   preserveViewport: 0
   advancedMode: 0
   tessellationMode: 1
-  predefinedResolutionIndex: 1
-  targetResolution: 1080
+  predefinedResolutionIndex: 0
+  targetResolution: 2160
   resolutionMultiplier: 1
   stepDistance: 10
   samplingStepDistance: 100
