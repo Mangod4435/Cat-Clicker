@@ -8,7 +8,10 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
-   sodipodi:docname="simplified-button.svg"
+   sodipodi:docname="simplified-button.m=50.svg"
+   inkscape:export-filename="simplified-button.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -23,9 +26,9 @@
      inkscape:pagecheckerboard="1"
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
-     inkscape:zoom="0.75386045"
-     inkscape:cx="399.94139"
-     inkscape:cy="524.63291"
+     inkscape:zoom="0.5"
+     inkscape:cx="512"
+     inkscape:cy="525"
      inkscape:current-layer="layer1" />
   <defs
      id="defs1" />
