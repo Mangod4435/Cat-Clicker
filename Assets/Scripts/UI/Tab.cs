@@ -9,6 +9,11 @@ public class Tab : MonoBehaviour
     [SerializeField]
     GameObject FrameObject;
 
+    static class TabData
+    {
+        internal static int TabOpenedIndex = 0;
+    }
+
     void OnEnable() => gameObject.GetComponent<Button>().onClick.AddListener(OnClicked);
 
     void OnDisable() => gameObject.GetComponent<Button>().onClick.RemoveListener(OnClicked);
@@ -28,9 +33,4 @@ public class Tab : MonoBehaviour
     }
 
     void OnClicked() => TabData.TabOpenedIndex = FrameIndex;
-}
-
-public static class TabData
-{
-    public static int TabOpenedIndex = 0;
 }
