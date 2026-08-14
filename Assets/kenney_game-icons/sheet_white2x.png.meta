@@ -4,319 +4,319 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 5624667292570117562
-    second: sheet_white2x 1_0
+    second: icon_b_button
   - first:
       213: -1196964344408161160
-    second: sheet_white2x 1_1
+    second: icon_arrow_up_right
   - first:
       213: -1207703470187515142
-    second: sheet_white2x 1_2
+    second: icon_up_down_diamond
   - first:
       213: 9039087684369263859
-    second: sheet_white2x 1_3
+    second: icon_menu_list
   - first:
       213: 8646615677365894067
-    second: sheet_white2x 1_4
+    second: icon_gamepad_2
   - first:
       213: 7147664342301238648
-    second: sheet_white2x 1_5
+    second: icon_r1_button
   - first:
       213: -6896316476998838418
-    second: sheet_white2x 1_6
+    second: icon_a_button
   - first:
       213: 841611133659949135
-    second: sheet_white2x 1_7
+    second: icon_arrow_up_left
   - first:
       213: -6489296555154747745
-    second: sheet_white2x 1_8
+    second: icon_left_right_diamond
   - first:
       213: -5830979128587841812
-    second: sheet_white2x 1_9
+    second: icon_grid_9
   - first:
       213: -8256366736460553517
-    second: sheet_white2x 1_10
+    second: icon_gamepad_1
   - first:
       213: -8614114837890091148
-    second: sheet_white2x 1_11
+    second: icon_r_button
   - first:
       213: -1165769392165968373
-    second: sheet_white2x 1_12
+    second: icon_three_button
   - first:
       213: 8408829219634552362
-    second: sheet_white2x 1_13
+    second: icon_triangle_up
   - first:
       213: -1705761082647426694
-    second: sheet_white2x 1_14
+    second: icon_save
   - first:
       213: -1777286909469996390
-    second: sheet_white2x 1_15
+    second: icon_medal_ribbon
   - first:
       213: -4988216229227737554
-    second: sheet_white2x 1_16
+    second: icon_gamepad
   - first:
       213: -897782780874693315
-    second: sheet_white2x 1_17
+    second: icon_l2_button
   - first:
       213: -7058894894006593380
-    second: sheet_white2x 1_18
+    second: icon_two_button
   - first:
       213: 5769102328637052882
-    second: sheet_white2x 1_19
+    second: icon_lock_open
   - first:
       213: 2152565769015216264
-    second: sheet_white2x 1_20
+    second: icon_play
   - first:
       213: 4365209867074229960
-    second: sheet_white2x 1_21
+    second: icon_keyhole_ribbon
   - first:
       213: -8102704995616717006
-    second: sheet_white2x 1_22
+    second: icon_fast_forward
   - first:
       213: -8863001821352779620
-    second: sheet_white2x 1_23
+    second: icon_l1_button
   - first:
       213: 8360414749791213510
-    second: sheet_white2x 1_24
+    second: icon_one_button
   - first:
       213: 4869763469950337942
-    second: sheet_white2x 1_25
+    second: icon_monitor
   - first:
       213: -1952348492074129302
-    second: sheet_white2x 1_26
+    second: icon_previous
   - first:
       213: -2194881837301128683
-    second: sheet_white2x 1_27
+    second: icon_users
   - first:
       213: 5475614385215163421
-    second: sheet_white2x 1_28
+    second: icon_upload
   - first:
       213: -9200917444492763350
-    second: sheet_white2x 1_29
+    second: icon_arrow_right_2
   - first:
       213: 8830158852322066318
-    second: sheet_white2x 1_30
+    second: icon_pause
   - first:
       213: -1043103539035964447
-    second: sheet_white2x 1_31
+    second: icon_trash_open
   - first:
       213: -8600703484618031481
-    second: sheet_white2x 1_32
+    second: icon_undo
   - first:
       213: 1186162830547600008
-    second: sheet_white2x 1_33
+    second: icon_lock
   - first:
       213: -1920820918477245163
-    second: sheet_white2x 1_34
+    second: icon_exit_right
   - first:
       213: 6411550274059765599
-    second: sheet_white2x 1_35
+    second: icon_menu
   - first:
       213: 5667455143159171965
-    second: sheet_white2x 1_36
+    second: icon_trash
   - first:
       213: -2758075498723100031
-    second: sheet_white2x 1_37
+    second: icon_help
   - first:
       213: -9038317179475571021
-    second: sheet_white2x 1_38
+    second: icon_arrow_left_2
   - first:
       213: 8120617147403060007
-    second: sheet_white2x 1_39
+    second: icon_exit_left
   - first:
       213: -7789588365076566731
-    second: sheet_white2x 1_40
+    second: icon_volume
   - first:
       213: -4909687619018615750
-    second: sheet_white2x 1_41
+    second: icon_target
   - first:
       213: 6861328249326316843
-    second: sheet_white2x 1_42
+    second: icon_previous_track
   - first:
       213: -5081553352481682628
-    second: sheet_white2x 1_43
+    second: icon_blocks
   - first:
       213: -8486738022957033816
-    second: sheet_white2x 1_44
+    second: icon_door
   - first:
       213: 4892357537081184564
-    second: sheet_white2x 1_45
+    second: icon_speaker
   - first:
       213: 4965725946425707529
-    second: sheet_white2x 1_46
+    second: icon_stop
   - first:
       213: -4555751364881976846
-    second: sheet_white2x 1_47
+    second: icon_power
   - first:
       213: 6334914164106796196
-    second: sheet_white2x 1_48
+    second: icon_podium_123
   - first:
       213: 8395088242114443068
-    second: sheet_white2x 1_49
+    second: icon_exclamation
   - first:
       213: -7518987918603437539
-    second: sheet_white2x 1_50
+    second: icon_arrow_up
   - first:
       213: 7364811863914847661
-    second: sheet_white2x 1_51
+    second: icon_square
   - first:
       213: 428353985775346247
-    second: sheet_white2x 1_52
+    second: icon_plus
   - first:
       213: 112616358824911029
-    second: sheet_white2x 1_53
+    second: icon_fullscreen
   - first:
       213: -8750709114513325253
-    second: sheet_white2x 1_54
+    second: icon_arrow_down_right
   - first:
       213: -3825804114877646296
-    second: sheet_white2x 1_55
+    second: icon_arrow_right
   - first:
       213: -1067820559779789089
-    second: sheet_white2x 1_56
+    second: icon_star
   - first:
       213: 94890680733666348
-    second: sheet_white2x 1_57
+    second: icon_phone
   - first:
       213: 1068572311407619303
-    second: sheet_white2x 1_58
+    second: icon_joystick
   - first:
       213: 7779373285462964391
-    second: sheet_white2x 1_59
+    second: icon_arrow_down_left
   - first:
       213: 6508143960038693934
-    second: sheet_white2x 1_60
+    second: icon_arrow_left
   - first:
       213: 1801734150429527296
-    second: sheet_white2x 1_61
+    second: icon_expand_corners
   - first:
       213: 4908711677354855117
-    second: sheet_white2x 1_62
+    second: icon_pause_2
   - first:
       213: 5603500362804582497
-    second: sheet_white2x 1_63
+    second: icon_joystick_2
   - first:
       213: 6071341694642018504
-    second: sheet_white2x 1_64
+    second: icon_arrow_down
   - first:
       213: -3593468398240017447
-    second: sheet_white2x 1_65
+    second: icon_user
   - first:
       213: 1552504161822803391
-    second: sheet_white2x 1_66
+    second: icon_l_button
   - first:
       213: -1545613936630669574
-    second: sheet_white2x 1_67
+    second: icon_joystick_3
   - first:
       213: -807627158900088106
-    second: sheet_white2x 1_68
+    second: icon_x_button
   - first:
       213: -5883391913473783573
-    second: sheet_white2x 1_69
+    second: icon_zoom_out
   - first:
       213: -7283233602331132472
-    second: sheet_white2x 1_70
+    second: icon_signal_bars
   - first:
       213: -2291866655759015287
-    second: sheet_white2x 1_71
+    second: icon_next_track
   - first:
       213: 960538199044952750
-    second: sheet_white2x 1_72
+    second: icon_joystick_4
   - first:
       213: -7677148002002757234
-    second: sheet_white2x 1_73
+    second: icon_half_circle
   - first:
       213: -4026495182590300147
-    second: sheet_white2x 1_74
+    second: icon_zoom_in
   - first:
       213: 2170562940660627187
-    second: sheet_white2x 1_75
+    second: icon_signal_bars_2
   - first:
       213: 1152482449955305251
-    second: sheet_white2x 1_76
+    second: icon_music_note
   - first:
       213: -7926545908796290738
-    second: sheet_white2x 1_77
+    second: icon_info
   - first:
       213: 1819003273441044393
-    second: sheet_white2x 1_78
+    second: icon_check
   - first:
       213: 3431357286357555045
-    second: sheet_white2x 1_79
+    second: icon_zoom_equal
   - first:
       213: -2430003310085078541
-    second: sheet_white2x 1_80
+    second: icon_bar
   - first:
       213: 6669551323355895855
-    second: sheet_white2x 1_81
+    second: icon_mute_music_note
   - first:
       213: -6657541365108769037
-    second: sheet_white2x 1_82
+    second: icon_download
   - first:
       213: 5254139017238536453
-    second: sheet_white2x 1_83
+    second: icon_y_button
   - first:
       213: 1512757099208132884
-    second: sheet_white2x 1_84
+    second: icon_search
   - first:
       213: -3577319104563733372
-    second: sheet_white2x 1_85
+    second: icon_cart
   - first:
       213: 7596697636883784784
-    second: sheet_white2x 1_86
+    second: icon_users_2
   - first:
       213: 5948865381346542828
-    second: sheet_white2x 1_87
+    second: icon_home
   - first:
       213: -1401099245761931049
-    second: sheet_white2x 1_88
+    second: icon_x_button_2
   - first:
       213: -4722464529368355001
-    second: sheet_white2x 1_89
+    second: icon_wrench
   - first:
       213: 8803640602088198721
-    second: sheet_white2x 1_90
+    second: icon_basket
   - first:
       213: 8022923168357535
-    second: sheet_white2x 1_91
+    second: icon_film_strip
   - first:
       213: 9203080149158422967
-    second: sheet_white2x 1_92
+    second: icon_gear
   - first:
       213: 9056486334420179841
-    second: sheet_white2x 1_93
+    second: icon_start
   - first:
       213: -8718496443226853673
-    second: sheet_white2x 1_94
+    second: icon_warning
   - first:
       213: -2207977938258799482
-    second: sheet_white2x 1_95
+    second: icon_share
   - first:
       213: 6268837908938090822
-    second: sheet_white2x 1_96
+    second: icon_shield_lock
   - first:
       213: -8548966318976492797
-    second: sheet_white2x 1_97
+    second: icon_gamepad_4
   - first:
       213: -2659118933602906952
-    second: sheet_white2x 1_98
+    second: icon_select
   - first:
       213: -1412445094471487560
-    second: sheet_white2x 1_99
+    second: icon_clapperboard
   - first:
       213: 3138116605106004655
-    second: sheet_white2x 1_100
+    second: icon_external_link
   - first:
       213: -7483018143795981527
-    second: sheet_white2x 1_101
+    second: icon_minus
   - first:
       213: 2763900425299697511
-    second: sheet_white2x 1_102
+    second: icon_gamepad_3
   - first:
       213: 631788647511068698
-    second: sheet_white2x 1_103
+    second: icon_r2_button
   - first:
       213: 6740020373467602492
-    second: sheet_white2x 1_104
+    second: icon_r2_button_alt
   - first:
       213: 4784758050144847414
     second: sheet_white2x 1_105
@@ -1028,7 +1028,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sheet_white2x_0
+      name: icon_b_button
       rect:
         serializedVersion: 2
         x: 0
@@ -1050,7 +1050,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_1
+      name: icon_arrow_up_right
       rect:
         serializedVersion: 2
         x: 400
@@ -1072,7 +1072,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_2
+      name: icon_up_down_diamond
       rect:
         serializedVersion: 2
         x: 800
@@ -1094,7 +1094,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_3
+      name: icon_menu_list
       rect:
         serializedVersion: 2
         x: 1200
@@ -1116,7 +1116,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_4
+      name: icon_gamepad_2
       rect:
         serializedVersion: 2
         x: 1600
@@ -1138,7 +1138,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_5
+      name: icon_r1_button
       rect:
         serializedVersion: 2
         x: 2000
@@ -1160,7 +1160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_6
+      name: icon_a_button
       rect:
         serializedVersion: 2
         x: 0
@@ -1182,7 +1182,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_7
+      name: icon_arrow_up_left
       rect:
         serializedVersion: 2
         x: 400
@@ -1204,7 +1204,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_8
+      name: icon_left_right_diamond
       rect:
         serializedVersion: 2
         x: 800
@@ -1226,7 +1226,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_9
+      name: icon_grid_9
       rect:
         serializedVersion: 2
         x: 1200
@@ -1248,7 +1248,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_10
+      name: icon_gamepad_1
       rect:
         serializedVersion: 2
         x: 1600
@@ -1270,7 +1270,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_11
+      name: icon_r_button
       rect:
         serializedVersion: 2
         x: 2000
@@ -1292,7 +1292,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_12
+      name: icon_three_button
       rect:
         serializedVersion: 2
         x: 0
@@ -1314,7 +1314,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_13
+      name: icon_triangle_up
       rect:
         serializedVersion: 2
         x: 400
@@ -1336,7 +1336,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_14
+      name: icon_save
       rect:
         serializedVersion: 2
         x: 800
@@ -1358,7 +1358,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_15
+      name: icon_medal_ribbon
       rect:
         serializedVersion: 2
         x: 1200
@@ -1380,7 +1380,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_16
+      name: icon_gamepad
       rect:
         serializedVersion: 2
         x: 1600
@@ -1402,7 +1402,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_17
+      name: icon_l2_button
       rect:
         serializedVersion: 2
         x: 2000
@@ -1424,7 +1424,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_18
+      name: icon_two_button
       rect:
         serializedVersion: 2
         x: 0
@@ -1446,7 +1446,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_19
+      name: icon_lock_open
       rect:
         serializedVersion: 2
         x: 400
@@ -1468,7 +1468,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_20
+      name: icon_play
       rect:
         serializedVersion: 2
         x: 800
@@ -1490,7 +1490,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_21
+      name: icon_keyhole_ribbon
       rect:
         serializedVersion: 2
         x: 1200
@@ -1512,7 +1512,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_22
+      name: icon_fast_forward
       rect:
         serializedVersion: 2
         x: 1600
@@ -1534,7 +1534,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_23
+      name: icon_l1_button
       rect:
         serializedVersion: 2
         x: 2000
@@ -1556,7 +1556,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_24
+      name: icon_one_button
       rect:
         serializedVersion: 2
         x: 0
@@ -1578,7 +1578,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_25
+      name: icon_monitor
       rect:
         serializedVersion: 2
         x: 400
@@ -1600,7 +1600,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_26
+      name: icon_previous
       rect:
         serializedVersion: 2
         x: 800
@@ -1622,7 +1622,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_27
+      name: icon_users
       rect:
         serializedVersion: 2
         x: 1200
@@ -1644,7 +1644,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_28
+      name: icon_upload
       rect:
         serializedVersion: 2
         x: 1600
@@ -1666,7 +1666,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_29
+      name: icon_arrow_right_2
       rect:
         serializedVersion: 2
         x: 2000
@@ -1688,7 +1688,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_30
+      name: icon_pause
       rect:
         serializedVersion: 2
         x: 0
@@ -1710,7 +1710,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_31
+      name: icon_trash_open
       rect:
         serializedVersion: 2
         x: 400
@@ -1732,7 +1732,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_32
+      name: icon_undo
       rect:
         serializedVersion: 2
         x: 800
@@ -1754,7 +1754,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_33
+      name: icon_lock
       rect:
         serializedVersion: 2
         x: 1200
@@ -1776,7 +1776,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_34
+      name: icon_exit_right
       rect:
         serializedVersion: 2
         x: 1600
@@ -1798,7 +1798,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_35
+      name: icon_menu
       rect:
         serializedVersion: 2
         x: 0
@@ -1820,7 +1820,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_36
+      name: icon_trash
       rect:
         serializedVersion: 2
         x: 400
@@ -1842,7 +1842,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_37
+      name: icon_help
       rect:
         serializedVersion: 2
         x: 800
@@ -1864,7 +1864,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_38
+      name: icon_arrow_left_2
       rect:
         serializedVersion: 2
         x: 1200
@@ -1886,7 +1886,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_39
+      name: icon_exit_left
       rect:
         serializedVersion: 2
         x: 1600
@@ -1908,7 +1908,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_40
+      name: icon_volume
       rect:
         serializedVersion: 2
         x: 0
@@ -1930,7 +1930,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_41
+      name: icon_target
       rect:
         serializedVersion: 2
         x: 400
@@ -1952,7 +1952,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_42
+      name: icon_previous_track
       rect:
         serializedVersion: 2
         x: 800
@@ -1974,7 +1974,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_43
+      name: icon_blocks
       rect:
         serializedVersion: 2
         x: 1200
@@ -1996,7 +1996,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_44
+      name: icon_door
       rect:
         serializedVersion: 2
         x: 1600
@@ -2018,7 +2018,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_45
+      name: icon_speaker
       rect:
         serializedVersion: 2
         x: 0
@@ -2040,7 +2040,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_46
+      name: icon_stop
       rect:
         serializedVersion: 2
         x: 400
@@ -2062,7 +2062,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_47
+      name: icon_power
       rect:
         serializedVersion: 2
         x: 800
@@ -2084,7 +2084,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_48
+      name: icon_podium_123
       rect:
         serializedVersion: 2
         x: 1200
@@ -2106,7 +2106,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_49
+      name: icon_exclamation
       rect:
         serializedVersion: 2
         x: 1600
@@ -2128,7 +2128,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_50
+      name: icon_arrow_up
       rect:
         serializedVersion: 2
         x: 0
@@ -2150,7 +2150,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_51
+      name: icon_square
       rect:
         serializedVersion: 2
         x: 400
@@ -2172,7 +2172,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_52
+      name: icon_plus
       rect:
         serializedVersion: 2
         x: 800
@@ -2194,7 +2194,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_53
+      name: icon_fullscreen
       rect:
         serializedVersion: 2
         x: 1200
@@ -2216,7 +2216,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_54
+      name: icon_arrow_down_right
       rect:
         serializedVersion: 2
         x: 1600
@@ -2238,7 +2238,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_55
+      name: icon_arrow_right
       rect:
         serializedVersion: 2
         x: 0
@@ -2260,7 +2260,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_56
+      name: icon_star
       rect:
         serializedVersion: 2
         x: 400
@@ -2282,7 +2282,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_57
+      name: icon_phone
       rect:
         serializedVersion: 2
         x: 800
@@ -2304,7 +2304,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_58
+      name: icon_joystick
       rect:
         serializedVersion: 2
         x: 1200
@@ -2326,7 +2326,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_59
+      name: icon_arrow_down_left
       rect:
         serializedVersion: 2
         x: 1600
@@ -2348,7 +2348,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_60
+      name: icon_arrow_left
       rect:
         serializedVersion: 2
         x: 0
@@ -2370,7 +2370,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_61
+      name: icon_expand_corners
       rect:
         serializedVersion: 2
         x: 400
@@ -2392,7 +2392,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_62
+      name: icon_pause_2
       rect:
         serializedVersion: 2
         x: 800
@@ -2414,7 +2414,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_63
+      name: icon_joystick_2
       rect:
         serializedVersion: 2
         x: 1200
@@ -2436,7 +2436,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_64
+      name: icon_arrow_down
       rect:
         serializedVersion: 2
         x: 1600
@@ -2458,7 +2458,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_65
+      name: icon_user
       rect:
         serializedVersion: 2
         x: 0
@@ -2480,7 +2480,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_66
+      name: icon_l_button
       rect:
         serializedVersion: 2
         x: 400
@@ -2502,7 +2502,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_67
+      name: icon_joystick_3
       rect:
         serializedVersion: 2
         x: 800
@@ -2524,7 +2524,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_68
+      name: icon_x_button
       rect:
         serializedVersion: 2
         x: 1200
@@ -2546,7 +2546,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_69
+      name: icon_zoom_out
       rect:
         serializedVersion: 2
         x: 1600
@@ -2568,7 +2568,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_70
+      name: icon_signal_bars
       rect:
         serializedVersion: 2
         x: 0
@@ -2590,7 +2590,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_71
+      name: icon_next_track
       rect:
         serializedVersion: 2
         x: 400
@@ -2612,7 +2612,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_72
+      name: icon_joystick_4
       rect:
         serializedVersion: 2
         x: 800
@@ -2634,7 +2634,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_73
+      name: icon_half_circle
       rect:
         serializedVersion: 2
         x: 1200
@@ -2656,7 +2656,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_74
+      name: icon_zoom_in
       rect:
         serializedVersion: 2
         x: 1600
@@ -2678,7 +2678,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_75
+      name: icon_signal_bars_2
       rect:
         serializedVersion: 2
         x: 0
@@ -2700,7 +2700,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_76
+      name: icon_music_note
       rect:
         serializedVersion: 2
         x: 400
@@ -2722,7 +2722,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_77
+      name: icon_info
       rect:
         serializedVersion: 2
         x: 800
@@ -2744,7 +2744,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_78
+      name: icon_check
       rect:
         serializedVersion: 2
         x: 1200
@@ -2766,7 +2766,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_79
+      name: icon_zoom_equal
       rect:
         serializedVersion: 2
         x: 1600
@@ -2788,7 +2788,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_80
+      name: icon_bar
       rect:
         serializedVersion: 2
         x: 0
@@ -2810,7 +2810,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_81
+      name: icon_mute_music_note
       rect:
         serializedVersion: 2
         x: 400
@@ -2832,7 +2832,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_82
+      name: icon_download
       rect:
         serializedVersion: 2
         x: 800
@@ -2854,7 +2854,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_83
+      name: icon_y_button
       rect:
         serializedVersion: 2
         x: 1200
@@ -2876,7 +2876,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_84
+      name: icon_search
       rect:
         serializedVersion: 2
         x: 1600
@@ -2898,7 +2898,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_85
+      name: icon_cart
       rect:
         serializedVersion: 2
         x: 0
@@ -2920,7 +2920,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_86
+      name: icon_users_2
       rect:
         serializedVersion: 2
         x: 400
@@ -2942,7 +2942,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_87
+      name: icon_home
       rect:
         serializedVersion: 2
         x: 800
@@ -2964,7 +2964,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_88
+      name: icon_x_button_2
       rect:
         serializedVersion: 2
         x: 1200
@@ -2986,7 +2986,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_89
+      name: icon_wrench
       rect:
         serializedVersion: 2
         x: 1600
@@ -3008,7 +3008,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_90
+      name: icon_basket
       rect:
         serializedVersion: 2
         x: 0
@@ -3030,7 +3030,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_91
+      name: icon_film_strip
       rect:
         serializedVersion: 2
         x: 400
@@ -3052,7 +3052,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_92
+      name: icon_gear
       rect:
         serializedVersion: 2
         x: 800
@@ -3074,7 +3074,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_93
+      name: icon_start
       rect:
         serializedVersion: 2
         x: 1200
@@ -3096,7 +3096,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_94
+      name: icon_warning
       rect:
         serializedVersion: 2
         x: 1600
@@ -3118,7 +3118,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_95
+      name: icon_share
       rect:
         serializedVersion: 2
         x: 0
@@ -3140,7 +3140,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_96
+      name: icon_shield_lock
       rect:
         serializedVersion: 2
         x: 400
@@ -3162,7 +3162,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_97
+      name: icon_gamepad_4
       rect:
         serializedVersion: 2
         x: 800
@@ -3184,7 +3184,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_98
+      name: icon_select
       rect:
         serializedVersion: 2
         x: 1200
@@ -3206,7 +3206,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_99
+      name: icon_clapperboard
       rect:
         serializedVersion: 2
         x: 1600
@@ -3228,7 +3228,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_100
+      name: icon_external_link
       rect:
         serializedVersion: 2
         x: 0
@@ -3250,7 +3250,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_101
+      name: icon_minus
       rect:
         serializedVersion: 2
         x: 400
@@ -3272,7 +3272,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_102
+      name: icon_gamepad_3
       rect:
         serializedVersion: 2
         x: 800
@@ -3294,7 +3294,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_103
+      name: icon_r2_button
       rect:
         serializedVersion: 2
         x: 1200
@@ -3316,7 +3316,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_white2x_104
+      name: icon_r2_button_alt
       rect:
         serializedVersion: 2
         x: 1600
@@ -3353,6 +3353,111 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":400.0,"y":400.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
+      icon_a_button: -2117006244
+      icon_arrow_down: -591418417
+      icon_arrow_down_left: -1312493738
+      icon_arrow_down_right: 1668287781
+      icon_arrow_left: 575807744
+      icon_arrow_left_2: -54433355
+      icon_arrow_right: -286391077
+      icon_arrow_right_2: -2141942228
+      icon_arrow_up: 1377421024
+      icon_arrow_up_left: 954394848
+      icon_arrow_up_right: -1336392001
+      icon_b_button: -469794574
+      icon_bar: 813780467
+      icon_basket: -2024205341
+      icon_blocks: -1784154481
+      icon_cart: 1309059917
+      icon_check: -437609946
+      icon_clapperboard: -1629479934
+      icon_door: 1030985356
+      icon_download: 1279094685
+      icon_exclamation: 308556875
+      icon_exit_left: -1946377386
+      icon_exit_right: 26983906
+      icon_expand_corners: 1758704488
+      icon_external_link: 1232922903
+      icon_fast_forward: -426810315
+      icon_film_strip: -995304643
+      icon_fullscreen: -1478748291
+      icon_gamepad: 2072534289
+      icon_gamepad_1: 504126988
+      icon_gamepad_2: 132729487
+      icon_gamepad_3: -1672079201
+      icon_gamepad_4: -739113396
+      icon_gear: 29135790
+      icon_grid_9: -369076042
+      icon_half_circle: -510465871
+      icon_help: -1617398343
+      icon_home: -1846396749
+      icon_info: -261419446
+      icon_joystick: 1870618755
+      icon_joystick_2: -1039722169
+      icon_joystick_3: 1381026
+      icon_joystick_4: -935946872
+      icon_keyhole_ribbon: -1185303465
+      icon_l1_button: 423134750
+      icon_l2_button: 433246382
+      icon_l_button: -383641821
+      icon_left_right_diamond: -689370307
+      icon_lock: 1540303249
+      icon_lock_open: -1806366216
+      icon_medal_ribbon: -1233904913
+      icon_menu: -1647978176
+      icon_menu_list: -1566213860
+      icon_minus: -889713943
+      icon_monitor: 809777994
+      icon_music_note: 840201987
+      icon_mute_music_note: 1589136715
+      icon_next_track: -622798057
+      icon_one_button: 755872868
+      icon_pause: 328435906
+      icon_pause_2: -1110226122
+      icon_phone: 92982826
+      icon_play: -1738123673
+      icon_plus: -1585276797
+      icon_podium_123: 381024255
+      icon_power: 1093265208
+      icon_previous: 28487531
+      icon_previous_track: 2065791754
+      icon_r1_button: 630437433
+      icon_r2_button: -1847444192
+      icon_r2_button_alt: 236368552
+      icon_r_button: 2004534548
+      icon_save: -893752884
+      icon_search: -1160152745
+      icon_select: 342297061
+      icon_share: -962991167
+      icon_shield_lock: -663219388
+      icon_signal_bars: 638066436
+      icon_signal_bars_2: -78114636
+      icon_speaker: 1789026824
+      icon_square: 564396215
+      icon_star: 836578159
+      icon_start: 729058356
+      icon_stop: -1014949153
+      icon_target: 1869120568
+      icon_three_button: -835906585
+      icon_trash: -1550028594
+      icon_trash_open: 1296881831
+      icon_triangle_up: 1250765251
+      icon_two_button: 1226536069
+      icon_undo: 1012967219
+      icon_up_down_diamond: 2080983273
+      icon_upload: -690533638
+      icon_user: 1846035670
+      icon_users: -1813761696
+      icon_users_2: -1601943306
+      icon_volume: -150429268
+      icon_warning: 1131545840
+      icon_wrench: 835969061
+      icon_x_button: 632640009
+      icon_x_button_2: -240865076
+      icon_y_button: 218833813
+      icon_zoom_equal: 1962729140
+      icon_zoom_in: 331991097
+      icon_zoom_out: -882151315
       sheet_white2x_0: -469794574
       sheet_white2x_1: -1336392001
       sheet_white2x_10: 504126988
