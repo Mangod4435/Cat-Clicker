@@ -12,26 +12,26 @@ namespace API
             return baseCost * Math.Pow(1.15, amount);
         }
 
-        public static double getPrice(string name)
+        public static double getPrice(UNIVERSALButton.UpgradeType name)
         {
             switch (name)
             {
                 //click upgrades
-                case "Sharp Claw":
+                case UNIVERSALButton.UpgradeType.SharpClaw:
                     return 100;
 
                 //lazy upgrades
-                case "Cozy Spot":
+                case UNIVERSALButton.UpgradeType.CozySpot:
                     return 20;
-                case "Fish Bowl":
+                case UNIVERSALButton.UpgradeType.FishBowl:
                     return 100;
-                case "TV":
+                case UNIVERSALButton.UpgradeType.TV:
                     return 1_000;
-                case "Laser":
+                case UNIVERSALButton.UpgradeType.Laser:
                     return 50_000;
-                case "Factory":
+                case UNIVERSALButton.UpgradeType.Factory:
                     return 10_000_000;
-                case "Satellite":
+                case UNIVERSALButton.UpgradeType.Satellite:
                     return 5_000_000_000;
                 default:
                     Debug.LogError($"No upgrade with name \"{name}\" found");
@@ -39,26 +39,26 @@ namespace API
             }
         }
 
-        public static double getAmount(string name)
+        public static double getAmount(UNIVERSALButton.UpgradeType name)
         {
             switch (name)
             {
                 //click upgrades
-                case "Sharp Claw":
+                case UNIVERSALButton.UpgradeType.SharpClaw:
                     return manager.SharpClaw;
 
                 //lazy upgrades
-                case "Cozy Spot":
+                case UNIVERSALButton.UpgradeType.CozySpot:
                     return manager.CozySpot;
-                case "Fish Bowl":
+                case UNIVERSALButton.UpgradeType.FishBowl:
                     return manager.FishBowl;
-                case "TV":
+                case UNIVERSALButton.UpgradeType.TV:
                     return manager.TV;
-                case "Laser":
+                case UNIVERSALButton.UpgradeType.Laser:
                     return manager.Laser;
-                case "Factory":
+                case UNIVERSALButton.UpgradeType.Factory:
                     return manager.Factory;
-                case "Satellite":
+                case UNIVERSALButton.UpgradeType.Satellite:
                     return manager.Satellite;
                 default:
                     Debug.LogError($"No upgrade with name \"{name}\" found");
@@ -66,7 +66,7 @@ namespace API
             }
         }
 
-        public static double getCalculatedPrice(string name)
+        public static double getCalculatedPrice(UNIVERSALButton.UpgradeType name)
         {
             return PriceCalculator(getPrice(name), getAmount(name));
         }

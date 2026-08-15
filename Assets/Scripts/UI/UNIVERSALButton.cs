@@ -16,15 +16,26 @@ public class UNIVERSALButton : MonoBehaviour
 
     public enum ButtonType
     {
-        reset,
         cat,
-        setting,
-        save,
-        upgradeMenu,
-        upgrade,
+        mainMenuSetting,
         quit,
+        reset,
+        save,
+        setting,
         start,
-        mainMenuSetting
+        upgrade,
+        upgradeMenu,
+    }
+
+    public enum UpgradeType
+    {
+        CozySpot,
+        Factory,
+        FishBowl,
+        Laser,
+        SharpClaw,
+        Satellite,
+        TV,
     }
     #endregion
     #region serialize field
@@ -32,7 +43,7 @@ public class UNIVERSALButton : MonoBehaviour
     [SerializeField] GameObject menu;
     [SerializeField] GameObject cat;
     [SerializeField] GameObject setting;
-    [SerializeField] string upgradeName;
+    [SerializeField] UpgradeType upgradeName;
     [SerializeField] int index;
     #endregion
     #region private field
@@ -178,20 +189,20 @@ public class UNIVERSALButton : MonoBehaviour
     {
         switch (upgradeName)
         {
-            case "Sharp Claw":
+            case UpgradeType.SharpClaw:
                 return gameManager.Cats >= UpgradeAPI.PriceCalculator(100, gameManager.SharpClaw);
-            case "Cozy Spot":
+            case UpgradeType.CozySpot:
                 return gameManager.Cats >= UpgradeAPI.PriceCalculator(20, gameManager.CozySpot);
-            case "Fish Bowl":
+            case UpgradeType.FishBowl:
                 return gameManager.Cats >= UpgradeAPI.PriceCalculator(100, gameManager.FishBowl);
-            case "TV":
+            case UpgradeType.TV:
                 return gameManager.Cats >= UpgradeAPI.PriceCalculator(1_000, gameManager.TV);
-            case "Laser":
+            case UpgradeType.Laser:
                 return gameManager.Cats >= UpgradeAPI.PriceCalculator(50_000, gameManager.Laser);
-            case "Factory":
+            case UpgradeType.Factory:
                 return gameManager.Cats
                     >= UpgradeAPI.PriceCalculator(10_000_000, gameManager.Factory);
-            case "Satellite":
+            case UpgradeType.Satellite:
                 return gameManager.Cats
                     >= UpgradeAPI.PriceCalculator(5_000_000_000, gameManager.Satellite);
             default:

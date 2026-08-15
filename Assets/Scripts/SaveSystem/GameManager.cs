@@ -96,29 +96,29 @@ public class GameManager : MonoBehaviour
 
     public void SetCat(double amount = 0) => Cats = amount;
 
-    public void AddUpgrade(string name, int amount = 1)
+    public void AddUpgrade(UNIVERSALButton.UpgradeType name, int amount = 1)
     {
         switch (name)
         {
-            case "Sharp Claw":
+            case UNIVERSALButton.UpgradeType.SharpClaw:
                 SharpClaw += amount;
                 break;
-            case "Cozy Spot":
+            case UNIVERSALButton.UpgradeType.CozySpot:
                 CozySpot += amount;
                 break;
-            case "Fish Bowl":
+            case UNIVERSALButton.UpgradeType.FishBowl:
                 FishBowl += amount;
                 break;
-            case "TV":
+            case UNIVERSALButton.UpgradeType.TV:
                 TV += amount;
                 break;
-            case "Laser":
+            case UNIVERSALButton.UpgradeType.Laser:
                 Laser += amount;
                 break;
-            case "Factory":
+            case UNIVERSALButton.UpgradeType.Factory:
                 Factory += amount;
                 break;
-            case "Satellite":
+            case UNIVERSALButton.UpgradeType.Satellite:
                 Satellite += amount;
                 break;
             default:
@@ -130,29 +130,29 @@ public class GameManager : MonoBehaviour
         RecalCulateCps();
     }
 
-    public void setRevealed(string name, bool value)
+    public void setRevealed(UNIVERSALButton.UpgradeType name, bool value)
     {
         switch (name)
         {
-            case "Sharp Claw":
+            case UNIVERSALButton.UpgradeType.SharpClaw:
                 IsSharpClawRevealed = value;
                 break;
-            case "Cozy Spot":
+            case UNIVERSALButton.UpgradeType.CozySpot:
                 IsCozySpotRevealed = value;
                 break;
-            case "Fish Bowl":
+            case UNIVERSALButton.UpgradeType.FishBowl:
                 IsFishBowlRevealed = value;
                 break;
-            case "TV":
+            case UNIVERSALButton.UpgradeType.TV:
                 IsTVRevealed = value;
                 break;
-            case "Laser":
+            case UNIVERSALButton.UpgradeType.Laser:
                 IsLaserRevealed = value;
                 break;
-            case "Factory":
+            case UNIVERSALButton.UpgradeType.Factory:
                 IsFactoryRevealed = value;
                 break;
-            case "Satellite":
+            case UNIVERSALButton.UpgradeType.Satellite:
                 IsSatelliteRevealed = value;
                 break;
             default:
@@ -162,23 +162,23 @@ public class GameManager : MonoBehaviour
         SyncUpgradesData();
     }
 
-    public bool getRevealed(string name)
+    public bool getRevealed(UNIVERSALButton.UpgradeType name)
     {
         switch (name)
         {
-            case "Sharp Claw":
+            case UNIVERSALButton.UpgradeType.SharpClaw:
                 return IsSharpClawRevealed;
-            case "Cozy Spot":
+            case UNIVERSALButton.UpgradeType.CozySpot:
                 return IsCozySpotRevealed;
-            case "Fish Bowl":
+            case UNIVERSALButton.UpgradeType.FishBowl:
                 return IsFishBowlRevealed;
-            case "TV":
+            case UNIVERSALButton.UpgradeType.TV:
                 return IsTVRevealed;
-            case "Laser":
+            case UNIVERSALButton.UpgradeType.Laser:
                 return IsLaserRevealed;
-            case "Factory":
+            case UNIVERSALButton.UpgradeType.Factory:
                 return IsFactoryRevealed;
-            case "Satellite":
+            case UNIVERSALButton.UpgradeType.Satellite:
                 return IsSatelliteRevealed;
             default:
                 Debug.LogError($"That upgrade not found ({name})");
