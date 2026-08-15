@@ -16,15 +16,15 @@ public class UNIVERSALButton : MonoBehaviour
 
     public enum ButtonType
     {
-        cat,
-        mainMenuSetting,
-        quit,
-        reset,
-        save,
-        setting,
-        start,
-        upgrade,
-        upgradeMenu,
+        cat = 0,
+        mainMenuSetting = 1,
+        quit = 2,
+        reset = 3,
+        save = 4,
+        setting = 5,
+        start = 6,
+        upgrade = 7,
+        upgradeMenu = 8,
     }
 
     public enum UpgradeType
