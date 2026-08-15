@@ -29,13 +29,13 @@ public class UNIVERSALButton : MonoBehaviour
 
     public enum UpgradeType
     {
-        CozySpot,
-        Factory,
-        FishBowl,
-        Laser,
-        SharpClaw,
-        Satellite,
-        TV,
+        CozySpot = 0,
+        Factory = 1,
+        FishBowl = 2,
+        Laser = 3,
+        SharpClaw = 4,
+        Satellite = 5,
+        TV = 6,
     }
     #endregion
     #region serialize field

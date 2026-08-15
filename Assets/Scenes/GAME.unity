@@ -286,7 +286,7 @@ MonoBehaviour:
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
-  upgradeName: Satellite
+  upgradeName: 5
   index: 5
 --- !u!1 &87532568
 GameObject:
@@ -550,7 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0794bd745fa8d49ac9bee125aa6fa9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeDP
-  upgradeName: Factory
+  upgradeName: 1
 --- !u!114 &127183701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0794bd745fa8d49ac9bee125aa6fa9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeDP
-  upgradeName: Satellite
+  upgradeName: 5
 --- !u!114 &287231124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1300,7 +1300,7 @@ MonoBehaviour:
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
-  upgradeName: Factory
+  upgradeName: 1
   index: 4
 --- !u!1 &376198198
 GameObject:
@@ -1352,7 +1352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0794bd745fa8d49ac9bee125aa6fa9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeDP
-  upgradeName: TV
+  upgradeName: 6
 --- !u!114 &376198201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2019,7 +2019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0794bd745fa8d49ac9bee125aa6fa9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeDP
-  upgradeName: Sharp Claw
+  upgradeName: 4
 --- !u!114 &521340074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2424,7 +2424,7 @@ MonoBehaviour:
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
-  upgradeName: Fish Bowl
+  upgradeName: 2
   index: 1
 --- !u!1 &604017037
 GameObject:
@@ -2551,7 +2551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0794bd745fa8d49ac9bee125aa6fa9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeDP
-  upgradeName: Laser
+  upgradeName: 3
 --- !u!114 &610060666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4411,7 +4411,7 @@ MonoBehaviour:
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
-  upgradeName: TV
+  upgradeName: 6
   index: 2
 --- !u!1 &1109215776
 GameObject:
@@ -6271,7 +6271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0794bd745fa8d49ac9bee125aa6fa9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeDP
-  upgradeName: Fish Bowl
+  upgradeName: 2
 --- !u!114 &1753550106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6866,7 +6866,7 @@ MonoBehaviour:
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
-  upgradeName: Cozy Spot
+  upgradeName: 0
   index: 0
 --- !u!1 &1888591618
 GameObject:
@@ -7035,7 +7035,7 @@ MonoBehaviour:
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
-  upgradeName: Laser
+  upgradeName: 3
   index: 3
 --- !u!1 &1897885958
 GameObject:
@@ -7355,7 +7355,7 @@ MonoBehaviour:
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
-  upgradeName: Sharp Claw
+  upgradeName: 4
   index: 0
 --- !u!1 &1946857358
 GameObject:
@@ -7407,7 +7407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0794bd745fa8d49ac9bee125aa6fa9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeDP
-  upgradeName: Cozy Spot
+  upgradeName: 0
 --- !u!114 &1946857361
 MonoBehaviour:
   m_ObjectHideFlags: 0
