@@ -5,24 +5,34 @@ using UnityEngine.UI;
 
 public class UNIVERSALButton : MonoBehaviour
 {
+    #region enum
+    public enum ButtonState
+    {
+        Available,
+        NotAffordable,
+        Shadow,
+        Unrevealed,
+    }
+    public enum ButtonType
+    {
+        reset,
+        cat,
+        setting,
+        save,
+        upgradeMenu,
+        upgrade,
+        quit,
+        start,
+        mainMenuSetting
+    }
+    #endregion
     #region serialize field
-    [SerializeField]
-    string buttonName;
-
-    [SerializeField]
-    GameObject menu;
-
-    [SerializeField]
-    GameObject cat;
-
-    [SerializeField]
-    GameObject setting;
-
-    [SerializeField]
-    string upgradeName;
-
-    [SerializeField]
-    int index;
+    [SerializeField] ButtonType buttonName;
+    [SerializeField] GameObject menu;
+    [SerializeField] GameObject cat;
+    [SerializeField] GameObject setting;
+    [SerializeField] string upgradeName;
+    [SerializeField] int index;
     #endregion
     #region private field
     GameManager gameManager => GameManager.Instance;
@@ -35,25 +45,17 @@ public class UNIVERSALButton : MonoBehaviour
     bool settingOpenning;
     ButtonState state = ButtonState.Unrevealed;
     ButtonState lastState = (ButtonState)(-1);
-
-    public enum ButtonState
-    {
-        Available,
-        NotAffordable,
-        Shadow,
-        Unrevealed,
-    }
     #endregion
 
     void Awake()
     {
         switch (buttonName)
         {
-            case "cat":
+            case ButtonType.cat:
                 e = GetComponent<PressedEvent>();
                 meow = GetComponent<AudioSource>();
                 break;
-            case "upgrade":
+            case ButtonType.upgrade:
                 cg = gameObject.GetComponent<CanvasGroup>();
                 mask = transform.GetChild(4).GetComponent<CanvasGroup>();
                 icon = transform.GetChild(0).GetComponent<Image>();
@@ -65,7 +67,7 @@ public class UNIVERSALButton : MonoBehaviour
     {
         switch (buttonName)
         {
-            case "cat":
+            case ButtonType.cat:
                 transform.Rotate(0, 0, -22.5f * Time.fixedDeltaTime);
                 break;
         }
@@ -75,11 +77,11 @@ public class UNIVERSALButton : MonoBehaviour
     {
         switch (buttonName)
         {
-            case "cat":
+            case ButtonType.cat:
                 transform.localScale = e.holding ? Vector3.one * 0.8f : Vector3.one;
                 meow.volume = settingManager.Sound ? 1 : 0;
                 break;
-            case "upgradeMenu":
+            case ButtonType.upgradeMenu:
                 bool isOpen = UIState.state == UIState.OpenedInterface.Upgrade;
                 gameObject.GetComponent<RectTransform>().anchoredPosition = isOpen
                     ? new Vector3(-960, 0)
@@ -90,15 +92,15 @@ public class UNIVERSALButton : MonoBehaviour
                 bool isSettingOpen = UIState.state == UIState.OpenedInterface.Setting;
                 gameObject.GetComponent<Image>().color = isSettingOpen ? Color.white : Color.black;
                 break;
-            case "setting":
+            case ButtonType.setting:
                 bool isSettingOpen2 = UIState.state == UIState.OpenedInterface.Setting;
                 gameObject.GetComponent<Image>().color = isSettingOpen2 ? Color.white : Color.black;
                 break;
-            case "SAVE":
+            case ButtonType.save:
                 bool isSettingOpen3 = UIState.state == UIState.OpenedInterface.Setting;
                 gameObject.GetComponent<Image>().color = isSettingOpen3 ? Color.white : Color.black;
                 break;
-            case "upgrade":
+            case ButtonType.upgrade:
                 state = EvaluateState();
                 ApplyRevealSideEffect(state);
 
@@ -116,13 +118,13 @@ public class UNIVERSALButton : MonoBehaviour
         switch (buttonName)
         {
             #region setting
-            case "reset":
+            case ButtonType.reset:
                 gameManager.ResetGame();
                 if (!gameObject.CompareTag("MainMenu"))
                     cat.transform.rotation = Quaternion.Euler(0, 0, 0);
                 UIState.state = UIState.OpenedInterface.None;
                 break;
-            case "setting":
+            case ButtonType.setting:
                 UIState.state =
                     UIState.state == UIState.OpenedInterface.Setting
                         ? UIState.OpenedInterface.None
@@ -130,13 +132,13 @@ public class UNIVERSALButton : MonoBehaviour
                 break;
             #endregion
             #region upgrade
-            case "upgrade":
+            case ButtonType.upgrade:
                 if (!IsAffordable())
                     return;
                 gameManager.AddCat(-UpgradeAPI.getCalculatedPrice(upgradeName));
                 gameManager.AddUpgrade(upgradeName, 1);
                 break;
-            case "upgradeMenu":
+            case ButtonType.upgradeMenu:
                 UIState.state =
                     UIState.state == UIState.OpenedInterface.Upgrade
                         ? UIState.OpenedInterface.None
@@ -144,23 +146,23 @@ public class UNIVERSALButton : MonoBehaviour
                 break;
             #endregion
             #region main menu buttons
-            case "start":
+            case ButtonType.start:
                 SceneManager.LoadScene(1);
                 settingOpenning = false;
                 break;
-            case "msetting":
+            case ButtonType.mainMenuSetting:
                 setting.SetActive(!settingOpenning);
                 settingOpenning = !settingOpenning;
                 break;
-            case "quit":
+            case ButtonType.quit:
                 Application.Quit();
                 break;
             #endregion
 
-            case "SAVE":
+            case ButtonType.save:
                 gameManager.SaveGame();
                 break;
-            case "cat":
+            case ButtonType.cat:
                 gameManager.AddCat(1 * gameManager.CPC);
                 meow.Play();
                 break;
