@@ -13,6 +13,7 @@ public class UNIVERSALButton : MonoBehaviour
         Shadow,
         Unrevealed,
     }
+
     public enum ButtonType
     {
         reset,
@@ -27,7 +28,7 @@ public class UNIVERSALButton : MonoBehaviour
     }
     #endregion
     #region serialize field
-    [SerializeField] ButtonType buttonName;
+    [SerializeField] ButtonType type;
     [SerializeField] GameObject menu;
     [SerializeField] GameObject cat;
     [SerializeField] GameObject setting;
@@ -49,7 +50,7 @@ public class UNIVERSALButton : MonoBehaviour
 
     void Awake()
     {
-        switch (buttonName)
+        switch (type)
         {
             case ButtonType.cat:
                 e = GetComponent<PressedEvent>();
@@ -65,7 +66,7 @@ public class UNIVERSALButton : MonoBehaviour
 
     void FixedUpdate()
     {
-        switch (buttonName)
+        switch (type)
         {
             case ButtonType.cat:
                 transform.Rotate(0, 0, -22.5f * Time.fixedDeltaTime);
@@ -75,7 +76,7 @@ public class UNIVERSALButton : MonoBehaviour
 
     void Update()
     {
-        switch (buttonName)
+        switch (type)
         {
             case ButtonType.cat:
                 transform.localScale = e.holding ? Vector3.one * 0.8f : Vector3.one;
@@ -115,7 +116,7 @@ public class UNIVERSALButton : MonoBehaviour
 
     public void OnClicked()
     {
-        switch (buttonName)
+        switch (type)
         {
             #region setting
             case ButtonType.reset:
@@ -167,7 +168,7 @@ public class UNIVERSALButton : MonoBehaviour
                 meow.Play();
                 break;
             default:
-                Debug.LogError($"No such button named \"{buttonName}\"");
+                Debug.LogError($"No such button named \"{type}\"");
                 break;
         }
     }

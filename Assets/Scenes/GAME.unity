@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  buttonName: upgrade
+  type: 5
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
@@ -1296,7 +1296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  buttonName: upgrade
+  type: 5
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
@@ -2420,7 +2420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  buttonName: upgrade
+  type: 5
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
@@ -3834,7 +3834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  buttonName: SAVE
+  type: 3
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
@@ -4238,7 +4238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  buttonName: cat
+  type: 1
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
@@ -4407,7 +4407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  buttonName: upgrade
+  type: 5
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
@@ -6517,7 +6517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  buttonName: setting
+  type: 2
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
@@ -6862,7 +6862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  buttonName: upgrade
+  type: 5
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
@@ -7031,7 +7031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  buttonName: upgrade
+  type: 5
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
@@ -7182,7 +7182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  buttonName: upgradeMenu
+  type: 4
   menu: {fileID: 0}
   cat: {fileID: 2004188832}
   setting: {fileID: 0}
@@ -7351,7 +7351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  buttonName: upgrade
+  type: 5
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
