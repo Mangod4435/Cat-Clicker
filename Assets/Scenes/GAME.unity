@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  type: 5
+  type: 7
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
@@ -1125,6 +1125,7 @@ RectTransform:
   - {fileID: 2004188833}
   - {fileID: 423148822}
   - {fileID: 1690916682}
+  - {fileID: 1897885959}
   - {fileID: 677285198}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1296,12 +1297,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  type: 5
+  type: 7
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
   upgradeName: 1
   index: 4
+--- !u!1 &363674691 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6164538656347962868, guid: 6db93157ffadf47909d4618a84a971c3, type: 3}
+  m_PrefabInstance: {fileID: 2780357350963007627}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &376198198
 GameObject:
   m_ObjectHideFlags: 0
@@ -2420,7 +2426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  type: 5
+  type: 7
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
@@ -2680,7 +2686,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1897885959}
   - {fileID: 1779613043}
   - {fileID: 883895999}
   m_Father: {fileID: 288795000}
@@ -3022,8 +3027,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc8ed0cddc1641debceedc55ebb84f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainControl
-  upgradesMenu: {fileID: 0}
-  settingsMenu: {fileID: 891494965}
+  upgradesMenu: {fileID: 423148821}
+  settingsMenu: {fileID: 363674691}
 --- !u!4 &766653584
 Transform:
   m_ObjectHideFlags: 0
@@ -3834,17 +3839,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  type: 3
+  type: 4
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
-  upgradeName: 
+  upgradeName: 0
   index: 0
---- !u!1 &891494965 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 775935859490299970, guid: 6db93157ffadf47909d4618a84a971c3, type: 3}
-  m_PrefabInstance: {fileID: 2780357350963007627}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &897724881
 GameObject:
   m_ObjectHideFlags: 0
@@ -4238,11 +4238,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  type: 1
+  type: 0
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
-  upgradeName: 
+  upgradeName: 0
   index: 0
 --- !u!1 &986906264
 GameObject:
@@ -4407,7 +4407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  type: 5
+  type: 7
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
@@ -6517,11 +6517,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  type: 2
+  type: 5
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
-  upgradeName: 
+  upgradeName: 0
   index: 0
 --- !u!1 &1802627239
 GameObject:
@@ -6862,7 +6862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  type: 5
+  type: 7
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
@@ -7031,7 +7031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  type: 5
+  type: 7
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
@@ -7069,11 +7069,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 677285198}
+  m_Father: {fileID: 288795000}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2320, y: 20}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1897885960
@@ -7182,11 +7182,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  type: 4
-  menu: {fileID: 0}
+  type: 8
+  menu: {fileID: 423148821}
   cat: {fileID: 2004188832}
   setting: {fileID: 0}
-  upgradeName: 
+  upgradeName: 0
   index: 0
 --- !u!1 &1944723855
 GameObject:
@@ -7351,7 +7351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5eef5fa84cd240ea94538068b8e4e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UNIVERSALButton
-  type: 5
+  type: 7
   menu: {fileID: 0}
   cat: {fileID: 0}
   setting: {fileID: 0}
@@ -8029,6 +8029,10 @@ PrefabInstance:
       propertyPath: cat
       value: 
       objectReference: {fileID: 949768688}
+    - target: {fileID: 8726742415822652742, guid: 6db93157ffadf47909d4618a84a971c3, type: 3}
+      propertyPath: type
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3410419912102021798, guid: 6db93157ffadf47909d4618a84a971c3, type: 3}
