@@ -30,10 +30,7 @@ public class FirebaseManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
-    {
-        LoadCloudSave();
-    }
+    void Start() => LoadFromCloud();
 
     void Update()
     {
@@ -41,25 +38,20 @@ public class FirebaseManager : MonoBehaviour
         if (cloudSaveTimer >= CLOUD_SAVE_INTERVAL)
         {
             cloudSaveTimer = 0f;
-            SaveCloudSave();
+            SaveToCloud();
         }
     }
 
-    public void SaveCloudSave()
-    {
-        StartCoroutine(SaveCloudSaveRoutine());
-    }
+    void OnApplicationQuit() => SaveToCloud();
 
-    public void LoadCloudSave()
-    {
-        StartCoroutine(LoadCloudSaveRoutine());
-    }
+    // ── Save - Load ───────────────────────────────────────
+    public void SaveToCloud() => StartCoroutine(SaveCloudSaveRoutine());
+
+    public void LoadFromCloud() => StartCoroutine(LoadCloudSaveRoutine());
 
     IEnumerator SaveCloudSaveRoutine()
     {
-        if (GameManager.Instance == null)
-            yield break;
-
+        if (GameManager.Instance == null) yield break;
         string userId = GetUserId();
         if (string.IsNullOrEmpty(userId))
         {
@@ -97,7 +89,7 @@ public class FirebaseManager : MonoBehaviour
         bodyBuilder.Append(EscapeJson(saveJson));
         bodyBuilder.AppendLine("\"");
         bodyBuilder.AppendLine("  }");
-        bodyBuilder.Append("}");
+        bodyBuilder.Append("}}");
 
         string body = bodyBuilder.ToString();
         string url = $"{BASE_URL}/SAVE/{userId}?key={API_KEY}";
@@ -135,10 +127,12 @@ public class FirebaseManager : MonoBehaviour
         if (req.result != UnityWebRequest.Result.Success)
         {
             Debug.Log("[Firebase] No SAVE document found");
+            Debug.Log($"[Firebase] {req.result}");
             yield break;
         }
 
         var json = SimpleJSON.JSON.Parse(req.downloadHandler.text);
+        // var json = JsonUtility.FromJson(req.downloadHandler.text);
         string username = json["fields"]["username"]?["stringValue"];
         string passHash = json["fields"]["passHash"]?["stringValue"];
         string saveJson = json["fields"]["savedata"]["stringValue"];
@@ -158,7 +152,7 @@ public class FirebaseManager : MonoBehaviour
     // ── Helpers ───────────────────────────────────────────
     public string GetUserId()
     {
-        return PlayerPrefs.GetString("userId", string.Empty);
+        return PlayerPrefs.GetString("userId", Guid.NewGuid().ToString());
     }
 
     private static string EscapeJson(string value)
