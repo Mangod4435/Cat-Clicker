@@ -67,9 +67,6 @@ public class FirebaseManager : MonoBehaviour
         var bodyBuilder = new System.Text.StringBuilder();
         bodyBuilder.AppendLine("{");
         bodyBuilder.AppendLine("  \"fields\": {");
-        bodyBuilder.Append("    \"userID\": {\"stringValue\": \"");
-        bodyBuilder.Append(EscapeJson(userId));
-        bodyBuilder.AppendLine("\"},");
 
         if (!string.IsNullOrEmpty(username))
         {
