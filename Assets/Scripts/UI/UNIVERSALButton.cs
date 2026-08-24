@@ -16,26 +16,26 @@ public class UNIVERSALButton : MonoBehaviour
 
     public enum ButtonType
     {
-        cat,
-        mainMenuSetting,
-        quit,
-        reset,
-        save,
-        setting,
-        start,
-        upgrade,
-        upgradeMenu,
+        cat = 0,
+        mainMenuSetting = 1,
+        quit = 2,
+        reset = 3,
+        save = 4,
+        setting = 5,
+        start = 6,
+        upgrade = 7,
+        upgradeMenu = 8,
     }
 
     public enum UpgradeType
     {
-        CozySpot,
-        Factory,
-        FishBowl,
-        Laser,
-        SharpClaw,
-        Satellite,
-        TV,
+        CozySpot = 0,
+        Factory = 1,
+        FishBowl = 2,
+        Laser = 3,
+        SharpClaw = 4,
+        Satellite = 5,
+        TV = 6,
     }
     #endregion
     #region serialize field

@@ -1,21 +1,28 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class UpgradeEffectTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UpgradeEffectTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler // this class 
 {
-    [SerializeField] GameObject panel;
-    [SerializeField] Text title;
-    [SerializeField] Text description;
-    [SerializeField] Text cost;
+	[SerializeField] GameObject panel;
+	TextMeshProUGUI title;
+	TextMeshProUGUI description;
+	TextMeshProUGUI cost;
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        // panel.transform.GetChild()
-    }
+	void Awake()
+	{
+		title = panel.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+		description = panel.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
+		cost = panel.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>();
+	}
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        throw new System.NotImplementedException();
-    }
+	public void OnPointerEnter(PointerEventData eventData)
+	{
+		throw new System.NotImplementedException();
+	}
+
+	public void OnPointerExit(PointerEventData eventData)
+	{
+		throw new System.NotImplementedException();
+	}
 }
