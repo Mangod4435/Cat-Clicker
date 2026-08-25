@@ -1,8 +1,11 @@
+using System;
+using System.Linq;
+using API;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UpgradeEffectTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler // this class 
+public class UpgradeEffectTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler // this class uses with the button
 {
 	[SerializeField] GameObject panel;
 	TextMeshProUGUI title;
@@ -18,11 +21,15 @@ public class UpgradeEffectTooltip : MonoBehaviour, IPointerEnterHandler, IPointe
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
-		throw new System.NotImplementedException();
+		title.text = TooltipTextIndexes.indexes["Sharp Claw"].name;
+		description.text = TooltipTextIndexes.indexes["Sharp Claw"].description;
+		cost.text = UpgradeAPI.getCalculatedPrice(ParseEnum<UNIVERSALButton.UpgradeType>(TooltipTextIndexes.indexes["Sharper Claw"].technicalName)).ToString();
 	}
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
 		throw new System.NotImplementedException();
 	}
+
+	T ParseEnum<T>(String target) => (T)Enum.Parse(typeof(T), target);
 }
