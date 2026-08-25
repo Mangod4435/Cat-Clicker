@@ -66,7 +66,7 @@ namespace API
             }
         }
 
-        public static double getCalculatedPrice(UNIVERSALButton.UpgradeType name)
+        public static double getCalcedPrice(UNIVERSALButton.UpgradeType name)
         {
             return PriceCalculator(getPrice(name), getAmount(name));
         }

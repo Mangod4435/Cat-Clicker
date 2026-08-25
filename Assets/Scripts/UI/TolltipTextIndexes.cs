@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class TooltipTextIndexes
+public class TooltipTexts
 {
 	public static Dictionary<string, Tooltip> indexes = new Dictionary<string, Tooltip>
 	{

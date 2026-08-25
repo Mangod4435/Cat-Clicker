@@ -147,7 +147,7 @@ public class UNIVERSALButton : MonoBehaviour
             case ButtonType.upgrade:
                 if (!IsAffordable())
                     return;
-                gameManager.AddCat(-UpgradeAPI.getCalculatedPrice(upgradeName));
+                gameManager.AddCat(-UpgradeAPI.getCalcedPrice(upgradeName));
                 gameManager.AddUpgrade(upgradeName, 1);
                 break;
             case ButtonType.upgradeMenu:
@@ -214,7 +214,7 @@ public class UNIVERSALButton : MonoBehaviour
     ButtonState EvaluateState()
     {
         double cats = gameManager.Cats;
-        double calcPrice = UpgradeAPI.getCalculatedPrice(upgradeName);
+        double calcPrice = UpgradeAPI.getCalcedPrice(upgradeName);
         double shadowThreshold = UpgradeAPI.getPrice(upgradeName) * 0.5;
         bool revealed = gameManager.getRevealed(upgradeName);
 
