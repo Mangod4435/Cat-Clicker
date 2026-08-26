@@ -4,7 +4,7 @@ public class TooltipTexts
 {
 	public static Dictionary<string, Tooltip> indexes = new Dictionary<string, Tooltip>
 	{
-		{"Sharp Claw", new Tooltip("Sharper Claw", "SharpClaw", "Make your click sharper")}
+		{"SharpClaw", new Tooltip("Sharper Claw", "SharpClaw", "Make your click sharper")}
 	};
 }
 
@@ -18,6 +18,6 @@ public class Tooltip
 	}
 
 	public string name;
-	public string description;
 	public string technicalName;
+	public string description;
 }

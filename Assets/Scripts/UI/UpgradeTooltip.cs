@@ -19,16 +19,16 @@ public class UpgradeEffectTooltip : MonoBehaviour, IPointerEnterHandler, IPointe
 
 	public void OnPointerEnter(PointerEventData eventData)
 	{
-		title.text = TooltipTexts.indexes["Sharp Claw"].name;
-		description.text = TooltipTexts.indexes["Sharp Claw"].description;
+		title.text = TooltipTexts.indexes[GetComponent<UNIVERSALButton>().upgradeName.ToString()].name;
+		description.text = TooltipTexts.indexes[GetComponent<UNIVERSALButton>().upgradeName.ToString()].description;
 		cost.text = UpgradeAPI.getCalcedPrice(
-			ParseEnum<UNIVERSALButton.UpgradeType>(TooltipTexts.indexes["Sharper Claw"].technicalName)
-		).ToString();
+			ParseEnum<UNIVERSALButton.UpgradeType>(TooltipTexts.indexes[GetComponent<UNIVERSALButton>().upgradeName.ToString()].technicalName)
+		).ToString() + " cats";
 
-		GetComponent<CanvasGroup>().alpha = 1;
+		panel.GetComponent<CanvasGroup>().alpha = 1;
 	}
 
-	public void OnPointerExit(PointerEventData eventData) => GetComponent<CanvasGroup>().alpha = 0;
+	public void OnPointerExit(PointerEventData eventData) => panel.GetComponent<CanvasGroup>().alpha = 0;
 
 	T ParseEnum<T>(string target) => (T)System.Enum.Parse(typeof(T), target);
 }

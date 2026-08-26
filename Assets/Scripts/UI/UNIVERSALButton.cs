@@ -43,7 +43,7 @@ public class UNIVERSALButton : MonoBehaviour
     [SerializeField] GameObject menu;
     [SerializeField] GameObject cat;
     [SerializeField] GameObject setting;
-    [SerializeField] UpgradeType upgradeName;
+    [SerializeField] public UpgradeType upgradeName;
     [SerializeField] int index;
     #endregion
     #region private field
