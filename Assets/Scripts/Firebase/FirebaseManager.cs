@@ -3,9 +3,31 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
+// ── Firebase Response Data Classes ────────────────────────
+[System.Serializable]
+public class FirebaseStringValue
+{
+    public string stringValue;
+}
+
+[System.Serializable]
+public class FirebaseFields
+{
+    public FirebaseStringValue username;
+    public FirebaseStringValue passHash;
+    public FirebaseStringValue savedata;
+}
+
+[System.Serializable]
+public class FirebaseResponse
+{
+    public FirebaseFields fields;
+}
+
 public class FirebaseManager : MonoBehaviour
 {
     public static FirebaseManager Instance { get; private set; }
+    private const string UID_KEY = "UID";
 
     // ── Firebase Config ───────────────────────────────────
     private const string PROJECT_ID = "cat-clicker-base-by-mangod";
@@ -84,9 +106,8 @@ public class FirebaseManager : MonoBehaviour
 
         bodyBuilder.Append("    \"savedata\": {\"stringValue\": \"");
         bodyBuilder.Append(EscapeJson(saveJson));
-        bodyBuilder.AppendLine("\"");
-        bodyBuilder.AppendLine("  }");
-        bodyBuilder.Append("}}");
+        bodyBuilder.Append("\"");
+        bodyBuilder.AppendLine("  }}}");
 
         string body = bodyBuilder.ToString();
         string url = $"{BASE_URL}/SAVE/{userId}?key={API_KEY}";
@@ -106,13 +127,14 @@ public class FirebaseManager : MonoBehaviour
 
     IEnumerator LoadCloudSaveRoutine()
     {
-        if (GameManager.Instance == null)
-            yield break;
+        if (GameManager.Instance == null) yield break;
 
         string userId = GetUserId();
+
         if (string.IsNullOrEmpty(userId))
         {
             Debug.LogWarning("[Firebase] No userId available; skipping cloud load.");
+            PlayerPrefs.SetString(UID_KEY, NewUserId());
             yield break;
         }
 
@@ -128,11 +150,11 @@ public class FirebaseManager : MonoBehaviour
             yield break;
         }
 
-        var json = SimpleJSON.JSON.Parse(req.downloadHandler.text);
-        // var json = JsonUtility.FromJson(req.downloadHandler.text);
-        string username = json["fields"]["username"]?["stringValue"];
-        string passHash = json["fields"]["passHash"]?["stringValue"];
-        string saveJson = json["fields"]["savedata"]["stringValue"];
+        FirebaseResponse firebaseData = JsonUtility.FromJson<FirebaseResponse>(req.downloadHandler.text);
+        
+        string username = firebaseData.fields.username?.stringValue;
+        string passHash = firebaseData.fields.passHash?.stringValue;
+        string saveJson = firebaseData.fields.savedata?.stringValue;
 
         if (!string.IsNullOrEmpty(username))
             PlayerPrefs.SetString("username", username);
@@ -147,10 +169,8 @@ public class FirebaseManager : MonoBehaviour
     }
 
     // ── Helpers ───────────────────────────────────────────
-    public string GetUserId()
-    {
-        return PlayerPrefs.GetString("userId", Guid.NewGuid().ToString());
-    }
+    public string GetUserId() => PlayerPrefs.GetString("userId");
+    public string NewUserId() => Guid.NewGuid().ToString();
 
     private static string EscapeJson(string value)
     {

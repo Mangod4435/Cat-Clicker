@@ -304,6 +304,7 @@ public class GameManager : MonoBehaviour
         cps += Laser * 50;
         cps += Factory * 200;
         cps += Satellite * 3000;
+        
         CPS = cps;
     }
     #endregion
